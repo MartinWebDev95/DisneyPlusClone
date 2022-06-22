@@ -23,7 +23,7 @@ function NavBar() {
         </li>
         <li>
           <AiOutlineSearch />
-          <LinkItem to="#">
+          <LinkItem to="/search">
             Búsqueda
           </LinkItem>
         </li>

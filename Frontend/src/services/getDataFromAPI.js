@@ -22,6 +22,12 @@ const getDramaMovies = async () => {
   return data.results;
 };
 
+const getComedySeries = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/tv/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&sort_by=popularity.desc&with_genres=35&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
 const getDetailMovie = async (id) => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}movie/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
   const data = await response.json();
@@ -58,6 +64,18 @@ const getCastFromSerie = async (id) => {
   return data.cast;
 };
 
+const getSearchMovies = async (keyword) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}search/movie?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1&query=${decodeURI(keyword)}`);
+  const data = await response.json();
+  return { results: data.results, type: 'movie' };
+};
+
+const getSearchSeries = async (keyword) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}search/tv?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1&query=${decodeURI(keyword)}`);
+  const data = await response.json();
+  return { results: data.results, type: 'tv' };
+};
+
 export {
   getNewMoviesDisney,
   getNewSeriesDisney,
@@ -69,4 +87,7 @@ export {
   getDetailTv,
   getSimilarSeries,
   getCastFromSerie,
+  getSearchMovies,
+  getSearchSeries,
+  getComedySeries,
 };
