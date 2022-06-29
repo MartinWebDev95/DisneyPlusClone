@@ -30,6 +30,8 @@ function DetailMovie() {
     });
   }, [id]);
 
+  console.log(movie);
+
   const handleChangeButton = () => {
     setSelected(!selected);
   };

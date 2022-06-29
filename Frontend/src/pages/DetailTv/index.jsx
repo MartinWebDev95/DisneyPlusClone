@@ -28,7 +28,7 @@ function DetailTv() {
     });
   }, [id]);
 
-  // console.log(tv);
+  console.log(tv);
 
   const handleChangeButton = () => {
     setSelected(!selected);

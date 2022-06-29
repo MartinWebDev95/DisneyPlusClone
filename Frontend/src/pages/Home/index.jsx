@@ -3,6 +3,7 @@ import CardBrand from '../../components/CardBrand';
 import Header from '../../components/Header';
 import Carrousel from '../../components/Carrousel';
 import Footer from '../../components/Footer';
+import Slider from '../../components/Slider';
 import Container from './styles';
 import {
   getNewSeriesDisney, getNewMoviesDisney, getAnimationMovies, getDramaMovies, getComedySeries,
@@ -38,6 +39,7 @@ function Home() {
     <>
       <Header />
       <main>
+        <Slider collection={newItems} />
         <Container>
           <CardBrand />
         </Container>

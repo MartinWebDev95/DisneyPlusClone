@@ -1,13 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header';
+import Footer from '../../components/Footer';
+import Carrousel from '../../components/Carrousel';
 import VideoBgStarWars from '../../../public/assets/videos/bg-star-wars.mp4';
+import PosterImage from '../../../public/assets/img/categories/bg-star-wars.jpg';
 import BackgroundVideo from '../../components/BackgroundVideo';
+import { getMoviesStarWars, getSeriesStarWars, getMoviesLegoStarWars } from '../../services/getDataFromAPI';
+import Spacing from './styles';
 
 function StarWars() {
+  const [starWarsMovies, setStarWarsMovies] = useState([]);
+  const [starWarsSeries, setStarWarsSeries] = useState([]);
+  const [legoStarWarsMovies, setLegoStarWarsMovies] = useState([]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+
+    getMoviesStarWars().then((data) => {
+      setStarWarsMovies(data);
+    });
+
+    getSeriesStarWars().then((data) => {
+      setStarWarsSeries(data);
+    });
+
+    getMoviesLegoStarWars().then((data) => {
+      setLegoStarWarsMovies(data);
+    });
+  }, []);
+
   return (
     <>
       <Header />
-      <BackgroundVideo bgVideo={VideoBgStarWars} />
+      <BackgroundVideo bgVideo={VideoBgStarWars} posterImage={PosterImage} />
+      <Spacing />
+      <Carrousel collection={starWarsMovies} title="Películas Star Wars" type="movie" />
+      <Carrousel collection={starWarsSeries} title="Series del universo de Star Wars" type="tv" />
+      <Carrousel collection={legoStarWarsMovies} title="Lego Star Wars" type="movie" />
+      <Footer />
     </>
   );
 }

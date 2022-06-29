@@ -76,6 +76,96 @@ const getSearchSeries = async (keyword) => {
   return { results: data.results, type: 'tv' };
 };
 
+const getMoviesMarvel = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=420&sort_by=vote_average.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getSeriesMarvel = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/tv/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=420&sort_by=release_date.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getMoviesAvengersMarvel = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}collection/86311?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.parts;
+};
+
+const getMoviesSpidermanMarvel = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}collection/531241?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.parts;
+};
+
+const getMoviesThorMarvel = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}collection/131296?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.parts;
+};
+
+const getMoviesCaptainAmericaMarvel = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}collection/131295?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.parts;
+};
+
+const getMoviesPixar = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=3&sort_by=release_date.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getMostPopularMoviesPixar = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=3&sort_by=vote_average.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getMoviesToyStoryPixar = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}collection/10194?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.parts;
+};
+
+const getMoviesCarsPixar = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}collection/87118?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.parts;
+};
+
+const getMoviesStarWars = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=1&sort_by=vote_average.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getSeriesStarWars = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/tv/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=1&sort_by=vote_average.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getMoviesLegoStarWars = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}collection/302331?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.parts;
+};
+
+const getMoviesNationalGeographic = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=7521&sort_by=release_date.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getSeriesNationalGeographic = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/tv/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=7521&sort_by=release_date.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
 export {
   getNewMoviesDisney,
   getNewSeriesDisney,
@@ -90,4 +180,19 @@ export {
   getSearchMovies,
   getSearchSeries,
   getComedySeries,
+  getMoviesMarvel,
+  getSeriesMarvel,
+  getMoviesAvengersMarvel,
+  getMoviesCaptainAmericaMarvel,
+  getMoviesSpidermanMarvel,
+  getMoviesThorMarvel,
+  getMoviesPixar,
+  getMostPopularMoviesPixar,
+  getMoviesToyStoryPixar,
+  getMoviesCarsPixar,
+  getMoviesStarWars,
+  getSeriesStarWars,
+  getMoviesLegoStarWars,
+  getMoviesNationalGeographic,
+  getSeriesNationalGeographic,
 };

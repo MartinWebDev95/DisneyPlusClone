@@ -6,13 +6,14 @@ const Container = styled.div`
 `;
 
 const CarrouselStyled = styled.div`
+  //${(props) => (`width:${(props.quantity * 100)}%`)};
+  width: fit-content;
   display: flex;
   column-gap: 1rem;
-  overflow-x: hidden;
-  padding-bottom: 2rem;
   padding-top: 1rem;
   padding-left: 1rem;
-  transform: translateX(4%);
+  position: relative;
+  transition: all .3s ease-in-out;
 `;
 
 const Title = styled.p`
@@ -22,7 +23,7 @@ const Title = styled.p`
 `;
 
 const ButtonStyled = styled.button`
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.3);
   position: absolute;
   border: none;
   cursor: pointer;
@@ -31,22 +32,29 @@ const ButtonStyled = styled.button`
   height: 20rem;
   width: 5rem;
   z-index: 2;
+  transition: all .3s ease-in-out;
 
   ${(props) => (props.type === 'left'
-    ? `left: 0;
-    display: none;`
-    : 'right: 0;')};
+    ? `left: -3rem;
+    opacity: 0;`
+    : `right: 0;
+    opacity: 0;`)};
+
+  &:hover{
+    opacity: 1;
+  }
 
   svg{
     color: #EAEAD7;
-    font-size: 3rem;
+    font-size: 4rem;
   }
 
 `;
 
 const ContainerCarrousel = styled.div`
   position: relative;
-  overflow-x: hidden;
+  margin-left: 3rem;
+  padding-bottom: 2rem;
 `;
 
 export {
