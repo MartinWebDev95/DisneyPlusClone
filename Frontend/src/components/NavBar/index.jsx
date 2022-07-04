@@ -35,7 +35,7 @@ function NavBar() {
         </li>
         <li>
           <AiFillStar />
-          <LinkItem to="#">
+          <LinkItem to="/originals">
             Originales
           </LinkItem>
         </li>

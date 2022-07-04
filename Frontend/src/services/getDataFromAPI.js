@@ -166,6 +166,36 @@ const getSeriesNationalGeographic = async () => {
   return data.results;
 };
 
+const getMoviesWaltDisneyAnimations = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=6125&sort_by=vote_average.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getMoviesWaltDisney90s = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=3475&with_companies=2&sort_by=vote_average.desc&release_date.gte=1990-01-01&release_date.lte=1999-01-01&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getMoviesWaltDisneyActionAdventure = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_genres=12&with_companies=2&sort_by=vote_average.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getMoviesIceAge = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}collection/8354?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.parts;
+};
+
+const getMostPopularsMoviesDisney = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&sort_by=popularity.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
 export {
   getNewMoviesDisney,
   getNewSeriesDisney,
@@ -195,4 +225,9 @@ export {
   getMoviesLegoStarWars,
   getMoviesNationalGeographic,
   getSeriesNationalGeographic,
+  getMoviesWaltDisneyAnimations,
+  getMoviesWaltDisney90s,
+  getMoviesWaltDisneyActionAdventure,
+  getMoviesIceAge,
+  getMostPopularsMoviesDisney,
 };

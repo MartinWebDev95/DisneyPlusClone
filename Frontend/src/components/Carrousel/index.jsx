@@ -60,8 +60,7 @@ function Carrousel({ collection, title = null, type = '' }) {
           </ButtonStyled>
         )}
 
-        {/* Paso por props la cantidad de items que tiene el carrousel para poder calcular su width */}
-        <CarrouselStyled quantity={(collection[0]?.length + collection[1]?.length) || (collection?.length)} ref={carrousel}>
+        <CarrouselStyled ref={carrousel}>
           {collection.length === 2 && (
             <>
               {collection[1]?.map((item) => (

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
 import Login from './pages/Login';
+import Home from './pages/Home';
 import MyList from './pages/MyList';
 import Search from './pages/Search';
+import Originals from './pages/Originals';
 import Disney from './pages/Disney';
 import Marvel from './pages/Marvel';
 import Star from './pages/Star';
@@ -19,6 +20,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="home" element={<Home />} />
+        <Route path="search" element={<Search />} />
+        <Route path="my-list" element={<MyList />} />
+        <Route path="originals" element={<Originals />} />
         <Route path="brand/disney" element={<Disney />} />
         <Route path="brand/marvel" element={<Marvel />} />
         <Route path="brand/pixar" element={<Pixar />} />
@@ -27,8 +31,6 @@ function App() {
         <Route path="brand/national-geographic" element={<NationalGeographic />} />
         <Route path="movie/:id" element={<DetailMovie />} />
         <Route path="tv/:id" element={<DetailTv />} />
-        <Route path="my-list" element={<MyList />} />
-        <Route path="search" element={<Search />} />
       </Routes>
     </div>
   );

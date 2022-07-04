@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const FormStyled = styled.form`
   position: fixed;
   width: 100%;
-  top: 14%;
+  top: 15%;
   left: 0%;
   z-index: 2;
 `;

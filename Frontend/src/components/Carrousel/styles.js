@@ -6,7 +6,6 @@ const Container = styled.div`
 `;
 
 const CarrouselStyled = styled.div`
-  //${(props) => (`width:${(props.quantity * 100)}%`)};
   width: fit-content;
   display: flex;
   column-gap: 1rem;
