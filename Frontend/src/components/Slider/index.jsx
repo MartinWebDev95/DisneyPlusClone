@@ -13,7 +13,7 @@ function Slider({ collection }) {
   const valueTranslate = 2.5;
 
   const handleClickNext = () => {
-    const firstElement = containerImgs.current.childNodes[0];
+    const firstElement = containerImgs?.current.childNodes[0];
 
     containerImgs.current.style.transition = 'all .3s ease-in-out';
     containerImgs.current.style.transform = `translateX(-${valueTranslate}%)`;

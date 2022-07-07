@@ -32,7 +32,7 @@ const Logo = styled(Link)`
   }
 `;
 
-const Profile = styled.a`
+const Profile = styled.div`
   width: 3%;
   margin-right: 1rem;
 

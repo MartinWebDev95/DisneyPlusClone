@@ -196,6 +196,12 @@ const getMostPopularsMoviesDisney = async () => {
   return data.results;
 };
 
+const getSeasonEpisodes = async (id, seasonNumber) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}tv/${id}/season/${seasonNumber}?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.episodes;
+};
+
 export {
   getNewMoviesDisney,
   getNewSeriesDisney,
@@ -230,4 +236,5 @@ export {
   getMoviesWaltDisneyActionAdventure,
   getMoviesIceAge,
   getMostPopularsMoviesDisney,
+  getSeasonEpisodes,
 };

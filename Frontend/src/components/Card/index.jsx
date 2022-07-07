@@ -17,7 +17,7 @@ function Card({ item, type }) {
         ? (
           <ImageStyled
             src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
-            alt={type === 'movie' ? item.title : item.name}
+            alt={item.title || item.name}
             available
             loading="lazy"
           />

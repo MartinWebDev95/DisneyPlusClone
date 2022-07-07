@@ -24,6 +24,8 @@ function Marvel() {
   const [moviesCaptainAmericaMarvel, setMoviesCaptainAmericaMarvel] = useState([]);
 
   useEffect(() => {
+    document.title = 'Marvel';
+
     window.scrollTo(0, 0);
 
     getMoviesMarvel().then((data) => {
@@ -57,14 +59,12 @@ function Marvel() {
       <main>
         <BackgroundVideo bgVideo={VideoBgMarvel} posterImage={PosterImage} />
         <Spacing />
-        {/* <BackgroundOpacity> */}
         <Carrousel collection={moviesMarvel} title="Películas Marvel" type="movie" />
         <Carrousel collection={seriesMarvel} title="Series Marvel" type="tv" />
         <Carrousel collection={moviesAvengersMarvel} title="Los Vengadores" type="movie" />
         <Carrousel collection={moviesCaptainAmericaMarvel} title="El Capitán América" type="movie" />
         <Carrousel collection={moviesSpidermanMarvel} title="Spiderman" type="movie" />
         <Carrousel collection={moviesThorMarvel} title="Thor" type="movie" />
-        {/* </BackgroundOpacity> */}
       </main>
       <Footer />
     </>

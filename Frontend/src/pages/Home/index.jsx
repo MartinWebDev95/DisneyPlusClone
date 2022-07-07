@@ -4,6 +4,7 @@ import Header from '../../components/Header';
 import Carrousel from '../../components/Carrousel';
 import Footer from '../../components/Footer';
 import Slider from '../../components/Slider';
+import Spinner from '../../components/Spinner';
 import Container from './styles';
 import {
   getNewSeriesDisney, getNewMoviesDisney, getAnimationMovies, getDramaMovies, getComedySeries,
@@ -14,6 +15,7 @@ function Home() {
   const [animationItems, setAnimationItems] = useState([]);
   const [dramaItems, setDramaItems] = useState([]);
   const [comedySeries, setComedySeries] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     Promise.all([getNewMoviesDisney(), getNewSeriesDisney()]).then(
@@ -33,23 +35,30 @@ function Home() {
     getComedySeries().then((data) => {
       setComedySeries(data);
     });
+
+    setLoading(false);
   }, []);
 
   return (
-    <>
-      <Header />
-      <main>
-        <Slider collection={newItems} />
-        <Container>
-          <CardBrand />
-        </Container>
-        <Carrousel collection={newItems} title="Nuevo en Disney+" type={['tv', 'movie']} />
-        <Carrousel collection={animationItems} title="Películas de Animación" type="movie" />
-        <Carrousel collection={dramaItems} title="Películas Dramáticas" type="movie" />
-        <Carrousel collection={comedySeries} title="Series de comedia" type="tv" />
-      </main>
-      <Footer />
-    </>
+    loading === false
+      ? (
+        <>
+          <Header />
+          <main>
+            <Slider collection={newItems} />
+            <Container>
+              <CardBrand />
+            </Container>
+            <Carrousel collection={newItems} title="Nuevo en Disney+" type={['tv', 'movie']} />
+            <Carrousel collection={animationItems} title="Películas de Animación" type="movie" />
+            <Carrousel collection={dramaItems} title="Películas Dramáticas" type="movie" />
+            <Carrousel collection={comedySeries} title="Series de comedia" type="tv" />
+          </main>
+          <Footer />
+        </>
+      ) : (
+        <Spinner />
+      )
   );
 }
 

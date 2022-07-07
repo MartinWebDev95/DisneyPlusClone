@@ -1,34 +1,23 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable max-len */
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect } from 'react';
 import Carrousel from '../Carrousel';
-import {
-  TabsStyled,
-  TabStyled,
-  Container,
-  Title,
-  Sinopsis,
-  Detail,
-  ContainerDetails,
-  ListOfSeasons,
-  SeasonItem,
-} from './styles';
+import TabDetail from '../TabDetail';
+import TabEpisodes from '../TabEpisodes';
+import { TabsStyled, TabStyled } from './styles';
 import {
   getSimilarMovies, getCastFromMovie, getSimilarSeries, getCastFromSerie,
 } from '../../services/getDataFromAPI';
 import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
 
-function Tabs({
-  item, id, type,
-}) {
+function Tabs({ item, id, type }) {
   const [selectedSuggested, setSelectedSuggested] = useState(true);
   const [selectedDetails, setSelectedDetails] = useState(false);
   const [selectedEpisodes, setSelectedEpisodes] = useState(false);
   const [similarMovies, setSimilarMovies] = useState([]);
   const [similarSeries, setSimilarSeries] = useState([]);
   const [cast, setCast] = useState([]);
-  const { hours, minutesLeft } = getHoursAndMinutes(type === 'movie' ? item?.runtime : item?.episode_run_time);
+  const { hours, minutesLeft } = getHoursAndMinutes(item?.runtime || item?.episode_run_time);
 
   useEffect(() => {
     type === 'movie'
@@ -67,10 +56,6 @@ function Tabs({
     }
   };
 
-  const handleClickSeason = (e) => {
-
-  };
-
   return (
     <section>
       <TabsStyled>
@@ -99,69 +84,32 @@ function Tabs({
           </>
         )}
       </TabsStyled>
-      {
-        (selectedSuggested && (
-          type === 'movie' ? (
-            <Carrousel collection={similarMovies} type="movie" />
-          ) : (
-            <Carrousel collection={similarSeries} type="tv" />
-          )
-        ))
-      }
-      {selectedDetails && (
-        <Container>
-          <div>
-            <Title>{type === 'movie' ? item.title : item.name}</Title>
-            <Sinopsis>
-              {item.overview}
-            </Sinopsis>
-          </div>
-          <ContainerDetails>
-            <div>
-              <Detail>
-                Duración:
-                <span>
-                  {
-                    hours === 0 ? (
-                      `${minutesLeft} min`
-                    ) : (
-                      `${hours} h ${minutesLeft} min`
-                    )
-                  }
-                </span>
-              </Detail>
-              <Detail>
-                Fecha de estreno:
-                <span>{type === 'movie' ? item.release_date?.split('-')[0] : item.first_air_date?.split('-')[0]}</span>
-              </Detail>
-              <Detail>
-                Género:
-                <span>{item.genres.map((genre) => genre.name).join(', ')}</span>
-              </Detail>
-            </div>
-            <div>
-              <Detail>
-                Con:
-                {cast?.map((person) => (
-                  <span key={person.id}>{person.name}</span>
-                )).slice(0, 6)}
-              </Detail>
-            </div>
-          </ContainerDetails>
-        </Container>
+
+      {/* Se muestran las películas o series similares a la que se muestra */}
+      {selectedSuggested && (
+        type === 'movie' ? (
+          <Carrousel collection={similarMovies} type="movie" />
+        ) : (
+          <Carrousel collection={similarSeries} type="tv" />
+        )
       )}
+
+      {/* Se muestran los detalles de la serie o película */}
+      {selectedDetails && (
+        <TabDetail
+          title={item.title || item.name}
+          overview={item.overview}
+          date={item.first_air_date || item.release_date}
+          genres={item.genres}
+          cast={cast}
+          hours={hours}
+          minutesLeft={minutesLeft}
+        />
+      )}
+
+      {/* Se muestran las temporadas de la serie con todos sus episodios */}
       {selectedEpisodes && (
-        <Container>
-          <ListOfSeasons>
-            {item.seasons.map((season) => (
-              <SeasonItem key={season.id} onClick={handleClickSeason}>
-                Temporada
-                {' '}
-                {season.season_number}
-              </SeasonItem>
-            ))}
-          </ListOfSeasons>
-        </Container>
+        <TabEpisodes seasons={item.seasons} id={id} />
       )}
     </section>
   );
