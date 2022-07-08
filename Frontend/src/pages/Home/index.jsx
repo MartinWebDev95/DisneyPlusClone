@@ -21,6 +21,7 @@ function Home() {
     Promise.all([getNewMoviesDisney(), getNewSeriesDisney()]).then(
       (data) => {
         setNewItems(data);
+        setLoading(false);
       },
     );
 
@@ -35,12 +36,10 @@ function Home() {
     getComedySeries().then((data) => {
       setComedySeries(data);
     });
-
-    setLoading(false);
   }, []);
 
   return (
-    loading === false
+    !loading
       ? (
         <>
           <Header />

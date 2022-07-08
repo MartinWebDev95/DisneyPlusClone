@@ -63,12 +63,6 @@ function Header() {
             </LinkItem>
           </li>
           <li>
-            <AiFillStar />
-            <LinkItem to="/originals">
-              Originales
-            </LinkItem>
-          </li>
-          <li>
             <GiFilmSpool />
             <LinkItem to="#">
               Películas
