@@ -64,7 +64,7 @@ function Header() {
           </li>
           <li>
             <GiFilmSpool />
-            <LinkItem to="#">
+            <LinkItem to="/movies">
               Películas
             </LinkItem>
           </li>

@@ -104,7 +104,6 @@ function Detail({ type }) {
       ) : (
         <Spinner />
       )
-
   );
 }
 

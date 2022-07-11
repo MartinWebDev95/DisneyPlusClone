@@ -13,6 +13,7 @@ import StarWars from './pages/Star_Wars';
 import NationalGeographic from './pages/National_Geographic';
 import Pixar from './pages/Pixar';
 import Detail from './pages/Detail';
+import Movies from './pages/Movies';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="home" element={<Home />} />
             <Route path="search" element={<Search />} />
             <Route path="my-list" element={<MyList />} />
+            <Route path="movies" element={<Movies />} />
             <Route path="movie/:id" element={<Detail type="movie" />} />
             <Route path="tv/:id" element={<Detail type="tv" />} />
             <Route path="brand/disney" element={<Disney />} />

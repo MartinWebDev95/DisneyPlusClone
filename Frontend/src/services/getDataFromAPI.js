@@ -202,6 +202,12 @@ const getSeasonEpisodes = async (id, seasonNumber) => {
   return data.episodes;
 };
 
+const getMoviesFromDisney = async (genres) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie/?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&with_genres=${genres}&watch_region=ES&sort_by=release_date.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
 export {
   getNewMoviesDisney,
   getNewSeriesDisney,
@@ -237,4 +243,5 @@ export {
   getMoviesIceAge,
   getMostPopularsMoviesDisney,
   getSeasonEpisodes,
+  getMoviesFromDisney,
 };
