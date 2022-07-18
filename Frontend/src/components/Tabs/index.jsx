@@ -6,7 +6,7 @@ import TabDetail from '../TabDetail';
 import TabEpisodes from '../TabEpisodes';
 import { TabsStyled, TabStyled } from './styles';
 import {
-  getSimilarMovies, getCastFromMovie, getSimilarSeries, getCastFromSerie,
+  getSimilarItems, getCast,
 } from '../../services/getDataFromAPI';
 import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
 
@@ -22,19 +22,19 @@ function Tabs({ item, id, type }) {
   useEffect(() => {
     type === 'movie'
       ? (
-        getSimilarMovies(id).then((data) => {
+        getSimilarItems(id, type).then((data) => {
           setSimilarMovies(data);
         }),
 
-        getCastFromMovie(id).then((data) => {
+        getCast(id, type).then((data) => {
           setCast(data);
         })
       ) : (
-        getSimilarSeries(id).then((data) => {
+        getSimilarItems(id, type).then((data) => {
           setSimilarSeries(data);
         }),
 
-        getCastFromSerie(id).then((data) => {
+        getCast(id, type).then((data) => {
           setCast(data);
         })
       );

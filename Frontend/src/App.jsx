@@ -14,6 +14,7 @@ import NationalGeographic from './pages/National_Geographic';
 import Pixar from './pages/Pixar';
 import Detail from './pages/Detail';
 import Movies from './pages/Movies';
+import Series from './pages/Series';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="search" element={<Search />} />
             <Route path="my-list" element={<MyList />} />
             <Route path="movies" element={<Movies />} />
+            <Route path="tv" element={<Series />} />
             <Route path="movie/:id" element={<Detail type="movie" />} />
             <Route path="tv/:id" element={<Detail type="tv" />} />
             <Route path="brand/disney" element={<Disney />} />

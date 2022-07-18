@@ -5,14 +5,7 @@ import Carrousel from '../../components/Carrousel';
 import VideoBgMarvel from '../../../public/assets/videos/bg-marvel.mp4';
 import PosterImage from '../../../public/assets/img/categories/bg-marvel.jpg';
 import BackgroundVideo from '../../components/BackgroundVideo';
-import {
-  getMoviesMarvel,
-  getSeriesMarvel,
-  getMoviesAvengersMarvel,
-  getMoviesCaptainAmericaMarvel,
-  getMoviesSpidermanMarvel,
-  getMoviesThorMarvel,
-} from '../../services/getDataFromAPI';
+import { getItemsFromBrand, getItemsCollection } from '../../services/getDataFromAPI';
 import Spacing from './styles';
 
 function Marvel() {
@@ -28,27 +21,27 @@ function Marvel() {
 
     window.scrollTo(0, 0);
 
-    getMoviesMarvel().then((data) => {
+    getItemsFromBrand('movie', '420').then((data) => {
       setMoviesMarvel(data);
     });
 
-    getSeriesMarvel().then((data) => {
+    getItemsFromBrand('tv', '420').then((data) => {
       setSeriesMarvel(data);
     });
 
-    getMoviesAvengersMarvel().then((data) => {
+    getItemsCollection('86311').then((data) => {
       setMoviesAvengersMarvel(data);
     });
 
-    getMoviesCaptainAmericaMarvel().then((data) => {
+    getItemsCollection('131295').then((data) => {
       setMoviesCaptainAmericaMarvel(data);
     });
 
-    getMoviesSpidermanMarvel().then((data) => {
+    getItemsCollection('531241').then((data) => {
       setMoviesSpidermanMarvel(data);
     });
 
-    getMoviesThorMarvel().then((data) => {
+    getItemsCollection('131296').then((data) => {
       setMoviesThorMarvel(data);
     });
   }, []);

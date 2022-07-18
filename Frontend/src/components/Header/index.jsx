@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  AiFillHome, AiOutlineSearch, AiOutlinePlus, AiFillStar,
+  AiFillHome, AiOutlineSearch, AiOutlinePlus,
 } from 'react-icons/ai';
 import { MdOutlineOndemandVideo } from 'react-icons/md';
 import { GiFilmSpool } from 'react-icons/gi';
@@ -20,9 +20,10 @@ import {
   ProfileImage,
   LinkStyled,
 } from './styles';
+import useOpacity from '../../hooks/useOpacity';
 
 function Header() {
-  const [active, setActive] = useState(false);
+  const { opacity } = useOpacity();
   const { logout, user } = useAuth();
   const navigate = useNavigate();
 
@@ -31,14 +32,8 @@ function Header() {
     navigate('/');
   };
 
-  const changeHeaderBg = () => {
-    window.scrollY > 0 ? setActive(true) : setActive(false);
-  };
-
-  window.addEventListener('scroll', changeHeaderBg);
-
   return (
-    <HeaderStyled active={active}>
+    <HeaderStyled opacity={opacity.toString()}>
       <NavStyled>
         <Logo to="/home">
           <img src="/assets/img/logo.svg" alt="Logo" />
@@ -70,7 +65,7 @@ function Header() {
           </li>
           <li>
             <MdOutlineOndemandVideo />
-            <LinkItem to="#">
+            <LinkItem to="/tv">
               Series
             </LinkItem>
           </li>

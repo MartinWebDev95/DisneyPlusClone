@@ -29,15 +29,15 @@ function ListOfResults({ keyword }) {
         : (
           <ListStyled>
             {
-                results[0]?.results?.map((item) => (
-                  <Card key={item.id} item={item} type={results[0].type} />
-                ))
-              }
+              results[0]?.results?.map((item) => (
+                <Card key={item.id} item={item} type={results[0].type} />
+              ))
+            }
             {
-                results[1]?.results?.map((item) => (
-                  <Card key={item.id} item={item} type={results[1].type} />
-                ))
-              }
+              results[1]?.results?.map((item) => (
+                <Card key={item.id} item={item} type={results[1].type} />
+              ))
+            }
           </ListStyled>
         )
       ) : (

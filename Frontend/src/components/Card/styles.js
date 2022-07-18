@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const ImageStyled = styled.img`
   display: block;
-  border-radius: 0.5rem;
   border: 3px solid #161824;
   transform: scale(1);
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px;

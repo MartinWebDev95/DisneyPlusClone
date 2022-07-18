@@ -6,9 +6,7 @@ import Footer from '../../components/Footer';
 import Slider from '../../components/Slider';
 import Spinner from '../../components/Spinner';
 import Container from './styles';
-import {
-  getNewSeriesDisney, getNewMoviesDisney, getAnimationMovies, getDramaMovies, getComedySeries,
-} from '../../services/getDataFromAPI';
+import { getNewItemsDisney, getItemsForGenre } from '../../services/getDataFromAPI';
 
 function Home() {
   const [newItems, setNewItems] = useState([]);
@@ -18,22 +16,22 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    Promise.all([getNewMoviesDisney(), getNewSeriesDisney()]).then(
+    Promise.all([getNewItemsDisney('movie'), getNewItemsDisney('tv')]).then(
       (data) => {
         setNewItems(data);
         setLoading(false);
       },
     );
 
-    getAnimationMovies().then((data) => {
+    getItemsForGenre('movie', '16').then((data) => {
       setAnimationItems(data);
     });
 
-    getDramaMovies().then((data) => {
+    getItemsForGenre('movie', '18').then((data) => {
       setDramaItems(data);
     });
 
-    getComedySeries().then((data) => {
+    getItemsForGenre('tv', '35').then((data) => {
       setComedySeries(data);
     });
   }, []);

@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-expressions */
 import React, {
   useEffect, useState,
 } from 'react';
@@ -11,8 +10,8 @@ import FilterList from '../../components/FilterList';
 import { getItemsFromDisney } from '../../services/getDataFromAPI';
 import { MainStyled, DivSpinner } from './styles';
 
-function Movies() {
-  const [movies, setMovies] = useState([]);
+function Series() {
+  const [tv, setTv] = useState([]);
   const [genre, setGenre] = useState('');
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -20,12 +19,12 @@ function Movies() {
   useEffect(() => {
     setLoading(true);
 
-    getItemsFromDisney('movie', page, genre).then((data) => {
+    getItemsFromDisney('tv', page, genre).then((data) => {
       if (page === 1) {
         window.scrollTo(0, 0);
-        setMovies(data);
+        setTv(data);
       } else {
-        setMovies((previousData) => previousData.concat(data));
+        setTv((previousData) => previousData.concat(data));
       }
 
       setLoading(false);
@@ -37,10 +36,10 @@ function Movies() {
       <Header />
       <MainStyled>
         <FilterBar
-          title="Películas"
+          title="Series"
           setGenre={setGenre}
           setPage={setPage}
-          setMovies={setMovies}
+          setTv={setTv}
         />
         {
           loading
@@ -49,7 +48,7 @@ function Movies() {
                 <Spinner />
               </DivSpinner>
             ) : (
-              <FilterList movies={movies} setPage={setPage} type="movie" />
+              <FilterList tv={tv} setPage={setPage} type="tv" />
             )
         }
       </MainStyled>
@@ -58,4 +57,4 @@ function Movies() {
   );
 }
 
-export default Movies;
+export default Series;

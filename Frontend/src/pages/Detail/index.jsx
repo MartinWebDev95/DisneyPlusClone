@@ -6,7 +6,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Tabs from '../../components/Tabs';
 import Spinner from '../../components/Spinner';
-import { getDetailMovie, getDetailTv } from '../../services/getDataFromAPI';
+import { getItemDetail } from '../../services/getDataFromAPI';
 import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
 import { useDB } from '../../context/DatabaseContext';
 import {
@@ -36,13 +36,13 @@ function Detail({ type }) {
 
     type === 'movie'
       ? (
-        Promise.all([readOneData(id), getDetailMovie(id)]).then((data) => {
+        Promise.all([readOneData(id), getItemDetail(id, type)]).then((data) => {
           setSelected(oneData);
           setItem(data[1]);
           setLoading(false);
         })
       ) : (
-        Promise.all([readOneData(id), getDetailTv(id)]).then((data) => {
+        Promise.all([readOneData(id), getItemDetail(id, type)]).then((data) => {
           setSelected(oneData);
           setItem(data[1]);
           setLoading(false);
@@ -64,7 +64,7 @@ function Detail({ type }) {
 
   return (
     // Cuando termine de cargar muestro todos los detalles de la película
-    loading === false
+    !loading
       ? (
         <>
           <Header />

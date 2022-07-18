@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
-import ListOfResults from '../../components/ListOfResults';
+import ListOfSearchResults from '../../components/ListOfSearchResults';
 
 import { FormStyled, SearchField, Container } from './styles';
 
@@ -22,7 +22,7 @@ function Search() {
 
         <Container>
           <h1>Explorar</h1>
-          <ListOfResults keyword={keyword} />
+          <ListOfSearchResults keyword={keyword} />
         </Container>
       </main>
       <Footer />

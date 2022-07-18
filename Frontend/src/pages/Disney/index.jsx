@@ -9,7 +9,7 @@ import {
   getMoviesWaltDisneyAnimations,
   getMoviesWaltDisney90s,
   getMoviesWaltDisneyActionAdventure,
-  getMoviesIceAge,
+  getItemsCollection,
 } from '../../services/getDataFromAPI';
 import Spacing from './styles';
 
@@ -34,7 +34,7 @@ function Disney() {
       setMoviesWaltDisneyActionAdventure(data);
     });
 
-    getMoviesIceAge().then((data) => {
+    getItemsCollection('8354').then((data) => {
       setMoviesIceAge(data);
     });
   }, []);

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const HeaderStyled = styled.header`
-  ${(props) => (props.active === false
+  ${(props) => (props.opacity === 'false'
     ? 'background: linear-gradient(to bottom, rgb(30, 31, 42), transparent)'
     : 'background: #090B13')};
   padding: 1rem 0;

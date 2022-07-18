@@ -6,10 +6,9 @@ import VideoBgPixar from '../../../public/assets/videos/bg-pixar.mp4';
 import PosterImage from '../../../public/assets/img/categories/bg-pixar.jpg';
 import BackgroundVideo from '../../components/BackgroundVideo';
 import {
-  getMoviesPixar,
+  getItemsFromBrand,
   getMostPopularMoviesPixar,
-  getMoviesToyStoryPixar,
-  getMoviesCarsPixar,
+  getItemsCollection,
 } from '../../services/getDataFromAPI';
 import Spacing from './styles';
 
@@ -22,7 +21,7 @@ function Pixar() {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    getMoviesPixar().then((data) => {
+    getItemsFromBrand('movie', '3').then((data) => {
       setMoviesPixar(data);
     });
 
@@ -30,11 +29,11 @@ function Pixar() {
       setPopularMoviesPixar(data);
     });
 
-    getMoviesToyStoryPixar().then((data) => {
+    getItemsCollection('10194').then((data) => {
       setToyStoryMovies(data);
     });
 
-    getMoviesCarsPixar().then((data) => {
+    getItemsCollection('87118').then((data) => {
       setCarsMovies(data);
     });
   }, []);

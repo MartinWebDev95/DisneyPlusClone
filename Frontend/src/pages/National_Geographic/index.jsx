@@ -5,7 +5,7 @@ import Carrousel from '../../components/Carrousel';
 import VideoBgNationalGeographic from '../../../public/assets/videos/bg-national-geographic.mp4';
 import PosterImage from '../../../public/assets/img/categories/bg-national-geographic.jpg';
 import BackgroundVideo from '../../components/BackgroundVideo';
-import { getMoviesNationalGeographic, getSeriesNationalGeographic } from '../../services/getDataFromAPI';
+import { getItemsFromBrand } from '../../services/getDataFromAPI';
 import Spacing from './styles';
 
 function NationalGeographic() {
@@ -15,11 +15,11 @@ function NationalGeographic() {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    getMoviesNationalGeographic().then((data) => {
+    getItemsFromBrand('movie', '7521').then((data) => {
       setMoviesGeographic(data);
     });
 
-    getSeriesNationalGeographic().then((data) => {
+    getItemsFromBrand('tv', '7521').then((data) => {
       setSeriesGeographic(data);
     });
   }, []);
