@@ -6,7 +6,7 @@ const SectionDataStyled = styled.section`
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   width: 90%;
   margin: 0 auto;
   padding-top: 10rem;

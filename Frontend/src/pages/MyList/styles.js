@@ -16,10 +16,13 @@ const Container = styled.div`
 `;
 
 const DivStyled = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 20%);
-  justify-content: ${(props) => (props.quantity)};
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const NoData = styled.p`

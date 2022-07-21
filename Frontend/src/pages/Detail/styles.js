@@ -24,6 +24,10 @@ const Title = styled.h1`
   color: #fff;
   margin: 0;
   width: 50%;
+
+  @media screen and (max-width: 768px){
+    font-size: 3em;
+  }
 `;
 
 const Genres = styled.div`
@@ -39,13 +43,22 @@ const Sinopsis = styled.p`
   font-size: 1.4em;
   width: 70%;
   margin: 0;
+
+  @media screen and (max-width: 768px){
+    width: 100%;
+    font-size: 1.2em;
+  }
 `;
 
 const ContainerButtons = styled.div`
   display: flex;
-  width: 40%;
+  width: 100%;
   gap: 1rem;
   margin-block: 2rem;
+
+  @media screen and (max-width: 768px){
+    width: 100%;
+  }
 `;
 
 const ButtonPrimary = styled.button`
@@ -64,6 +77,10 @@ const ButtonPrimary = styled.button`
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0.5);
   }
+
+  @media screen and (max-width: 768px){
+    padding: 0rem 2rem;
+  }
 `;
 
 const ButtonSecondary = styled.button`
@@ -81,6 +98,10 @@ const ButtonSecondary = styled.button`
     background-color: rgba(255, 255, 255, 0.5);
     color: rgb(30, 31, 42);
     border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+
+  @media screen and (max-width: 768px){
+    padding: 0rem 2rem;
   }
 `;
 
@@ -101,6 +122,11 @@ const RoundedButton = styled.button`
 
     ${(props) => (props.selected === false
       && 'background-image: url(/assets/img/icon-plus-black.svg);')}
+  }
+
+  @media screen and (max-width: 768px){
+    width: 40px;
+    height: 40px;
   }
 `;
 

@@ -11,6 +11,14 @@ const Container = styled.div`
   div{
     width: 50%;
   }
+
+  @media screen and (max-width: 768px){
+    flex-direction: column;
+
+    div{
+      width: 100%;
+    } 
+  }
 `;
 
 const Title = styled.h2`
@@ -23,6 +31,10 @@ const Title = styled.h2`
 const Sinopsis = styled.p`
   font-size: 1.4em;
   color: #CCCDCF;
+
+  @media screen and (max-width: 768px){
+    font-size: 1.2em;
+  }
 `;
 
 const Detail = styled.p`

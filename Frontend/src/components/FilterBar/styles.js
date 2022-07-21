@@ -3,22 +3,33 @@ import styled from 'styled-components';
 const Title = styled.h1`
   color: #DBDBDB;
   font-size: 3em;
+
+  @media screen and (max-width: 468px){
+    padding: 0;
+    margin: 1rem;
+  }
 `;
 
 const SectionFormStyled = styled.section`
   display: flex;
   align-items: center;
   gap: 2rem;
-  position: fixed;
-  z-index: 2;
   width: 100%;
   padding-left: 5rem;
+  
   ${(props) => (props.opacity === 'false'
     ? 'background-color: rgba(20, 22, 31, 0);'
     : 'background-color: rgba(20, 22, 31, 1);')};
+
+  @media screen and (max-width: 468px){
+    flex-direction: column;
+    padding-left: 0;
+    gap: 0;
+  }
 `;
 
 const FormStyled = styled.form`
+  
   select{
     padding: .6rem;
     border-radius: 50px;
@@ -30,6 +41,10 @@ const FormStyled = styled.form`
     &:hover{
       cursor: pointer;
     }
+  }
+
+  @media screen and (max-width: 468px){
+    margin-bottom: 1rem;
   }
 `;
 

@@ -9,8 +9,12 @@ const HeaderStyled = styled.header`
 const NavStyled = styled.nav`
   padding: 1rem 2rem;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; 
   align-items: center;
+  
+  @media screen and (max-width: 468px){
+    justify-content: center; 
+  }
 `;
 
 const LinkStyled = styled(Link)`
@@ -39,18 +43,32 @@ const MainStyled = styled.main`
   margin: 0 auto;
 
   img{
-    width: 15%;
+    width: 120px;
+
+    @media screen and (max-width: 468px){
+      padding-top: 2rem;
+    }
   }
 
   h1{
     color: white;
     font-size: 2.6em;
     padding-top: 4rem;
-
+    
     span{
       display: block;
       margin-bottom: .5rem;
     }
+    
+    @media screen and (max-width: 468px){
+      text-align: center; 
+      font-size: 2em;
+      padding-top: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 468px){
+    place-items: center; 
   }
 `;
 

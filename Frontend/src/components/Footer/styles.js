@@ -33,6 +33,8 @@ const ListFooter = styled.ul`
   list-style: none;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   width: 100%;
   padding: 0;
   margin: 0;

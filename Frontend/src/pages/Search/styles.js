@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
 const FormStyled = styled.form`
-  position: fixed;
   width: 100%;
-  top: 15%;
-  left: 0%;
-  z-index: 2;
 `;
 
 const SearchField = styled.input`
@@ -20,6 +16,11 @@ const SearchField = styled.input`
   &::placeholder{
     color: #939498;
   }
+
+  @media screen and (max-width: 768px){
+    padding: 1rem 2rem;
+    font-size: 2.2em;
+  }
 `;
 
 const Container = styled.section`
@@ -33,8 +34,16 @@ const Container = styled.section`
   }
 `;
 
+const SectionStyled = styled.section`
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+`;
+
 export {
   FormStyled,
   SearchField,
   Container,
+  SectionStyled,
 };

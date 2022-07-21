@@ -1,10 +1,14 @@
 import styled from 'styled-components';
 
 const ListStyled = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 20%);
-  justify-content: space-between;
-  gap: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 1rem;
 `;
 
 const NotFound = styled.h1`

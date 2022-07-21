@@ -7,6 +7,12 @@ const Wrapper = styled.section`
   align-items: center;
   column-gap: 1rem;
   margin-block: 2rem;
+
+  @media screen and (max-width: 768px){
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
 `;
 
 const CardStyle = styled(Link)`
@@ -42,6 +48,10 @@ const CardStyle = styled(Link)`
     video {
       opacity: 1;
     };
+  }
+
+  @media screen and (max-width: 768px){
+    width: 100%;
   }
 `;
 

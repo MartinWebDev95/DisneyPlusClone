@@ -6,7 +6,6 @@ import {
 } from './styles';
 
 function CardEpisodes({ item }) {
-  console.log(item);
   return (
     item.still_path !== null
       ? (

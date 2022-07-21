@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const TabsStyled = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: flex-start;
   gap: 2rem;
   border-bottom: 2px solid #363738;
@@ -28,6 +29,14 @@ const TabStyled = styled.button`
   &:hover{
     border-bottom: 2px solid #CACACA;
     cursor: pointer;
+  }
+
+  @media screen and (max-width: 768px){
+    font-size: 1.2em;
+  }
+
+  @media screen and (max-width: 468px){
+    font-size: 1em;
   }
 `;
 
