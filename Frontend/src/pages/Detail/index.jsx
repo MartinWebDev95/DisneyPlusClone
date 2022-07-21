@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Tabs from '../../components/Tabs';
@@ -20,18 +20,26 @@ import {
   ButtonSecondary,
   RoundedButton,
 } from './styles';
+import { useAuth } from '../../context/AuthContext';
 
 function Detail({ type }) {
   const { id } = useParams();
   const {
     saveData, removeData, readOneData, oneData,
   } = useDB();
+  const { user } = useAuth();
   const [item, setItem] = useState({});
   const [selected, setSelected] = useState(false);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const { hours, minutesLeft } = getHoursAndMinutes(item?.runtime);
 
   useEffect(() => {
+    if (user === null) {
+      navigate('/');
+      return;
+    }
+
     window.scrollTo(0, 0);
 
     type === 'movie'
@@ -67,7 +75,7 @@ function Detail({ type }) {
     !loading
       ? (
         <>
-          <Header />
+          <Header position="fixed" />
           <main>
             <Background bgImg={`https://image.tmdb.org/t/p/original${item.backdrop_path}`} />
             <Container>

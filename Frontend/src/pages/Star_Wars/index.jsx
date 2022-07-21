@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Carrousel from '../../components/Carrousel';
@@ -7,13 +8,21 @@ import PosterImage from '../../../public/assets/img/categories/bg-star-wars.jpg'
 import BackgroundVideo from '../../components/BackgroundVideo';
 import { getItemsFromBrand, getItemsCollection } from '../../services/getDataFromAPI';
 import Spacing from './styles';
+import { useAuth } from '../../context/AuthContext';
 
 function StarWars() {
   const [starWarsMovies, setStarWarsMovies] = useState([]);
   const [starWarsSeries, setStarWarsSeries] = useState([]);
   const [legoStarWarsMovies, setLegoStarWarsMovies] = useState([]);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (user === null) {
+      navigate('/');
+      return;
+    }
+
     window.scrollTo(0, 0);
 
     getItemsFromBrand('movie', '1').then((data) => {
@@ -31,7 +40,7 @@ function StarWars() {
 
   return (
     <>
-      <Header />
+      <Header position="fixed" />
       <BackgroundVideo bgVideo={VideoBgStarWars} posterImage={PosterImage} />
       <Spacing />
       <Carrousel collection={starWarsMovies} title="Películas Star Wars" type="movie" />

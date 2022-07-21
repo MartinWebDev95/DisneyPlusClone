@@ -1,5 +1,9 @@
-html{
-  scroll-padding-top: 4rem;
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 body {

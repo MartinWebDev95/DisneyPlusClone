@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import VideoBgDisney from '../../../public/assets/videos/bg-disney.mp4';
 import Header from '../../components/Header';
 import Carrousel from '../../components/Carrousel';
@@ -12,14 +13,22 @@ import {
   getItemsCollection,
 } from '../../services/getDataFromAPI';
 import Spacing from './styles';
+import { useAuth } from '../../context/AuthContext';
 
 function Disney() {
   const [moviesWaltDisney, setMoviesWaltDisney] = useState([]);
   const [moviesWaltDisney90s, setMoviesWaltDisney90s] = useState([]);
   const [moviesWaltDisneyActionAdventure, setMoviesWaltDisneyActionAdventure] = useState([]);
   const [moviesIceAge, setMoviesIceAge] = useState([]);
+  const { user } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (user === null) {
+      navigate('/');
+      return;
+    }
+
     window.scrollTo(0, 0);
 
     getMoviesWaltDisneyAnimations().then((data) => {
@@ -41,7 +50,7 @@ function Disney() {
 
   return (
     <>
-      <Header />
+      <Header position="fixed" />
       <main>
         <BackgroundVideo bgVideo={VideoBgDisney} posterImage={PosterImage} />
         <Spacing />
