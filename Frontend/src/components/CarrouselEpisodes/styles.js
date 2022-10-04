@@ -10,6 +10,13 @@ const CarrouselStyled = styled.div`
   column-gap: 1rem;
   padding-top: 1rem;
   transition: all .3s ease-in-out;
+  overflow-x: hidden;
+  
+  @media screen and (max-width: 468px){
+    flex-direction: column;
+    row-gap: 1rem;
+    justify-content: center;
+  }
 `;
 
 const Title = styled.p`
@@ -44,11 +51,16 @@ const ButtonStyled = styled.button`
     font-size: 2rem;
   }
 
+  @media screen and (max-width: 468px){
+    display: none;
+  }
+
 `;
 
 const ContainerCarrousel = styled.div`
   position: relative;
   width: 100%;
+  //border: 1px solid green;
 `;
 
 export {

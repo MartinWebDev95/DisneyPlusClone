@@ -1,31 +1,13 @@
 /* eslint-disable no-nested-ternary */
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Card from '../../components/Card';
 import Spinner from '../../components/Spinner';
 import { Container, DivStyled, NoData } from './styles';
-import { useDB } from '../../context/DatabaseContext';
-import { useAuth } from '../../context/AuthContext';
 
 function MyList() {
-  const { readAllData, allData } = useDB();
   const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user === null) {
-      navigate('/');
-      return;
-    }
-
-    readAllData()
-      .then(() => {
-        setLoading(false);
-      });
-  }, []);
 
   return (
     <>
@@ -34,7 +16,7 @@ function MyList() {
         <Container>
           <h1>Mi Lista</h1>
           <p>Mis películas y series</p>
-          {loading ? (
+          {/* {loading ? (
             <Spinner />
           ) : (
             allData.length === 0
@@ -46,7 +28,7 @@ function MyList() {
                   ))}
                 </DivStyled>
               )
-          )}
+          )} */}
         </Container>
       </main>
       <Footer />

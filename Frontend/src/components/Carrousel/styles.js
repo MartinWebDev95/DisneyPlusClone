@@ -9,10 +9,18 @@ const CarrouselStyled = styled.div`
   width: fit-content;
   display: flex;
   column-gap: 1rem;
-  padding-top: 1rem;
-  padding-left: 1rem;
+  padding-top: 1.4rem;
   position: relative;
   transition: all .3s ease-in-out;
+  overflow-x: hidden;
+  padding-inline: 4rem;
+  border: 1px solid green;
+
+  @media screen and (max-width: 468px){
+    padding-bottom: .5rem;
+    padding-left: 0rem;
+    margin-right: 0;
+  }
 `;
 
 const Title = styled.p`
@@ -30,11 +38,11 @@ const ButtonStyled = styled.button`
   transform: translateY(-50%);
   height: 20rem;
   width: 5rem;
-  z-index: 2;
+  z-index: 3;
   transition: all .3s ease-in-out;
 
   ${(props) => (props.type === 'left'
-    ? `left: -3rem;
+    ? `left: 0rem;
     opacity: 0;`
     : `right: 0;
     opacity: 0;`)};
@@ -47,13 +55,19 @@ const ButtonStyled = styled.button`
     color: #EAEAD7;
     font-size: 4rem;
   }
-
 `;
 
 const ContainerCarrousel = styled.div`
   position: relative;
-  margin-left: 3rem;
   padding-bottom: 2rem;
+  border: 1px solid red;
+  overflow-x: hidden;
+  
+  @media screen and (max-width: 468px){
+    padding-bottom: .5rem;
+    margin-left: 0rem;
+  }
+  
 `;
 
 export {

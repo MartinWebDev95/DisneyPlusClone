@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import Card from '../Card';
 import {
   SectionDataStyled, ButtonStyled,
@@ -15,7 +14,6 @@ function FilterList({
   return (
     <>
       <SectionDataStyled>
-
         {type === 'movie'
           ? (
             movies.map((item) => (

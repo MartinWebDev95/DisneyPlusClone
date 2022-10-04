@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getSearchMovies, getSearchSeries, getMostPopularsMoviesDisney } from '../../services/getDataFromAPI';
 import Card from '../Card';
 import { ListStyled, NotFound } from './styles';

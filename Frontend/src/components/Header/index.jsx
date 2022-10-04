@@ -1,12 +1,11 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-expressions */
-import React from 'react';
 import {
   AiFillHome, AiOutlineSearch, AiOutlinePlus,
 } from 'react-icons/ai';
 import { MdOutlineOndemandVideo } from 'react-icons/md';
 import { GiFilmSpool } from 'react-icons/gi';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
+import { BiDotsVerticalRounded } from 'react-icons/bi';
 import {
   NavStyled,
   Logo,
@@ -19,71 +18,92 @@ import {
   NameUser,
   ProfileImage,
   LinkStyled,
+  MenuResponsive,
 } from './styles';
 import useOpacity from '../../hooks/useOpacity';
 
-function Header() {
+function Header({ position }) {
   const { opacity } = useOpacity();
-  const { logout, user } = useAuth();
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-    await logout();
-    navigate('/');
-  };
 
   return (
-    <HeaderStyled opacity={opacity.toString()}>
+    <HeaderStyled opacity={opacity.toString()} position={position}>
       <NavStyled>
         <Logo to="/home">
           <img src="/assets/img/logo.svg" alt="Logo" />
         </Logo>
         <NavList>
           <li>
-            <AiFillHome />
             <LinkItem to="/home">
-              Home
+              <AiFillHome />
+              <span>
+                Home
+              </span>
             </LinkItem>
           </li>
           <li>
-            <AiOutlineSearch />
             <LinkItem to="/search">
-              Búsqueda
+              <AiOutlineSearch />
+              <span>
+                Búsqueda
+              </span>
             </LinkItem>
           </li>
           <li>
-            <AiOutlinePlus />
             <LinkItem to="/my-list">
-              Mi Lista
+              <AiOutlinePlus />
+              <span>
+                Mi Lista
+              </span>
             </LinkItem>
           </li>
+          <MenuResponsive>
+            <BiDotsVerticalRounded />
+            <ul>
+              <li>
+                <LinkItem to="/movies">
+                  <GiFilmSpool />
+                  <span>
+                    Películas
+                  </span>
+                </LinkItem>
+              </li>
+              <li>
+                <LinkItem to="/tv">
+                  <MdOutlineOndemandVideo />
+                  <span>
+                    Series
+                  </span>
+                </LinkItem>
+              </li>
+            </ul>
+          </MenuResponsive>
           <li>
-            <GiFilmSpool />
             <LinkItem to="/movies">
-              Películas
+              <GiFilmSpool />
+              <span>
+                Películas
+              </span>
             </LinkItem>
           </li>
           <li>
-            <MdOutlineOndemandVideo />
             <LinkItem to="/tv">
-              Series
+              <MdOutlineOndemandVideo />
+              <span>
+                Series
+              </span>
             </LinkItem>
           </li>
         </NavList>
         <Profile>
           <DivProfile>
             <NameUser>
-              {
-                (user?.displayName.length > 20)
-                  ? (`${user?.displayName.substring(0, 12)} ...`)
-                  : (user?.displayName)
-              }
+              Juan Antonio Martín
             </NameUser>
-            <ProfileImage src={`${user?.photoURL}`} alt="Profile" />
+            <ProfileImage src="/assets/img/profile.png" alt="Profile" />
           </DivProfile>
           <DivSubmenu>
             <ul>
-              <LinkStyled to="#" onClick={handleLogout}>Cerrar sesión</LinkStyled>
+              <LinkStyled to="#">Cerrar sesión</LinkStyled>
               <p>Coded by Juan Antonio Martín</p>
             </ul>
           </DivSubmenu>

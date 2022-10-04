@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
-import BlankImage from '../../../public/assets/img/no-photo-available-icon.jpg';
+import BlankImage from '/assets/img/no-photo-available-icon.jpg';
 import {
   Sinopsis, Title, DivStyled, ImageStyled,
 } from './styles';

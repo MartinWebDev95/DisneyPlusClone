@@ -1,7 +1,4 @@
-import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import { DatabaseProvider } from './context/DatabaseContext';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import MyList from './pages/MyList';
@@ -15,30 +12,30 @@ import Pixar from './pages/Pixar';
 import Detail from './pages/Detail';
 import Movies from './pages/Movies';
 import Series from './pages/Series';
+// import ProtectedRoutes from './routes/ProtectedRoutes';
 
 function App() {
   return (
     <div className="App">
-      <AuthProvider>
-        <DatabaseProvider>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="home" element={<Home />} />
-            <Route path="search" element={<Search />} />
-            <Route path="my-list" element={<MyList />} />
-            <Route path="movies" element={<Movies />} />
-            <Route path="tv" element={<Series />} />
-            <Route path="movie/:id" element={<Detail type="movie" />} />
-            <Route path="tv/:id" element={<Detail type="tv" />} />
-            <Route path="brand/disney" element={<Disney />} />
-            <Route path="brand/marvel" element={<Marvel />} />
-            <Route path="brand/pixar" element={<Pixar />} />
-            <Route path="brand/star" element={<Star />} />
-            <Route path="brand/star-wars" element={<StarWars />} />
-            <Route path="brand/national-geographic" element={<NationalGeographic />} />
-          </Routes>
-        </DatabaseProvider>
-      </AuthProvider>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route
+          path="home"
+          element={<Home />}
+        />
+        <Route path="search" element={<Search />} />
+        <Route path="my-list" element={<MyList />} />
+        <Route path="movies" element={<Movies />} />
+        <Route path="tv" element={<Series />} />
+        <Route path="movie/:id" element={<Detail type="movie" />} />
+        <Route path="tv/:id" element={<Detail type="tv" />} />
+        <Route path="brand/disney" element={<Disney />} />
+        <Route path="brand/marvel" element={<Marvel />} />
+        <Route path="brand/pixar" element={<Pixar />} />
+        <Route path="brand/star" element={<Star />} />
+        <Route path="brand/star-wars" element={<StarWars />} />
+        <Route path="brand/national-geographic" element={<NationalGeographic />} />
+      </Routes>
     </div>
   );
 }

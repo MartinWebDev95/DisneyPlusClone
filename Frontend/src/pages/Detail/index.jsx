@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-expressions */
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Tabs from '../../components/Tabs';
 import Spinner from '../../components/Spinner';
 import { getItemDetail } from '../../services/getDataFromAPI';
 import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
-import { useDB } from '../../context/DatabaseContext';
 import {
   Background,
   Container,
@@ -20,55 +19,29 @@ import {
   ButtonSecondary,
   RoundedButton,
 } from './styles';
-import { useAuth } from '../../context/AuthContext';
 
 function Detail({ type }) {
   const { id } = useParams();
-  const {
-    saveData, removeData, readOneData, oneData,
-  } = useDB();
-  const { user } = useAuth();
   const [item, setItem] = useState({});
-  const [selected, setSelected] = useState(false);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
   const { hours, minutesLeft } = getHoursAndMinutes(item?.runtime);
 
   useEffect(() => {
-    if (user === null) {
-      navigate('/');
-      return;
-    }
-
     window.scrollTo(0, 0);
 
     type === 'movie'
       ? (
-        Promise.all([readOneData(id), getItemDetail(id, type)]).then((data) => {
-          setSelected(oneData);
-          setItem(data[1]);
+        getItemDetail(id, type).then((data) => {
+          setItem(data);
           setLoading(false);
         })
       ) : (
-        Promise.all([readOneData(id), getItemDetail(id, type)]).then((data) => {
-          setSelected(oneData);
-          setItem(data[1]);
+        getItemDetail(id, type).then((data) => {
+          setItem(data);
           setLoading(false);
         })
       );
-  }, [id, oneData]);
-
-  const handleChangeButton = () => {
-    if (!selected) {
-      // Llamo a la función para guardar la película en la BD
-      saveData(id, item.poster_path, type);
-      setSelected(true);
-    } else {
-      // Llamo a la función para eliminar la película de la BD
-      removeData(id);
-      setSelected(false);
-    }
-  };
+  }, [id]);
 
   return (
     // Cuando termine de cargar muestro todos los detalles de la película
@@ -76,10 +49,13 @@ function Detail({ type }) {
       ? (
         <>
           <Header position="fixed" />
+
           <main>
             <Background bgImg={`https://image.tmdb.org/t/p/original${item.backdrop_path}`} />
+
             <Container>
               <Title>{item.title || item.name}</Title>
+
               <p>
                 {item.release_date?.split('-')[0] || item.first_air_date?.split('-')[0]}
                 {' - '}
@@ -90,9 +66,11 @@ function Detail({ type }) {
                 )}
                 {type === 'tv' && `${item.number_of_seasons} temporadas`}
               </p>
+
               <Genres>
                 {item.genres?.map((genre) => genre.name).join(', ')}
               </Genres>
+
               <ContainerButtons>
                 <ButtonPrimary type="button">
                   <img src="/assets/img/play.svg" alt="" />
@@ -101,12 +79,16 @@ function Detail({ type }) {
                 <ButtonSecondary type="button">
                   Tráiler
                 </ButtonSecondary>
-                <RoundedButton type="button" onClick={handleChangeButton} selected={selected} />
+                <RoundedButton type="button" />
               </ContainerButtons>
+
               <Sinopsis>{item.overview}</Sinopsis>
+
             </Container>
+
             <Tabs item={item} id={id} type={type} />
           </main>
+
           <Footer />
         </>
       ) : (

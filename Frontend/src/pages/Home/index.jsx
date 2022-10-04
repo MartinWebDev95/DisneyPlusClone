@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import CardBrand from '../../components/CardBrand';
 import Header from '../../components/Header';
 import Carrousel from '../../components/Carrousel';
@@ -8,7 +7,6 @@ import Slider from '../../components/Slider';
 import Spinner from '../../components/Spinner';
 import Container from './styles';
 import { getNewItemsDisney, getItemsForGenre } from '../../services/getDataFromAPI';
-import { useAuth } from '../../context/AuthContext';
 
 function Home() {
   const [newItems, setNewItems] = useState([]);
@@ -16,15 +14,8 @@ function Home() {
   const [dramaItems, setDramaItems] = useState([]);
   const [comedySeries, setComedySeries] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { user } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (user === null) {
-      navigate('/');
-      return;
-    }
-
     Promise.all([getNewItemsDisney('movie'), getNewItemsDisney('tv')]).then(
       (data) => {
         setNewItems(data);

@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, ListOfSeasons, SeasonItem } from './styles';
 import { getSeasonEpisodes } from '../../services/getDataFromAPI';
 import CarrouselEpisodes from '../CarrouselEpisodes';
 
 function TabEpisodes({ seasons, id }) {
-  const [seasonId, setSeasonId] = useState(0);
+  const [seasonId, setSeasonId] = useState(seasons[0].name === 'Especiales' ? 0 : 1);
   const [episodes, setEpisodes] = useState([]);
 
   useEffect(() => {
@@ -14,10 +14,12 @@ function TabEpisodes({ seasons, id }) {
     });
   }, [seasonId]);
 
-  console.log(episodes);
-
   const handleClickSeason = (e) => {
-    setSeasonId(e.target.textContent.split(' ')[1]);
+    if (e.target.textContent === 'Especiales') {
+      setSeasonId(0);
+    } else {
+      setSeasonId(e.target.textContent.split(' ')[1]);
+    }
   };
 
   return (
@@ -25,9 +27,7 @@ function TabEpisodes({ seasons, id }) {
       <ListOfSeasons>
         {seasons?.map((season) => (
           <SeasonItem key={season.id} onClick={handleClickSeason}>
-            Temporada
-            {' '}
-            {season.season_number}
+            {season.name}
           </SeasonItem>
         ))}
       </ListOfSeasons>

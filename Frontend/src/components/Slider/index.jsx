@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import {
   Container, ContainerImages, LinkStyled, ButtonStyled, Slide,

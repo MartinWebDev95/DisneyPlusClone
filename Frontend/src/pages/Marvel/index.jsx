@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Carrousel from '../../components/Carrousel';
@@ -8,7 +7,6 @@ import PosterImage from '../../../public/assets/img/categories/bg-marvel.jpg';
 import BackgroundVideo from '../../components/BackgroundVideo';
 import { getItemsFromBrand, getItemsCollection } from '../../services/getDataFromAPI';
 import Spacing from './styles';
-import { useAuth } from '../../context/AuthContext';
 
 function Marvel() {
   const [moviesMarvel, setMoviesMarvel] = useState([]);
@@ -17,15 +15,8 @@ function Marvel() {
   const [moviesSpidermanMarvel, setMoviesSpidermanMarvel] = useState([]);
   const [moviesThorMarvel, setMoviesThorMarvel] = useState([]);
   const [moviesCaptainAmericaMarvel, setMoviesCaptainAmericaMarvel] = useState([]);
-  const { user } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (user === null) {
-      navigate('/');
-      return;
-    }
-
     window.scrollTo(0, 0);
 
     getItemsFromBrand('movie', '420').then((data) => {

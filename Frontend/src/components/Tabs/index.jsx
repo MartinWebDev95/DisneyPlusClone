@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Carrousel from '../Carrousel';
 import TabDetail from '../TabDetail';
 import TabEpisodes from '../TabEpisodes';
@@ -11,9 +10,7 @@ import {
 import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
 
 function Tabs({ item, id, type }) {
-  const [selectedSuggested, setSelectedSuggested] = useState(true);
-  const [selectedDetails, setSelectedDetails] = useState(false);
-  const [selectedEpisodes, setSelectedEpisodes] = useState(false);
+  const [tabSelected, setTabSelected] = useState('suggested');
   const [similarMovies, setSimilarMovies] = useState([]);
   const [similarSeries, setSimilarSeries] = useState([]);
   const [cast, setCast] = useState([]);
@@ -40,20 +37,8 @@ function Tabs({ item, id, type }) {
       );
   }, [id]);
 
-  const handleClick = (e) => {
-    if (e.target.textContent === 'Sugerencias') {
-      setSelectedSuggested(true);
-      setSelectedDetails(false);
-      setSelectedEpisodes(false);
-    } else if (e.target.textContent === 'Detalles') {
-      setSelectedSuggested(false);
-      setSelectedDetails(true);
-      setSelectedEpisodes(false);
-    } else {
-      setSelectedSuggested(false);
-      setSelectedDetails(false);
-      setSelectedEpisodes(true);
-    }
+  const handleClick = (value) => {
+    setTabSelected(value);
   };
 
   return (
@@ -61,10 +46,10 @@ function Tabs({ item, id, type }) {
       <TabsStyled>
         {type === 'movie' && (
           <>
-            <TabStyled selected={selectedSuggested} onClick={handleClick}>
+            <TabStyled type="button" selected={tabSelected === 'suggested'} value="suggested" onClick={(e) => handleClick(e.target.value)}>
               Sugerencias
             </TabStyled>
-            <TabStyled selected={selectedDetails} onClick={handleClick}>
+            <TabStyled type="button" selected={tabSelected === 'details'} value="details" onClick={(e) => handleClick(e.target.value)}>
               Detalles
             </TabStyled>
           </>
@@ -72,13 +57,13 @@ function Tabs({ item, id, type }) {
 
         {type === 'tv' && (
           <>
-            <TabStyled selected={selectedSuggested} onClick={handleClick}>
+            <TabStyled type="button" selected={tabSelected === 'suggested'} value="suggested" onClick={(e) => handleClick(e.target.value)}>
               Sugerencias
             </TabStyled>
-            <TabStyled selected={selectedDetails} onClick={handleClick}>
+            <TabStyled type="button" selected={tabSelected === 'details'} value="details" onClick={(e) => handleClick(e.target.value)}>
               Detalles
             </TabStyled>
-            <TabStyled selected={selectedEpisodes} onClick={handleClick}>
+            <TabStyled type="button" selected={tabSelected === 'episodes'} value="episodes" onClick={(e) => handleClick(e.target.value)}>
               Episodios
             </TabStyled>
           </>
@@ -86,7 +71,7 @@ function Tabs({ item, id, type }) {
       </TabsStyled>
 
       {/* Se muestran las películas o series similares a la que se muestra */}
-      {selectedSuggested && (
+      {tabSelected === 'suggested' && (
         type === 'movie' ? (
           <Carrousel collection={similarMovies} type="movie" />
         ) : (
@@ -95,7 +80,7 @@ function Tabs({ item, id, type }) {
       )}
 
       {/* Se muestran los detalles de la serie o película */}
-      {selectedDetails && (
+      {tabSelected === 'details' && (
         <TabDetail
           title={item.title || item.name}
           overview={item.overview}
@@ -108,7 +93,7 @@ function Tabs({ item, id, type }) {
       )}
 
       {/* Se muestran las temporadas de la serie con todos sus episodios */}
-      {selectedEpisodes && (
+      {tabSelected === 'episodes' && (
         <TabEpisodes seasons={item.seasons} id={id} />
       )}
     </section>

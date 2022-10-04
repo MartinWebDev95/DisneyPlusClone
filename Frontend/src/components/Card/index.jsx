@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import { Link } from 'react-router-dom';
 import ImageStyled from './styles';
 import BlankImage from '../../../public/assets/img/no-picture-available.png';
