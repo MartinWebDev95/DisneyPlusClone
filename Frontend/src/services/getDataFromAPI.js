@@ -31,13 +31,13 @@ const getCast = async (id, type) => {
 const getSearchMovies = async (keyword) => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}search/movie?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1&query=${decodeURI(keyword)}`);
   const data = await response.json();
-  return { results: data.results, type: 'movie' };
+  return data.results;
 };
 
 const getSearchSeries = async (keyword) => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}search/tv?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1&query=${decodeURI(keyword)}`);
   const data = await response.json();
-  return { results: data.results, type: 'tv' };
+  return data.results;
 };
 
 const getItemsFromBrand = async (type, brand) => {
