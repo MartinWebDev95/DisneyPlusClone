@@ -1,34 +1,18 @@
 /* eslint-disable react/prop-types */
-import { Link } from 'react-router-dom';
-import ImageStyled from './styles';
-import BlankImage from '../../../public/assets/img/no-picture-available.png';
+import CardPlaceholder from '../CardPlaceholder';
+import CardImage from '../CardImage';
 
-function Card({ item, type }) {
+function Card({
+  item, type, isLoading = false, width = '', height = '',
+}) {
   return (
-    <Link
-      to={
-        type === 'movie'
-          ? `/movie/${item.id}`
-          : `/tv/${item.id}`
-      }
-    >
-      {item.poster_path !== null
-        ? (
-          <ImageStyled
-            src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
-            alt={item.title || item.name}
-            available
-            loading="lazy"
-          />
-        ) : (
-          <ImageStyled
-            src={BlankImage}
-            alt="No available"
-            available={false}
-            loading="lazy"
-          />
-        )}
-    </Link>
+    isLoading
+      ? (
+        <CardPlaceholder />
+      )
+      : (
+        <CardImage type={type} item={item} width={width} height={height} />
+      )
   );
 }
 
