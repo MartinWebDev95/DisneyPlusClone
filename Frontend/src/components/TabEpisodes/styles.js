@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 90%;
-  padding-left: 5rem;
+  padding-left: 4rem;
+  margin-bottom: 2rem;
   
   @media screen and (max-width: 468px){
     padding-left: 0;
@@ -18,16 +19,22 @@ const ListOfSeasons = styled.ul`
   flex-wrap: wrap;
 `;
 
-const SeasonItem = styled.li`
+const SeasonItem = styled.button`
   color: #CACACA;
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  font-weight: bold;
   
   &:hover{
     cursor: pointer;
+    color: #F9F9F9;
   }
 
-  ${(props) => props.selected && `
-    color: #F9F9F9;
-  `}
+  &[aria-selected=true]{
+    color: #FFFF;
+    text-decoration: underline; 
+  }
 `;
 
 export { Container, SeasonItem, ListOfSeasons };

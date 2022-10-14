@@ -8,7 +8,7 @@ const TabsStyled = styled.div`
   gap: 2rem;
   border-bottom: 2px solid #363738;
   width: 90%;
-  margin: 5rem auto 0 auto;
+  margin: 5rem auto 2rem auto;
 `;
 
 const TabStyled = styled.button`
