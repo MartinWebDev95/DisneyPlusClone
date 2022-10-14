@@ -1,56 +1,32 @@
-/* eslint-disable no-unsafe-optional-chaining */
-/* eslint-disable max-len */
-/* eslint-disable react/prop-types */
-import { useRef, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { IoIosArrowForward, IoIosArrowBack } from 'react-icons/io';
 import useCarrousel from '../../hooks/useCarrousel';
 import Card from '../Card';
 import {
-  CarrouselStyled, Title, ButtonStyled, ContainerCarrousel, Container,
+  CarrouselStyled, Title, ButtonStyled, ContainerCarrousel, Container, SectionStyled,
 } from './styles';
 
-function Carrousel({ collection, title = null, type = '' }) {
+function Carrousel({
+  collection = [], title = null, type = '', isLoading,
+}) {
   const carrousel = useRef(null);
-  const containerCarrousel = useRef(null);
+  const maxSliding = 0;
+  const total = 0;
 
-  // // Obtengo la posición final del contenedor que contiene el carrousel
-  const containerCarrouselRight = containerCarrousel.current?.getBoundingClientRect().right;
-
-  // // Obtengo la posición inicial del contenedor que contiene el carrousel
-  // const containerCarrouselLeft = containerCarrousel.current?.getBoundingClientRect().left;
-
-  const [distanceSlidingDirection, setDistanceSlidingDirection] = useState({
-    distance: 0,
-    direction: 'right',
-  });
-
-  const { total, slidings, cardsInViewport } = useCarrousel(collection, carrousel, distanceSlidingDirection);
-
-  console.log(total, cardsInViewport, distanceSlidingDirection);
-
-  const handleClickNext = () => {
-    if (total > containerCarrouselRight) {
-      carrousel.current.style.transform = `translateX(-${total}px)`;
-      setDistanceSlidingDirection({
-        distance: total + cardsInViewport,
-        direction: 'right',
-      });
-    }
-  };
-
-  const handleClickPrevious = () => {
-    if (total > cardsInViewport) {
-      carrousel.current.style.transform = `translateX(-${total}px)`;
-      setDistanceSlidingDirection({
-        distance: total - cardsInViewport,
-        direction: 'left',
-      });
-    }
-  };
+  const {
+    handleClickPrevious,
+    handleClickNext,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    handleMouseLeave,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+  } = useCarrousel(collection, carrousel, total, maxSliding);
 
   return (
-    <section>
-
+    <SectionStyled>
       {/* Si el título tiene contenido se muestra */}
       {title && (
         <Container>
@@ -58,42 +34,48 @@ function Carrousel({ collection, title = null, type = '' }) {
         </Container>
       )}
 
-      <ContainerCarrousel ref={containerCarrousel}>
+      <ContainerCarrousel>
         {/* El botón sólo se muestra si hay mas de 6 items en el carrousel */}
-        {(
-          (collection[1]?.length > 0 || collection[2]?.length > 0) || (collection.length > 5)
-        ) && (
-          <ButtonStyled type="left" onClick={handleClickPrevious}>
-            <IoIosArrowBack />
-          </ButtonStyled>
-        )}
+        <ButtonStyled
+          type="left"
+          aria-hidden={total === 0}
+          show={collection.length > 5}
+          onClick={handleClickPrevious}
+        >
+          <IoIosArrowBack />
+        </ButtonStyled>
 
-        <CarrouselStyled ref={carrousel}>
-          {collection.length === 2 && (
-            <>
-              {collection[1]?.map((item) => (
-                <Card key={item.id} item={item} type={type[0]} />
-              ))}
-              {collection[0]?.map((item) => (
-                <Card key={item.id} item={item} type={type[1]} />
-              ))}
-            </>
-          )}
-          {collection.length !== 2 && (
-            collection?.map((item) => (
-              <Card key={item.id} item={item} type={type} />
-            ))
-          )}
+        <CarrouselStyled
+          ref={carrousel}
+          onMouseDown={handleMouseDown}
+          onMouseLeave={handleMouseLeave}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          {collection?.map((item) => (
+            <Card
+              key={item.id}
+              item={item}
+              type={item.type ? item.type : type}
+              isLoading={isLoading}
+            />
+          ))}
         </CarrouselStyled>
 
-        {/* El botón sólo se muestra si hay mas de 6 items en el carrousel */}
-        {((collection[1]?.length > 0 || collection[2]?.length > 0) || (collection.length > 5)) && (
-          <ButtonStyled type="right" onClick={handleClickNext}>
-            <IoIosArrowForward />
-          </ButtonStyled>
-        )}
+        <ButtonStyled
+          type="right"
+          aria-hidden={total === maxSliding}
+          show={collection.length > 5}
+          onClick={handleClickNext}
+        >
+          <IoIosArrowForward />
+        </ButtonStyled>
+
       </ContainerCarrousel>
-    </section>
+    </SectionStyled>
   );
 }
 
