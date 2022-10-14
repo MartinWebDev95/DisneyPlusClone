@@ -15,30 +15,35 @@ function CardBrand() {
           <source src={VideoDisney} type="video/mp4" />
         </video>
       </CardStyle>
+
       <CardStyle to="/brand/pixar">
         <img src="/assets/img/categories/pixar.png" alt="" />
         <video autoPlay loop muted>
           <source src={VideoPixar} type="video/mp4" />
         </video>
       </CardStyle>
+
       <CardStyle to="/brand/marvel">
         <img src="/assets/img/categories/marvel.png" alt="" />
         <video autoPlay loop muted>
           <source src={VideoMarvel} type="video/mp4" />
         </video>
       </CardStyle>
+
       <CardStyle to="/brand/star-wars">
         <img src="/assets/img/categories/star_wars.png" alt="" />
         <video autoPlay loop muted>
           <source src={VideoStarWars} type="video/mp4" />
         </video>
       </CardStyle>
+
       <CardStyle to="/brand/national-geographic">
         <img src="/assets/img/categories/national_geographic.png" alt="" />
         <video autoPlay loop muted>
           <source src={VideoNationalGeographic} type="video/mp4" />
         </video>
       </CardStyle>
+
       <CardStyle to="/brand/star">
         <img src="/assets/img/categories/star.png" alt="" />
         <video autoPlay loop muted>

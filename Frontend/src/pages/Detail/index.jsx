@@ -1,18 +1,30 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-expressions */
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Spinner from '../../components/Spinner';
 import DetailInfo from '../../components/DetailInfo';
-import useFetchFromApi from '../../hooks/useFetchFromApi';
+import { getItemDetail } from '../../services/getDataFromAPI';
 
 function Detail({ type }) {
   const { id } = useParams();
+  const [itemDetail, setItemDetail] = useState({});
+  const [isLoading, setLoading] = useState(false);
 
-  const url = `${import.meta.env.VITE_API_URL}${type}/${id}?api_key=${import.meta.env.VITE_API_KEY}&language=es-ES&page=1`;
+  useEffect(() => {
+    window.scrollTo(0, 0);
 
-  const { data, isLoading } = useFetchFromApi(url);
+    setLoading(true);
+
+    getItemDetail(id, type)
+      .then((data) => {
+        setItemDetail(data);
+      });
+
+    setLoading(false);
+  }, [id]);
 
   return (
     // Cuando termine de cargar muestro todos los detalles de la película
@@ -22,7 +34,7 @@ function Detail({ type }) {
           <Header position="fixed" />
 
           <DetailInfo
-            item={data}
+            item={itemDetail}
             id={id}
             type={type}
           />

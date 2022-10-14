@@ -14,10 +14,12 @@ function TabDetail({
     <Container>
       <div>
         <Title>{title}</Title>
+
         <Sinopsis>
           {overview}
         </Sinopsis>
       </div>
+
       <ContainerDetails>
         <div>
           <Detail>
@@ -32,15 +34,18 @@ function TabDetail({
               }
             </span>
           </Detail>
+
           <Detail>
             Fecha de estreno:
             <span>{date?.split('-')[0]}</span>
           </Detail>
+
           <Detail>
             Género:
             <span>{genres?.map((genre) => genre.name).join(', ')}</span>
           </Detail>
         </div>
+
         <div>
           <Detail>
             Con:
@@ -49,6 +54,7 @@ function TabDetail({
             )).slice(0, 6)}
           </Detail>
         </div>
+
       </ContainerDetails>
     </Container>
   );

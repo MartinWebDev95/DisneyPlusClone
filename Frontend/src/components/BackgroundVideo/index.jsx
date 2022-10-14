@@ -8,6 +8,7 @@ function BackgroundVideo({ bgVideo, posterImage }) {
   return (
     <div id="container__video-image">
       <DivOpacity />
+
       <VideoStyled autoPlay playsInline muted onEnded={() => setOpacityImage(true)}>
         <source src={bgVideo} type="video/mp4" />
       </VideoStyled>

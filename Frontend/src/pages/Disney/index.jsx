@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import VideoBgDisney from '../../../public/assets/videos/bg-disney.mp4';
 import Header from '../../components/Header';
 import Carrousel from '../../components/Carrousel';
@@ -42,14 +42,37 @@ function Disney() {
   return (
     <>
       <Header position="fixed" />
+
       <main>
         <BackgroundVideo bgVideo={VideoBgDisney} posterImage={PosterImage} />
+
         <Spacing />
-        <Carrousel collection={moviesWaltDisney} title="Walt Disney Animations Studios" type="movie" />
-        <Carrousel collection={moviesWaltDisney90s} title="Hecho en los 90" type="movie" />
-        <Carrousel collection={moviesIceAge} title="Ice Age: La edad del hielo" type="movie" />
-        <Carrousel collection={moviesWaltDisneyActionAdventure} title="Acción y Aventura" type="movie" />
+
+        <Carrousel
+          collection={moviesWaltDisney}
+          title="Walt Disney Animations Studios"
+          type="movie"
+        />
+
+        <Carrousel
+          collection={moviesWaltDisney90s}
+          title="Hecho en los 90"
+          type="movie"
+        />
+
+        <Carrousel
+          collection={moviesIceAge}
+          title="Ice Age: La edad del hielo"
+          type="movie"
+        />
+
+        <Carrousel
+          collection={moviesWaltDisneyActionAdventure}
+          title="Acción y Aventura"
+          type="movie"
+        />
       </main>
+
       <Footer />
     </>
   );

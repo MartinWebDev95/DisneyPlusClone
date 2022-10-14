@@ -24,7 +24,8 @@ const Container = styled.div`
 const Title = styled.h2`
   font-size: 1.8em;
   font-weight: bold;
-  margin-bottom: 2rem;
+  padding: 0;
+  margin: 0;
   color: #CCCDCF;
 `;
 

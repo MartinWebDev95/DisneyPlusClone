@@ -36,6 +36,7 @@ function Movies() {
     <>
       <SectionStyled>
         <Header />
+
         <FilterBar
           title="Películas"
           setGenre={setGenre}
@@ -43,6 +44,7 @@ function Movies() {
           setMovies={setMovies}
         />
       </SectionStyled>
+
       <MainStyled>
         {
           loading
@@ -55,6 +57,7 @@ function Movies() {
             )
         }
       </MainStyled>
+
       <Footer />
     </>
   );

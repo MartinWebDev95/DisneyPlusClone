@@ -18,7 +18,9 @@ function Home() {
   useEffect(() => {
     Promise.all([getNewItemsDisney('movie'), getNewItemsDisney('tv')]).then(
       (data) => {
-        setNewItems(data);
+        const newMovies = data[0].map((item) => ({ ...item, type: 'movie' }));
+        const newSeries = data[1].map((item) => ({ ...item, type: 'tv' }));
+        setNewItems(newSeries.concat(newMovies));
         setLoading(false);
       },
     );
@@ -41,16 +43,38 @@ function Home() {
       ? (
         <>
           <Header position="fixed" />
+
           <main>
             <Slider collection={newItems} />
+
             <Container>
               <CardBrand />
             </Container>
-            <Carrousel collection={newItems} title="Nuevo en Disney+" type={['tv', 'movie']} />
-            <Carrousel collection={animationItems} title="Películas de Animación" type="movie" />
-            <Carrousel collection={dramaItems} title="Películas Dramáticas" type="movie" />
-            <Carrousel collection={comedySeries} title="Series de comedia" type="tv" />
+
+            <Carrousel
+              collection={newItems}
+              title="Nuevo en Disney+"
+            />
+
+            <Carrousel
+              collection={animationItems}
+              title="Películas de Animación"
+              type="movie"
+            />
+
+            <Carrousel
+              collection={dramaItems}
+              title="Películas Dramáticas"
+              type="movie"
+            />
+
+            <Carrousel
+              collection={comedySeries}
+              title="Series de comedia"
+              type="tv"
+            />
           </main>
+
           <Footer />
         </>
       ) : (

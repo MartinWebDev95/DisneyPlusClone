@@ -31,6 +31,7 @@ function Header({ position }) {
         <Logo to="/home">
           <img src="/assets/img/logo.svg" alt="Logo" />
         </Logo>
+
         <NavList>
           <li>
             <LinkItem to="/home">
@@ -40,6 +41,7 @@ function Header({ position }) {
               </span>
             </LinkItem>
           </li>
+
           <li>
             <LinkItem to="/search">
               <AiOutlineSearch />
@@ -48,6 +50,7 @@ function Header({ position }) {
               </span>
             </LinkItem>
           </li>
+
           <li>
             <LinkItem to="/my-list">
               <AiOutlinePlus />
@@ -56,6 +59,7 @@ function Header({ position }) {
               </span>
             </LinkItem>
           </li>
+
           <MenuResponsive>
             <BiDotsVerticalRounded />
             <ul>
@@ -77,6 +81,7 @@ function Header({ position }) {
               </li>
             </ul>
           </MenuResponsive>
+
           <li>
             <LinkItem to="/movies">
               <GiFilmSpool />
@@ -85,6 +90,7 @@ function Header({ position }) {
               </span>
             </LinkItem>
           </li>
+
           <li>
             <LinkItem to="/tv">
               <MdOutlineOndemandVideo />
@@ -94,6 +100,7 @@ function Header({ position }) {
             </LinkItem>
           </li>
         </NavList>
+
         <Profile>
           <DivProfile>
             <NameUser>
@@ -101,6 +108,7 @@ function Header({ position }) {
             </NameUser>
             <ProfileImage src="/assets/img/profile.png" alt="Profile" />
           </DivProfile>
+
           <DivSubmenu>
             <ul>
               <LinkStyled to="#">Cerrar sesión</LinkStyled>

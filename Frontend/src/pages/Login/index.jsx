@@ -6,11 +6,13 @@ import {
 function Login() {
   return (
     <Container>
+
       <HeaderStyled>
         <NavStyled>
           <LinkStyled to="/">Iniciar Sesión</LinkStyled>
         </NavStyled>
       </HeaderStyled>
+
       <MainStyled>
         <img src={Logo} alt="Logo Disney" />
         <h1>
@@ -22,6 +24,7 @@ function Login() {
           </span>
         </h1>
       </MainStyled>
+
     </Container>
   );
 }

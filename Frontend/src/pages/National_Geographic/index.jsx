@@ -27,10 +27,23 @@ function NationalGeographic() {
   return (
     <>
       <Header position="fixed" />
+
       <BackgroundVideo bgVideo={VideoBgNationalGeographic} posterImage={PosterImage} />
+
       <Spacing />
-      <Carrousel collection={moviesGeographic} title="En primer plano" type="movie" />
-      <Carrousel collection={seriesGeographic} title="Docuseries" type="tv" />
+
+      <Carrousel
+        collection={moviesGeographic}
+        title="En primer plano"
+        type="movie"
+      />
+
+      <Carrousel
+        collection={seriesGeographic}
+        title="Docuseries"
+        type="tv"
+      />
+
       <Footer />
     </>
   );

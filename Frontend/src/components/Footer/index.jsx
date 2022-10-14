@@ -10,6 +10,7 @@ function Footer() {
         <Logo>
           <img src="/assets/img/logo.svg" alt="logo" />
         </Logo>
+
         <ListFooter>
           <li>
             Política de privacidad
@@ -39,7 +40,9 @@ function Footer() {
             Administrar preferencias
           </li>
         </ListFooter>
+
         <Copyright>&copy; Disney. Todos los derechos reservados</Copyright>
+
       </Container>
     </FooterStyled>
   );

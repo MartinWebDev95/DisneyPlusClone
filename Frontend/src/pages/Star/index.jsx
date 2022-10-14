@@ -5,7 +5,6 @@ import PosterImage from '../../../public/assets/img/categories/bg-brand-star.jpg
 import BackgroundVideo from '../../components/BackgroundVideo';
 
 function Star() {
-
   // useEffect(() => {
   //   if (user === null) {
   //     navigate('/');
@@ -15,6 +14,7 @@ function Star() {
   return (
     <>
       <Header position="fixed" />
+
       <BackgroundVideo bgVideo={VideoBgStar} posterImage={PosterImage} />
     </>
   );

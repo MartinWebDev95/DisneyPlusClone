@@ -35,6 +35,7 @@ function Series() {
     <>
       <SectionStyled>
         <Header />
+
         <FilterBar
           title="Series"
           setGenre={setGenre}
@@ -42,6 +43,7 @@ function Series() {
           setTv={setTv}
         />
       </SectionStyled>
+
       <MainStyled>
         {
           loading
@@ -54,6 +56,7 @@ function Series() {
             )
         }
       </MainStyled>
+
       <Footer />
     </>
   );

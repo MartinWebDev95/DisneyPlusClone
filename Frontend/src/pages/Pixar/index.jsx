@@ -41,12 +41,35 @@ function Pixar() {
   return (
     <>
       <Header position="fixed" />
+
       <BackgroundVideo bgVideo={VideoBgPixar} posterImage={PosterImage} />
+
       <Spacing />
-      <Carrousel collection={moviesPixar} title="En primer plano" type="movie" />
-      <Carrousel collection={popularMoviesPixar} title="Películas populares de Pixar" type="movie" />
-      <Carrousel collection={toyStoryMovies} title="Toy Story" type="movie" />
-      <Carrousel collection={carsMovies} title="Cars" type="movie" />
+
+      <Carrousel
+        collection={moviesPixar}
+        title="En primer plano"
+        type="movie"
+      />
+
+      <Carrousel
+        collection={popularMoviesPixar}
+        title="Películas populares de Pixar"
+        type="movie"
+      />
+
+      <Carrousel
+        collection={toyStoryMovies}
+        title="Toy Story"
+        type="movie"
+      />
+
+      <Carrousel
+        collection={carsMovies}
+        title="Cars"
+        type="movie"
+      />
+
       <Footer />
     </>
   );

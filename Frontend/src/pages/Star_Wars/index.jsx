@@ -32,11 +32,29 @@ function StarWars() {
   return (
     <>
       <Header position="fixed" />
+
       <BackgroundVideo bgVideo={VideoBgStarWars} posterImage={PosterImage} />
+
       <Spacing />
-      <Carrousel collection={starWarsMovies} title="Películas Star Wars" type="movie" />
-      <Carrousel collection={starWarsSeries} title="Series del universo de Star Wars" type="tv" />
-      <Carrousel collection={legoStarWarsMovies} title="Lego Star Wars" type="movie" />
+
+      <Carrousel
+        collection={starWarsMovies}
+        title="Películas Star Wars"
+        type="movie"
+      />
+
+      <Carrousel
+        collection={starWarsSeries}
+        title="Series del universo de Star Wars"
+        type="tv"
+      />
+
+      <Carrousel
+        collection={legoStarWarsMovies}
+        title="Lego Star Wars"
+        type="movie"
+      />
+
       <Footer />
     </>
   );
