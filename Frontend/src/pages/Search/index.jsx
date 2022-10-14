@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ListOfSearchResults from '../../components/ListOfSearchResults';
@@ -10,13 +10,6 @@ import {
 function Search() {
   const [keyword, setKeyword] = useState('');
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  //   if (user === null) {
-  //     navigate('/');
-  //   }
-  // }, []);
-
   const handleChange = (e) => {
     setKeyword(e.target.value);
   };
@@ -25,16 +18,27 @@ function Search() {
     <>
       <SectionStyled>
         <Header position="static" />
+
         <FormStyled action="#">
-          <SearchField type="text" name="" id="" value={keyword} placeholder="Título, personaje o género" onChange={handleChange} />
+          <SearchField
+            type="text"
+            name=""
+            id=""
+            value={keyword}
+            placeholder="Título, personaje o género"
+            onChange={handleChange}
+          />
         </FormStyled>
       </SectionStyled>
+
       <main>
         <Container>
           <h1>Explorar</h1>
+
           <ListOfSearchResults keyword={keyword} />
         </Container>
       </main>
+
       <Footer />
     </>
   );
