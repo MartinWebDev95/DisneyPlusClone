@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 
 const ListStyled = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
   gap: 1rem;
-  width: 100%;
-  margin: 0 auto;
+  grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );
   padding-top: 1rem;
 `;
 

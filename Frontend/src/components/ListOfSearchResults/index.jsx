@@ -10,41 +10,36 @@ function ListOfResults({ keyword }) {
 
   useEffect(() => {
     if (keyword !== '') {
-      Promise.all([getSearchMovies(keyword), getSearchSeries(keyword)]).then(
-        (data) => {
-          setResults(data);
-        },
-      );
+      Promise.all([getSearchMovies(keyword), getSearchSeries(keyword)])
+        .then((data) => {
+          const newStateMovies = data[0].map((item) => ({ ...item, type: 'movie' }));
+          const newStateSeries = data[1].map((item) => ({ ...item, type: 'tv' }));
+
+          setResults(newStateMovies.concat(newStateSeries));
+        });
     } else {
-      getMostPopularsMoviesDisney().then((data) => {
-        setResults(data);
-      });
+      getMostPopularsMoviesDisney()
+        .then((data) => {
+          setResults(data);
+        });
     }
   }, [keyword]);
 
   return (
-    (results.length === 2)
-      ? ((results[0]?.results.length === 0 && results[1]?.results.length === 0)
-        ? (<NotFound>{`No se han encontrado resultados para "${keyword}"`}</NotFound>)
-        : (
-          <ListStyled>
-            {
-              results[0]?.results?.map((item) => (
-                <Card key={item.id} item={item} type={results[0].type} />
-              ))
-            }
-            {
-              results[1]?.results?.map((item) => (
-                <Card key={item.id} item={item} type={results[1].type} />
-              ))
-            }
-          </ListStyled>
-        )
+    (results.length === 0 && keyword !== '')
+      ? (
+        <NotFound>{`No se han encontrado resultados para "${keyword}"`}</NotFound>
       ) : (
         <ListStyled>
           {
             results?.map((item) => (
-              <Card key={item.id} item={item} type="movie" />
+              <Card
+                key={item.id}
+                item={item}
+                type={item.type ? item.type : 'movie'}
+                width="max-content"
+                height="no-carousel"
+              />
             ))
           }
         </ListStyled>
