@@ -2,11 +2,10 @@
 import styled from 'styled-components';
 
 const SectionDataStyled = styled.section`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
+  display: grid;
   gap: 1rem;
+  grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );
+  padding-top: 1rem;
   width: 90%;
   margin: 0 auto;
   padding-top: 10rem;

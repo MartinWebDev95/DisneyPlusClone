@@ -17,14 +17,27 @@ function FilterList({
         {type === 'movie'
           ? (
             movies.map((item) => (
-              <Card key={item.id} item={item} type={type} />
+              <Card
+                key={item.id}
+                item={item}
+                type={type}
+                width="max-content"
+                height="no-carousel"
+              />
             ))
           ) : (
             tv.map((item) => (
-              <Card key={item.id} item={item} type={type} />
+              <Card
+                key={item.id}
+                item={item}
+                type={type}
+                width="max-content"
+                height="no-carousel"
+              />
             ))
           )}
       </SectionDataStyled>
+
       <ButtonStyled type="button" onClick={handlePage}>Mostrar más</ButtonStyled>
     </>
   );

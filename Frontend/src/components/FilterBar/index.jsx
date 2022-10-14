@@ -43,7 +43,9 @@ function FilterBar({
 
   return (
     <SectionFormStyled opacity={opacity.toString()}>
+
       <Title>{title}</Title>
+
       <FormStyled action="#">
         <select name="genres" id="genres" defaultValue="" onChange={handleSelect}>
           {
