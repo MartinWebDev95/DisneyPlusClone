@@ -49,7 +49,7 @@ const updateItemFromMyList = async (req, res) => {
 
 // Obtener todas las películas o series que pertenezcan al usuario autenticado
 const getItemsFromMyList = async (req, res) => {
-  const userId = req.params.id;
+  const { userId } = req.params;
 
   // Obtener todos los items de la BD
   const allItems = await MyList.find();
