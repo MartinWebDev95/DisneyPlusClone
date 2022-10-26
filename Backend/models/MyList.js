@@ -18,10 +18,11 @@ const myListSchema = mongoose.Schema(
       required: true,
       trim: true,
     },
-    user: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-    },
+    usersId: [
+      {
+        userId: { type: String, unique: false },
+      },
+    ],
   },
 );
 
