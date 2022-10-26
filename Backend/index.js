@@ -1,7 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import passport from 'passport';
+import cookieSession from 'cookie-session';
 import connectToDB from './database/db.js';
+import passportConfiguration from './passport.js';
+import authRoutes from './routes/auth.js';
 
 const server = express();
 
@@ -9,23 +13,26 @@ dotenv.config();
 
 connectToDB();
 
-const allowDomain = [process.env.FRONTEND_URL];
-
-const corsOption = {
-  origin(origin, callback) {
-    if (allowDomain.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
+server.use(cookieSession(
+  {
+    name: 'session',
+    keys: ['disney'],
+    maxAge: 24 * 60 * 60 * 100,
   },
-};
+));
 
-server.use(cors(corsOption));
+server.use(passport.initialize());
+server.use(passport.session());
 
-server.use('/', (req, res) => {
-  res.send('Hola mundo');
-});
+server.use(cors({
+  origin: process.env.FRONTEND_URL,
+  methods: 'GET, POST, PUT, DELETE',
+  credentials: true,
+}));
+
+passportConfiguration();
+
+server.use('/auth', authRoutes);
 
 const PORT = process.env.PORT || 4000;
 
