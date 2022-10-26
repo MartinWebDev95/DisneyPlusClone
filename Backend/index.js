@@ -6,6 +6,7 @@ import cookieSession from 'cookie-session';
 import connectToDB from './database/db.js';
 import passportConfiguration from './passport.js';
 import authRoutes from './routes/auth.js';
+import myListRoutes from './routes/myList.js';
 
 const server = express();
 
@@ -33,6 +34,7 @@ server.use(cors({
 passportConfiguration();
 
 server.use('/auth', authRoutes);
+server.use('/api/my-list', myListRoutes);
 
 const PORT = process.env.PORT || 4000;
 
