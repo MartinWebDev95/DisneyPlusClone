@@ -16,6 +16,10 @@ const SectionFormStyled = styled.section`
   gap: 2rem;
   width: 100%;
   padding-left: 5rem;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  padding-top: 4.7rem;
   
   ${(props) => (props.opacity === 'false'
     ? 'background-color: rgba(20, 22, 31, 0);'

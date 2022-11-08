@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-expressions */
-/* eslint-disable react/prop-types */
 import useOpacity from '../../hooks/useOpacity';
 import {
   Title, FormStyled, OptionStyled, SectionFormStyled,
