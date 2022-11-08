@@ -2,6 +2,11 @@ import styled from 'styled-components';
 
 const FormStyled = styled.form`
   width: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1;
+  padding-top: 4.7rem;
 `;
 
 const SearchField = styled.input`
