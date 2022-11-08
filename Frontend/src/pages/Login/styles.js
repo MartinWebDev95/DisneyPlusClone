@@ -17,7 +17,7 @@ const NavStyled = styled.nav`
   }
 `;
 
-const LinkStyled = styled(Link)`
+const ButtonStyled = styled.button`
   text-decoration: none;
   text-transform: uppercase;
   background-color: rgba(0,0,0, 0.8);
@@ -32,6 +32,7 @@ const LinkStyled = styled(Link)`
   &:hover{
     background-color: white;
     color: black;
+    cursor: pointer;
   }
 `;
 
@@ -81,5 +82,5 @@ const Container = styled.div`
 `;
 
 export {
-  HeaderStyled, NavStyled, LinkStyled, MainStyled, Container,
+  HeaderStyled, NavStyled, ButtonStyled, MainStyled, Container,
 };

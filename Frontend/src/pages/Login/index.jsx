@@ -1,15 +1,19 @@
 import Logo from '/assets/img/logo.svg';
+
 import {
-  HeaderStyled, NavStyled, LinkStyled, MainStyled, Container,
+  HeaderStyled, NavStyled, ButtonStyled, MainStyled, Container,
 } from './styles';
 
+import { useAuth } from '../../context/AuthContext';
+
 function Login() {
+  const { handleLogin } = useAuth();
+
   return (
     <Container>
-
       <HeaderStyled>
         <NavStyled>
-          <LinkStyled to="/">Iniciar Sesión</LinkStyled>
+          <ButtonStyled type="button" onClick={handleLogin}>Iniciar Sesión</ButtonStyled>
         </NavStyled>
       </HeaderStyled>
 
@@ -24,7 +28,6 @@ function Login() {
           </span>
         </h1>
       </MainStyled>
-
     </Container>
   );
 }
