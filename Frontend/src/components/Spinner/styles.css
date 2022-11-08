@@ -1,3 +1,7 @@
+.container{
+  height: 100vh;
+}
+
 .sk-fading-circle {
   margin: 100px auto;
   width: 60px;
