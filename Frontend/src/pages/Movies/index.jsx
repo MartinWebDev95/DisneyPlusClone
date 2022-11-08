@@ -1,21 +1,18 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-expressions */
-import {
-  useEffect, useState,
-} from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import { useEffect, useState } from 'react';
+
 import Spinner from '../../components/Spinner';
 import FilterBar from '../../components/FilterBar';
 import FilterList from '../../components/FilterList';
+
 import { getItemsFromDisney } from '../../services/getDataFromAPI';
-import { MainStyled, DivSpinner, SectionStyled } from './styles';
+
+import { MainStyled, DivSpinner } from './styles';
 
 function Movies() {
   const [movies, setMovies] = useState([]);
   const [genre, setGenre] = useState('');
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -34,16 +31,12 @@ function Movies() {
 
   return (
     <>
-      <SectionStyled>
-        <Header />
-
-        <FilterBar
-          title="Películas"
-          setGenre={setGenre}
-          setPage={setPage}
-          setMovies={setMovies}
-        />
-      </SectionStyled>
+      <FilterBar
+        title="Películas"
+        setGenre={setGenre}
+        setPage={setPage}
+        setMovies={setMovies}
+      />
 
       <MainStyled>
         {
@@ -57,8 +50,6 @@ function Movies() {
             )
         }
       </MainStyled>
-
-      <Footer />
     </>
   );
 }

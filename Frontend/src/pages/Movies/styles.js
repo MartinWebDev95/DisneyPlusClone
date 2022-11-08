@@ -6,16 +6,11 @@ const MainStyled = styled.main`
 `;
 
 const DivSpinner = styled.div`
-  padding-top: 8rem;
-`;
-
-const SectionStyled = styled.section`
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1;
+  display: grid;
+  place-items: center;
+  height: 100%;
 `;
 
 export {
-  SectionStyled, MainStyled, DivSpinner,
+  MainStyled, DivSpinner,
 };

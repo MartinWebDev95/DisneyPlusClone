@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import Carrousel from '../../components/Carrousel';
+
 import VideoBgMarvel from '../../../public/assets/videos/bg-marvel.mp4';
 import PosterImage from '../../../public/assets/img/categories/bg-marvel.jpg';
+
+import Carrousel from '../../components/Carrousel';
 import BackgroundVideo from '../../components/BackgroundVideo';
-import Spacing from './styles';
-import Spinner from '../../components/Spinner';
+
 import { getItemsCollection, getItemsFromBrand } from '../../services/getDataFromAPI';
+
+import Spacing from './styles';
 
 function Marvel() {
   const [moviesMarvel, setMoviesMarvel] = useState([]);
@@ -16,12 +17,9 @@ function Marvel() {
   const [moviesSpiderman, setMoviesSpiderman] = useState([]);
   const [moviesCaptainAmerica, setMoviesCaptainAmerica] = useState([]);
   const [moviesThor, setMoviesThor] = useState([]);
-  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    setLoading(true);
 
     getItemsFromBrand('movie', 420)
       .then((data) => {
@@ -52,64 +50,50 @@ function Marvel() {
       .then((data) => {
         setMoviesThor(data);
       });
-
-    setLoading(false);
   }, []);
 
   return (
-    <>
-      <Header position="fixed" />
+    <main>
+      <BackgroundVideo bgVideo={VideoBgMarvel} posterImage={PosterImage} />
 
-      <main>
-        <BackgroundVideo bgVideo={VideoBgMarvel} posterImage={PosterImage} />
+      <Spacing />
 
-        <Spacing />
+      <Carrousel
+        collection={moviesMarvel}
+        title="Películas Marvel"
+        type="movie"
+      />
 
-        {isLoading
-          ? (<Spinner />)
-          : (
-            <>
-              <Carrousel
-                collection={moviesMarvel}
-                title="Películas Marvel"
-                type="movie"
-              />
+      <Carrousel
+        collection={seriesMarvel}
+        title="Series Marvel"
+        type="tv"
+      />
 
-              <Carrousel
-                collection={seriesMarvel}
-                title="Series Marvel"
-                type="tv"
-              />
+      <Carrousel
+        collection={moviesAvengers}
+        title="Los Vengadores"
+        type="movie"
+      />
 
-              <Carrousel
-                collection={moviesAvengers}
-                title="Los Vengadores"
-                type="movie"
-              />
+      <Carrousel
+        collection={moviesSpiderman}
+        title="Spiderman"
+        type="movie"
+      />
 
-              <Carrousel
-                collection={moviesSpiderman}
-                title="Spiderman"
-                type="movie"
-              />
+      <Carrousel
+        collection={moviesCaptainAmerica}
+        title="El Capitán América"
+        type="movie"
+      />
 
-              <Carrousel
-                collection={moviesCaptainAmerica}
-                title="El Capitán América"
-                type="movie"
-              />
-
-              <Carrousel
-                collection={moviesThor}
-                title="Thor"
-                type="movie"
-              />
-            </>
-          )}
-      </main>
-
-      <Footer />
-    </>
+      <Carrousel
+        collection={moviesThor}
+        title="Thor"
+        type="movie"
+      />
+    </main>
   );
 }
 

@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
+
 import CardBrand from '../../components/CardBrand';
-import Header from '../../components/Header';
 import Carrousel from '../../components/Carrousel';
-import Footer from '../../components/Footer';
 import Slider from '../../components/Slider';
 import Spinner from '../../components/Spinner';
-import Container from './styles';
+
 import { getNewItemsDisney, getItemsForGenre } from '../../services/getDataFromAPI';
+
+import Container from './styles';
 
 function Home() {
   const [newItems, setNewItems] = useState([]);
@@ -16,12 +17,13 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     Promise.all([getNewItemsDisney('movie'), getNewItemsDisney('tv')]).then(
       (data) => {
         const newMovies = data[0].map((item) => ({ ...item, type: 'movie' }));
         const newSeries = data[1].map((item) => ({ ...item, type: 'tv' }));
         setNewItems(newSeries.concat(newMovies));
-        setLoading(false);
       },
     );
 
@@ -35,48 +37,44 @@ function Home() {
 
     getItemsForGenre('tv', '35').then((data) => {
       setComedySeries(data);
+      setLoading(false);
     });
   }, []);
 
   return (
     !loading
       ? (
-        <>
-          <Header position="fixed" />
+        <main>
+          <Slider collection={newItems.filter((item) => item.backdrop_path !== null)} />
 
-          <main>
-            <Slider collection={newItems} />
+          <Container>
+            <CardBrand />
+          </Container>
 
-            <Container>
-              <CardBrand />
-            </Container>
+          <Carrousel
+            collection={newItems}
+            title="Nuevo en Disney+"
+            isLoading={loading}
+          />
 
-            <Carrousel
-              collection={newItems}
-              title="Nuevo en Disney+"
-            />
+          <Carrousel
+            collection={animationItems}
+            title="Películas de Animación"
+            type="movie"
+          />
 
-            <Carrousel
-              collection={animationItems}
-              title="Películas de Animación"
-              type="movie"
-            />
+          <Carrousel
+            collection={dramaItems}
+            title="Películas Dramáticas"
+            type="movie"
+          />
 
-            <Carrousel
-              collection={dramaItems}
-              title="Películas Dramáticas"
-              type="movie"
-            />
-
-            <Carrousel
-              collection={comedySeries}
-              title="Series de comedia"
-              type="tv"
-            />
-          </main>
-
-          <Footer />
-        </>
+          <Carrousel
+            collection={comedySeries}
+            title="Series de comedia"
+            type="tv"
+          />
+        </main>
       ) : (
         <Spinner />
       )

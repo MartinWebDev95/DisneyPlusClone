@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import Carrousel from '../../components/Carrousel';
+
 import VideoBgStarWars from '../../../public/assets/videos/bg-star-wars.mp4';
 import PosterImage from '../../../public/assets/img/categories/bg-star-wars.jpg';
+
 import BackgroundVideo from '../../components/BackgroundVideo';
+import Carrousel from '../../components/Carrousel';
+
 import { getItemsFromBrand, getItemsCollection } from '../../services/getDataFromAPI';
+
 import Spacing from './styles';
 
 function StarWars() {
@@ -30,9 +32,7 @@ function StarWars() {
   }, []);
 
   return (
-    <>
-      <Header position="fixed" />
-
+    <main>
       <BackgroundVideo bgVideo={VideoBgStarWars} posterImage={PosterImage} />
 
       <Spacing />
@@ -54,9 +54,7 @@ function StarWars() {
         title="Lego Star Wars"
         type="movie"
       />
-
-      <Footer />
-    </>
+    </main>
   );
 }
 

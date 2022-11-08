@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import Carrousel from '../../components/Carrousel';
+
 import VideoBgNationalGeographic from '../../../public/assets/videos/bg-national-geographic.mp4';
 import PosterImage from '../../../public/assets/img/categories/bg-national-geographic.jpg';
+
+import Carrousel from '../../components/Carrousel';
 import BackgroundVideo from '../../components/BackgroundVideo';
+
 import { getItemsFromBrand } from '../../services/getDataFromAPI';
+
 import Spacing from './styles';
 
 function NationalGeographic() {
@@ -25,9 +27,7 @@ function NationalGeographic() {
   }, []);
 
   return (
-    <>
-      <Header position="fixed" />
-
+    <main>
       <BackgroundVideo bgVideo={VideoBgNationalGeographic} posterImage={PosterImage} />
 
       <Spacing />
@@ -43,9 +43,7 @@ function NationalGeographic() {
         title="Docuseries"
         type="tv"
       />
-
-      <Footer />
-    </>
+    </main>
   );
 }
 

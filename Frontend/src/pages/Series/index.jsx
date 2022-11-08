@@ -1,14 +1,13 @@
 /* eslint-disable react/prop-types */
-import {
-  useEffect, useState,
-} from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import { useEffect, useState } from 'react';
+
 import Spinner from '../../components/Spinner';
 import FilterBar from '../../components/FilterBar';
 import FilterList from '../../components/FilterList';
+
 import { getItemsFromDisney } from '../../services/getDataFromAPI';
-import { MainStyled, DivSpinner, SectionStyled } from './styles';
+
+import { MainStyled, DivSpinner } from './styles';
 
 function Series() {
   const [tv, setTv] = useState([]);
@@ -33,16 +32,12 @@ function Series() {
 
   return (
     <>
-      <SectionStyled>
-        <Header />
-
-        <FilterBar
-          title="Series"
-          setGenre={setGenre}
-          setPage={setPage}
-          setTv={setTv}
-        />
-      </SectionStyled>
+      <FilterBar
+        title="Series"
+        setGenre={setGenre}
+        setPage={setPage}
+        setTv={setTv}
+      />
 
       <MainStyled>
         {
@@ -56,8 +51,6 @@ function Series() {
             )
         }
       </MainStyled>
-
-      <Footer />
     </>
   );
 }

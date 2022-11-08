@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
-import Carrousel from '../../components/Carrousel';
+
 import VideoBgPixar from '../../../public/assets/videos/bg-pixar.mp4';
 import PosterImage from '../../../public/assets/img/categories/bg-pixar.jpg';
-import BackgroundVideo from '../../components/BackgroundVideo';
+
 import {
   getItemsFromBrand,
   getMostPopularMoviesPixar,
   getItemsCollection,
 } from '../../services/getDataFromAPI';
+
+import Carrousel from '../../components/Carrousel';
+import BackgroundVideo from '../../components/BackgroundVideo';
+
 import Spacing from './styles';
 
 function Pixar() {
@@ -39,9 +41,7 @@ function Pixar() {
   }, []);
 
   return (
-    <>
-      <Header position="fixed" />
-
+    <main>
       <BackgroundVideo bgVideo={VideoBgPixar} posterImage={PosterImage} />
 
       <Spacing />
@@ -69,9 +69,7 @@ function Pixar() {
         title="Cars"
         type="movie"
       />
-
-      <Footer />
-    </>
+    </main>
   );
 }
 
