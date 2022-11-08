@@ -1,14 +1,43 @@
 /* eslint-disable react/prop-types */
-import CardPlaceholder from '../CardPlaceholder';
-import CardEpisodesInfo from '../CardEpisodesInfo';
+import BlankImage from '/assets/img/no-photo-available-icon.jpg';
+import {
+  Sinopsis, Title, DivStyled, ImageStyled,
+} from './styles';
 
-function CardEpisodes({ item, isLoading }) {
+function CardEpisodes({ item }) {
   return (
-    isLoading
+    item.still_path !== null
       ? (
-        <CardPlaceholder />
+        <DivStyled>
+          <div>
+            <ImageStyled
+              src={`https://image.tmdb.org/t/p/w300${item.still_path}`}
+              alt={item.title || item.name}
+              loading="lazy"
+            />
+
+            <Title>
+              {`${item.episode_number}. ${item.name} ${item.runtime !== null
+                ? (`(${item.runtime} min)`)
+                : ('')}
+            `}
+            </Title>
+
+            <Sinopsis>
+              {`${item.overview !== '' ? `${item.overview.substring(0, 60)}...` : ''}`}
+            </Sinopsis>
+          </div>
+        </DivStyled>
       ) : (
-        <CardEpisodesInfo item={item} />
+        <DivStyled>
+          <ImageStyled
+            src={BlankImage}
+            alt="No available"
+            loading="lazy"
+          />
+
+          <Title>{item.name}</Title>
+        </DivStyled>
       )
   );
 }
