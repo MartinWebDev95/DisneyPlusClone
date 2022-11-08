@@ -235,10 +235,17 @@ const LinkItem = styled(Link)`
   }
 `;
 
-const LinkStyled = styled.a`
+const ButtonStyled = styled.button`
   display: block;
   width: fit-content;
   margin: 1rem auto;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 1rem;
 
   &:hover{
     cursor: pointer;
@@ -257,6 +264,6 @@ export {
   DivSubmenu,
   NameUser,
   ProfileImage,
-  LinkStyled,
+  ButtonStyled,
   MenuResponsive,
 };

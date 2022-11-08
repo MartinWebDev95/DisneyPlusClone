@@ -1,11 +1,8 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable no-unused-expressions */
-import {
-  AiFillHome, AiOutlineSearch, AiOutlinePlus,
-} from 'react-icons/ai';
+import { AiFillHome, AiOutlineSearch, AiOutlinePlus } from 'react-icons/ai';
 import { MdOutlineOndemandVideo } from 'react-icons/md';
 import { GiFilmSpool } from 'react-icons/gi';
 import { BiDotsVerticalRounded } from 'react-icons/bi';
+
 import {
   NavStyled,
   Logo,
@@ -17,13 +14,16 @@ import {
   DivSubmenu,
   NameUser,
   ProfileImage,
-  LinkStyled,
+  ButtonStyled,
   MenuResponsive,
 } from './styles';
+
 import useOpacity from '../../hooks/useOpacity';
+import { useAuth } from '../../context/AuthContext';
 
 function Header({ position }) {
   const { opacity } = useOpacity();
+  const { user, handleLogout } = useAuth();
 
   return (
     <HeaderStyled opacity={opacity.toString()} position={position}>
@@ -104,14 +104,18 @@ function Header({ position }) {
         <Profile>
           <DivProfile>
             <NameUser>
-              Juan Antonio Martín
+              {`${user?.displayName.substring(0, 15)} ...`}
             </NameUser>
-            <ProfileImage src="/assets/img/profile.png" alt="Profile" />
+            <ProfileImage
+              src={`${user?.photos[0]?.value}`}
+              referrerpolicy="no-referrer"
+              alt="Profile"
+            />
           </DivProfile>
 
           <DivSubmenu>
             <ul>
-              <LinkStyled to="#">Cerrar sesión</LinkStyled>
+              <ButtonStyled type="button" onClick={handleLogout}>Cerrar sesión</ButtonStyled>
               <p>Coded by Juan Antonio Martín</p>
             </ul>
           </DivSubmenu>
