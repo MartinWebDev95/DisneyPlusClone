@@ -5,15 +5,11 @@ const VideoStyled = styled.video`
   position: fixed;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -2;
 `;
 
 const ImageStyled = styled.img`
   width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1;
   ${(props) => (props.visible
     ? 'opacity: 1;'
     : 'opacity: 0;'
@@ -22,18 +18,31 @@ const ImageStyled = styled.img`
 `;
 
 const DivOpacity = styled.div`
-  display: none;
-
-  @media screen and (max-width: 468px){
-    display: block;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    z-index: 0;
-    top: 0;
-    left: 0;
-    background-image: linear-gradient(to bottom, rgba(26, 29, 41, 0), rgba(26, 29, 41, 1), rgba(26, 29, 41, 0), rgba(26, 29, 41, 0)); 
-  }
+  width: 100%;
+  height: 100%;
+  background: rgb(26, 29, 41);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  opacity: 1;
 `;
 
-export { VideoStyled, ImageStyled, DivOpacity };
+const DivStyled = styled.div`
+  background-image: linear-gradient(transparent 25%, transparent 50%, rgb(26, 29, 41) 75%, rgb(26, 29, 41) 100%);
+  position: absolute;
+  inset: 0px;
+`;
+
+const Wrapper = styled.div`
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: -2;
+`;
+
+export {
+  VideoStyled, ImageStyled, DivOpacity, Wrapper, DivStyled,
+};
