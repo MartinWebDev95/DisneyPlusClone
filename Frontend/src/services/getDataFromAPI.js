@@ -46,6 +46,24 @@ const getItemsFromBrand = async (type, brand) => {
   return data.results;
 };
 
+const getItemsFromStar = async (type) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/${type}?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&without_companies=3,6125,7521, 1,420,3475&sort_by=popularity.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getItemsFromStarNew = async (type) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/${type}?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&without_companies=3,6125,7521, 1,420,3475&sort_by=release_date.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
+const getItemsFromStarGenre = async (type, genre) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}discover/${type}?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&without_companies=3,6125,7521, 1,420,3475&with_genres=${genre}&sort_by=popularity.desc&language=es-ES&page=1`);
+  const data = await response.json();
+  return data.results;
+};
+
 const getMostPopularMoviesPixar = async () => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}discover/movie?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&watch_region=ES&with_companies=3&sort_by=vote_average.desc&language=es-ES&page=1`);
   const data = await response.json();
@@ -111,4 +129,7 @@ export {
   getMoviesWaltDisneyActionAdventure,
   getMostPopularsMoviesDisney,
   getSeasonEpisodes,
+  getItemsFromStar,
+  getItemsFromStarGenre,
+  getItemsFromStarNew,
 };
