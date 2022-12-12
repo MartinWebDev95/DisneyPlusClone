@@ -33,7 +33,11 @@ function StarWars() {
 
   return (
     <main>
-      <BackgroundVideo bgVideo={VideoBgStarWars} posterImage={PosterImage} />
+      <BackgroundVideo
+        bgVideo={VideoBgStarWars}
+        posterImage={PosterImage}
+        altText="Star Wars Logo"
+      />
 
       <Spacing />
 

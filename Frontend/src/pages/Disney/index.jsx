@@ -43,7 +43,11 @@ function Disney() {
 
   return (
     <main>
-      <BackgroundVideo bgVideo={VideoBgDisney} posterImage={PosterImage} />
+      <BackgroundVideo
+        bgVideo={VideoBgDisney}
+        posterImage={PosterImage}
+        altText="Disney Logo"
+      />
 
       <Spacing />
 

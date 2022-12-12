@@ -21,32 +21,32 @@ function Marvel() {
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    getItemsFromBrand('movie', 420)
+    getItemsFromBrand('movie', '420')
       .then((data) => {
         setMoviesMarvel(data);
       });
 
-    getItemsFromBrand('tv', 420)
+    getItemsFromBrand('tv', '420')
       .then((data) => {
         setSeriesMarvel(data);
       });
 
-    getItemsCollection(86311)
+    getItemsCollection('86311')
       .then((data) => {
         setMoviesAvengers(data);
       });
 
-    getItemsCollection(531241)
+    getItemsCollection('531241')
       .then((data) => {
         setMoviesSpiderman(data);
       });
 
-    getItemsCollection(131295)
+    getItemsCollection('131295')
       .then((data) => {
         setMoviesCaptainAmerica(data);
       });
 
-    getItemsCollection(131296)
+    getItemsCollection('131296')
       .then((data) => {
         setMoviesThor(data);
       });
@@ -54,7 +54,11 @@ function Marvel() {
 
   return (
     <main>
-      <BackgroundVideo bgVideo={VideoBgMarvel} posterImage={PosterImage} />
+      <BackgroundVideo
+        bgVideo={VideoBgMarvel}
+        posterImage={PosterImage}
+        altText="Marvel Logo"
+      />
 
       <Spacing />
 

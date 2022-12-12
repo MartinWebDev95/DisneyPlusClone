@@ -5,7 +5,6 @@ import PosterImage from '../../../public/assets/img/categories/bg-pixar.jpg';
 
 import {
   getItemsFromBrand,
-  getMostPopularMoviesPixar,
   getItemsCollection,
 } from '../../services/getDataFromAPI';
 
@@ -16,7 +15,6 @@ import Spacing from './styles';
 
 function Pixar() {
   const [moviesPixar, setMoviesPixar] = useState([]);
-  const [popularMoviesPixar, setPopularMoviesPixar] = useState([]);
   const [toyStoryMovies, setToyStoryMovies] = useState([]);
   const [carsMovies, setCarsMovies] = useState([]);
 
@@ -25,10 +23,6 @@ function Pixar() {
 
     getItemsFromBrand('movie', '3').then((data) => {
       setMoviesPixar(data);
-    });
-
-    getMostPopularMoviesPixar().then((data) => {
-      setPopularMoviesPixar(data);
     });
 
     getItemsCollection('10194').then((data) => {
@@ -42,19 +36,17 @@ function Pixar() {
 
   return (
     <main>
-      <BackgroundVideo bgVideo={VideoBgPixar} posterImage={PosterImage} />
+      <BackgroundVideo
+        bgVideo={VideoBgPixar}
+        posterImage={PosterImage}
+        altText="Pixar Logo"
+      />
 
       <Spacing />
 
       <Carrousel
         collection={moviesPixar}
         title="En primer plano"
-        type="movie"
-      />
-
-      <Carrousel
-        collection={popularMoviesPixar}
-        title="Películas populares de Pixar"
         type="movie"
       />
 

@@ -28,7 +28,11 @@ function NationalGeographic() {
 
   return (
     <main>
-      <BackgroundVideo bgVideo={VideoBgNationalGeographic} posterImage={PosterImage} />
+      <BackgroundVideo
+        bgVideo={VideoBgNationalGeographic}
+        posterImage={PosterImage}
+        altText="National Geographic Logo"
+      />
 
       <Spacing />
 
