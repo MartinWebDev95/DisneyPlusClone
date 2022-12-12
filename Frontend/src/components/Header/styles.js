@@ -5,27 +5,31 @@ const HeaderStyled = styled.header`
   ${(props) => (props.opacity === 'false'
     ? 'background: linear-gradient(to bottom, rgb(30, 31, 42), transparent)'
     : 'background: #090B13')};
-  padding: 1rem 0;
 
-  ${(props) => (props.position === 'fixed'
-    ? 'position: fixed;'
-    : 'position: static;')};
-    
   width: 100%;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 3;
+`;
+
+const ContainerNav = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const NavStyled = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  padding: 1rem 0;
 `;
 
 const Logo = styled(Link)`
   width: 70px;
   margin-left: 2rem;
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -41,17 +45,52 @@ const Logo = styled(Link)`
 
 `;
 
-const MenuResponsive = styled.li`
-  padding-bottom: .2rem;
-  padding-right: 1rem;
+const ProfileImage = styled.img`
+  width: 45px;
+  border-radius: 50%;
+
   &:hover{
     cursor: pointer;
   }
 `;
 
 const Profile = styled.div`
+  padding: 1rem 1rem 0rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: 10;
+  border: 1px solid transparent;
+  border-radius: 0px 0px 0px 10px;
   width: fit-content;
-  margin-right: 1rem;
+  height: 0vh;
+  transition: height .3s ease-in-out;
+
+  &:hover{
+    background-color: #131313;
+    border: 1px solid #414141;
+    height: 60vh;
+  }
+`;
+
+const DivSubmenu = styled.div`
+  ul{
+    padding-block: 1rem;
+    padding-left: 0;
+    list-style: none;
+    color: white;
+    display: none;
+
+    p{
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    ${Profile}:hover & {
+      display: block;
+    }
+  }
 `;
 
 const DivProfile = styled.div`
@@ -59,56 +98,10 @@ const DivProfile = styled.div`
   align-items: center;
   justify-content: flex-end;
   gap: 1rem;
-  padding-bottom: .4rem;
-  border-bottom: 1px solid transparent;
-  width: 100%;
+  padding-bottom: 1rem;
 
   ${Profile}:hover & {
     border-bottom: 1px solid #414141;
-  }
-`;
-
-const DivSubmenu = styled.div`
-  background-color: #131313;
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 250px;
-  height: 300px;
-  border: 1px solid #414141;
-  border-radius: 5px;
-  transform: translateY(-100%);
-  transition: all .3s ease-in-out;
-
-  ${Profile}:hover & {
-    transform: translateY(0%);
-  }
-  
-  ul{
-    padding-top: 4rem;
-    padding-left: 0;
-    list-style: none;
-    color: white;
-
-    p{
-      text-align: center;
-      margin-top: 4rem;
-    }
-  }
-`;
-
-const ProfileImage = styled.img`
-  width: 40px;
-  display: block;
-  border-radius: 50%;
-
-  &:hover{
-    cursor: pointer;
-  }
-
-  ${Profile}:hover & {
-    width: 40px;
   }
 `;
 
@@ -128,60 +121,73 @@ const NavList = styled.ul`
   flex: 1;
   justify-content: flex-start;
   align-items: center;
-  column-gap: 2rem;
+  column-gap: 1rem;
   list-style: none;
   margin: 0;
+  padding-left: 1rem;
 
-  li{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    color: white;
+  @media screen and (min-width: 880px){
+    column-gap: 2rem;
+    padding-left: 2rem;
   }
+`;
 
-  li:nth-last-child(3){
+const ListItem = styled.li`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: white;
+
+  &:nth-last-child(-n+2){
     display: none;
   }
 
-  @media screen and (max-width: 768px){
-    column-gap: 1rem;
-    padding-left: 1rem;
-
-    li:nth-last-child(-n+2){
-      display: none;
-    }
-
-    li:nth-last-child(3){
+  @media screen and (min-width: 780px){
+    &:nth-last-child(-n+2){
       display: block;
-      position: relative;
-
-      &:hover{
-        
-        ul{
-          position: absolute;
-          left: 0px;
-          top: 20px;
-          background-color: #131313;
-          border: 1px solid #414141;
-          padding: 1rem;
-          border-radius: 5px;
-
-          li{
-            display: block;
-            padding-bottom: 1rem;
-            
-            &:last-of-type{
-              padding-bottom: 0rem;
-            }
-
-            span{
-              display: block;
-              font-size: .9em;
-            }
-          }
-        }
-      }
     }
+  }
+`;
+
+const MenuResponsive = styled.li`
+  padding-right: 1rem;
+  display: block;
+  position: relative;
+
+  svg{
+    color: white;
+  }
+
+  &:hover{
+    cursor: pointer;
+  }
+
+  @media (min-width: 780px) {
+    display: none;
+  }
+`;
+
+const MenuResponsiveList = styled.ul`
+  position: absolute;
+  left: 0px;
+  top: 20px;
+  background-color: #131313;
+  border: 1px solid #414141;
+  padding: 1rem;
+  border-radius: 5px;
+  display: none;
+
+  ${MenuResponsive}:hover &{
+    display: block;
+  }
+`;
+
+const MenuResponsiveItem = styled.li`
+  display: block;
+  padding-bottom: 1rem;
+
+  &:last-of-type{
+    padding-bottom: 0rem;
   }
 `;
 
@@ -195,44 +201,34 @@ const LinkItem = styled(Link)`
   align-items: center;
   gap: .5rem;
   padding: .5rem;
-  
-  span{
+`;
 
-    &::after {
-      content: '';
-      display: block;
-      width: 0%;
-      height: 2px;
-      background-color: white;
-      transition: all 0.3s ease-in-out;
-    }
-  
-    &:hover::after {
-      width: 100%;
-    }
+const ItemMenu = styled.span`
+  font-size: .9em;
+  display: none;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 0%;
+    margin-top: .1rem;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease-in-out;
   }
 
-  @media screen and (max-width: 768px){
-    span{
-      display: none;
-    }
-
-    gap: .2rem;
-    flex-direction: column;
-
-    &::after {
-      content: '';
-      display: block;
-      width: 0%;
-      height: 2px;
-      background-color: white;
-      transition: all 0.3s ease-in-out;
-    }
-  
-    &:hover::after {
-      width: 100%;
-    }
+  &:hover::after {
+    width: 100%;
   }
+
+  @media screen and (min-width: 780px){
+    display: block;
+    padding-top: .1rem;
+  }
+`;
+
+const ItemMenuResponsive = styled(ItemMenu)`
+  display: block;
 `;
 
 const ButtonStyled = styled.button`
@@ -266,4 +262,10 @@ export {
   ProfileImage,
   ButtonStyled,
   MenuResponsive,
+  ContainerNav,
+  ListItem,
+  MenuResponsiveItem,
+  MenuResponsiveList,
+  ItemMenu,
+  ItemMenuResponsive,
 };

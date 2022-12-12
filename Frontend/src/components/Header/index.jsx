@@ -15,91 +15,99 @@ import {
   NameUser,
   ProfileImage,
   ButtonStyled,
+  ContainerNav,
   MenuResponsive,
+  MenuResponsiveItem,
+  MenuResponsiveList,
+  ItemMenu,
+  ItemMenuResponsive,
+  ListItem,
 } from './styles';
 
 import useOpacity from '../../hooks/useOpacity';
 import { useAuth } from '../../context/AuthContext';
 
-function Header({ position }) {
+function Header() {
   const { opacity } = useOpacity();
   const { user, handleLogout } = useAuth();
 
   return (
-    <HeaderStyled opacity={opacity.toString()} position={position}>
+    <HeaderStyled opacity={opacity.toString()}>
       <NavStyled>
-        <Logo to="/home">
-          <img src="/assets/img/logo.svg" alt="Logo" />
-        </Logo>
+        <ContainerNav>
+          <Logo to="/home">
+            <img src="/assets/img/logo.svg" alt="Logo" />
+          </Logo>
 
-        <NavList>
-          <li>
-            <LinkItem to="/home">
-              <AiFillHome />
-              <span>
-                Home
-              </span>
-            </LinkItem>
-          </li>
+          <NavList>
+            <ListItem>
+              <LinkItem to="/home">
+                <AiFillHome />
+                <ItemMenu>
+                  Home
+                </ItemMenu>
+              </LinkItem>
+            </ListItem>
 
-          <li>
-            <LinkItem to="/search">
-              <AiOutlineSearch />
-              <span>
-                Búsqueda
-              </span>
-            </LinkItem>
-          </li>
+            <ListItem>
+              <LinkItem to="/search">
+                <AiOutlineSearch />
+                <ItemMenu>
+                  Búsqueda
+                </ItemMenu>
+              </LinkItem>
+            </ListItem>
 
-          <li>
-            <LinkItem to="/my-list">
-              <AiOutlinePlus />
-              <span>
-                Mi Lista
-              </span>
-            </LinkItem>
-          </li>
+            <ListItem>
+              <LinkItem to="/my-list">
+                <AiOutlinePlus />
+                <ItemMenu>
+                  Mi Lista
+                </ItemMenu>
+              </LinkItem>
+            </ListItem>
 
-          <MenuResponsive>
-            <BiDotsVerticalRounded />
-            <ul>
-              <li>
-                <LinkItem to="/movies">
-                  <GiFilmSpool />
-                  <span>
-                    Películas
-                  </span>
-                </LinkItem>
-              </li>
-              <li>
-                <LinkItem to="/tv">
-                  <MdOutlineOndemandVideo />
-                  <span>
-                    Series
-                  </span>
-                </LinkItem>
-              </li>
-            </ul>
-          </MenuResponsive>
+            <MenuResponsive>
+              <BiDotsVerticalRounded />
+              <MenuResponsiveList>
+                <MenuResponsiveItem>
+                  <LinkItem to="/movies">
+                    <GiFilmSpool />
+                    <ItemMenuResponsive>
+                      Películas
+                    </ItemMenuResponsive>
+                  </LinkItem>
+                </MenuResponsiveItem>
+                <MenuResponsiveItem>
+                  <LinkItem to="/tv">
+                    <MdOutlineOndemandVideo />
+                    <ItemMenuResponsive>
+                      Series
+                    </ItemMenuResponsive>
+                  </LinkItem>
+                </MenuResponsiveItem>
+              </MenuResponsiveList>
+            </MenuResponsive>
 
-          <li>
-            <LinkItem to="/movies">
-              <GiFilmSpool />
-              <span>
-                Películas
-              </span>
-            </LinkItem>
-          </li>
+            <ListItem>
+              <LinkItem to="/movies">
+                <GiFilmSpool />
+                <ItemMenu>
+                  Películas
+                </ItemMenu>
+              </LinkItem>
+            </ListItem>
 
-          <li>
-            <LinkItem to="/tv">
-              <MdOutlineOndemandVideo />
-              <span>
-                Series
-              </span>
-            </LinkItem>
-          </li>
-        </NavList>
+            <ListItem>
+              <LinkItem to="/tv">
+                <MdOutlineOndemandVideo />
+                <ItemMenu>
+                  Series
+                </ItemMenu>
+              </LinkItem>
+            </ListItem>
+          </NavList>
+        </ContainerNav>
 
         <Profile>
           <DivProfile>
