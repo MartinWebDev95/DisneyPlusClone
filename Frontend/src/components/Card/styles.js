@@ -4,18 +4,19 @@ import { Link } from 'react-router-dom';
 const LinkStyled = styled(Link)`
   padding: 0.25rem;
   flex: 0 0 calc(100% / var(--items-per-screen));
-  
+  /* background-color: #171822; */
+
   ${(props) => ((props.width === 'max-content')
     ? 'max-width: max-content'
     : 'max-width: calc(100% / var(--items-per-screen));')}
-  
+
   &:first-of-type{
     padding-left: 0;
   }
 
   &:last-of-type{
     padding-right: 0;
-  } 
+  }
 
 `;
 
@@ -28,6 +29,7 @@ const ImageStyled = styled.img`
   transition: all .3s ease-in-out;
   width: 100%;
   object-fit: cover;
+  background-color: #171822;
 
   ${(props) => ((props.height === 'no-carousel')
     ? 'height: auto;'
