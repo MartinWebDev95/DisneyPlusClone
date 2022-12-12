@@ -1,21 +1,19 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
-  width: 90%;
-`;
-
 const CarrouselStyled = styled.div`
-  width: fit-content;
   display: flex;
-  column-gap: 1rem;
-  padding-top: 1rem;
-  transition: all .3s ease-in-out;
-  overflow-x: hidden;
+  width: calc(100% - 2 * var(--slider-padding));
+  transform: translateX(0%);
+  transition: all .5s ease-in-out;
   
-  @media screen and (max-width: 468px){
-    flex-direction: column;
-    row-gap: 1rem;
-    justify-content: center;
+  &:hover{
+    cursor: grab;
+  } 
+
+  @media (min-width: 1000px){
+    &:hover{
+      cursor: auto;
+    } 
   }
 `;
 
@@ -26,43 +24,51 @@ const Title = styled.p`
 `;
 
 const ButtonStyled = styled.button`
-  background-color: rgba(0, 0, 0, 0.3);
-  position: absolute;
+  background-color: transparent;
   border: none;
-  cursor: pointer;
-  top: 0%;
-  height: 80%;
-  width: 5rem;
-  z-index: 2;
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: var(--slider-padding);
+  opacity: 0;
+  z-index: -1;
   transition: all .3s ease-in-out;
 
-  ${(props) => (props.type === 'left'
-    ? `left: -5rem;
-    opacity: 0;`
-    : `right: -4rem;
-    opacity: 0;`)};
-
-  &:hover{
-    opacity: 1;
-  }
+  ${(props) => (props.position === 'left'
+    ? 'border-radius: 0px 5px 5px 0px;'
+    : 'border-radius: 5px 0px 0px 5px;'
+  )}
 
   svg{
     color: #EAEAD7;
-    font-size: 2rem;
+    font-size: 3rem;
+    opacity: 1;
+
+    @media (min-width: 1000px){
+      font-size: 4rem;
+    }
+  }
+  
+  &:hover{
+    cursor: pointer;
   }
 
-  @media screen and (max-width: 468px){
-    display: none;
-  }
+  @media (min-width: 1000px){
+    background-color: rgba(0,0,0, .8);
+    opacity: 0;
+    z-index: 1;
 
+    &:hover{
+      opacity: 1;      
+    }
+  }
 `;
 
 const ContainerCarrousel = styled.div`
+  display: flex;
+  justify-content: center;
   position: relative;
-  width: 100%;
-  //border: 1px solid green;
 `;
 
 export {
-  CarrouselStyled, Title, ButtonStyled, ContainerCarrousel, Container,
+  CarrouselStyled, Title, ButtonStyled, ContainerCarrousel,
 };
