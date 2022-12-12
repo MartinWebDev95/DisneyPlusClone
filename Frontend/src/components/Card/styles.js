@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 const LinkStyled = styled(Link)`
   padding: 0.25rem;
   flex: 0 0 calc(100% / var(--items-per-screen));
-  /* background-color: #171822; */
 
   ${(props) => ((props.width === 'max-content')
     ? 'max-width: max-content'
