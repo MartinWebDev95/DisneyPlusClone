@@ -24,7 +24,7 @@ const Sinopsis = styled.p`
 const DivStyled = styled.div`
   padding: 0.25rem;
   flex: 0 0 calc(100% / var(--items-per-screen));
-  max-width: calc(100% / var(--items-per-screen));
+  max-width: max-content;
   
   &:first-of-type{
     padding-left: 0;
