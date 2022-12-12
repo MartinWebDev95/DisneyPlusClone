@@ -1,13 +1,13 @@
 :root{
   --items-per-screen: 2;
-  --items-height: 15rem;
+  --items-height: 20rem;
   --slider-padding: 1rem;
+  --slider-column-gap: 16px;
 }
 
 @media (min-width: 568px){
   :root{
     --items-per-screen: 3;
-    --items-height: 20rem;
     --slider-padding: 2rem;
   }
 }
