@@ -1,5 +1,7 @@
 /* eslint-disable no-param-reassign */
-function useCarrousel(collection, carrousel) {
+import { useEffect } from 'react';
+
+function useCarrousel(collection, carrousel, id, resetPosition) {
   let total = 0;
   let isDown = false;
   let isTouching = false;
@@ -8,6 +10,15 @@ function useCarrousel(collection, carrousel) {
   let currentSliding = total;
   let itemsPerScreen = 0;
   let maxSliding = 0;
+
+  // El carrousel vuelve a su posición inicial cuando se cambia
+  // de temporada en el caso del carrousel para los episodios de una serie
+  // o cuando se cambia de película o serie en la página de detalles
+  if (resetPosition) {
+    useEffect(() => {
+      carrousel.current.style.transform = 'translateX(0%)';
+    }, [id]);
+  }
 
   const handleClickNext = () => {
     // Obtengo cuantos items se muestran en cada desplazamiento
