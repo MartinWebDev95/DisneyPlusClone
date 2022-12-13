@@ -1,19 +1,23 @@
 /* eslint-disable no-unused-expressions */
 import { useState, useEffect } from 'react';
+
 import Carrousel from '../Carrousel';
 import TabDetail from '../TabDetail';
 import TabEpisodes from '../TabEpisodes';
-import { TabsStyled, TabStyled } from './styles';
+
+import useHoursAndMinutes from '../../hooks/useHoursAndMinutes';
+
 import {
   getSimilarItems, getCast,
 } from '../../services/getDataFromAPI';
-import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
+
+import { TabsStyled, TabStyled, SectionStyled } from './styles';
 
 function Tabs({ item, id, type }) {
   const [tabSelected, setTabSelected] = useState('suggested');
   const [similarItems, setSimilarItems] = useState([]);
   const [cast, setCast] = useState([]);
-  const { hours, minutesLeft } = getHoursAndMinutes(item?.runtime || item?.episode_run_time);
+  const { hours, minutesLeft } = useHoursAndMinutes(item?.runtime || item?.episode_run_time);
 
   useEffect(() => {
     getSimilarItems(id, type).then((data) => {
@@ -30,7 +34,7 @@ function Tabs({ item, id, type }) {
   };
 
   return (
-    <section>
+    <SectionStyled>
       <TabsStyled>
         {type === 'movie' && (
           <>
@@ -88,7 +92,7 @@ function Tabs({ item, id, type }) {
 
       {/* Se muestran las películas o series similares a la que se muestra */}
       {tabSelected === 'suggested' && (
-        <Carrousel collection={similarItems} type={type} />
+        <Carrousel collection={similarItems} type={type} id={id} resetPosition />
       )}
 
       {/* Se muestran los detalles de la serie o película */}
@@ -108,7 +112,7 @@ function Tabs({ item, id, type }) {
       {tabSelected === 'episodes' && (
         <TabEpisodes seasons={item.seasons} id={id} />
       )}
-    </section>
+    </SectionStyled>
   );
 }
 
