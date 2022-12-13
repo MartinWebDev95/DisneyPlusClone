@@ -12,7 +12,7 @@ import {
 } from './styles';
 
 function Carrousel({
-  collection = [], title = null, type = '',
+  collection = [], title = null, type = '', id = 0, resetPosition = false,
 }) {
   const carrousel = useRef(null);
 
@@ -25,7 +25,7 @@ function Carrousel({
     handleTouchStart,
     handleTouchMove,
     handleTouchEnd,
-  } = useCarrousel(collection, carrousel);
+  } = useCarrousel(collection, carrousel, id, resetPosition);
 
   return (
     <SectionStyled>

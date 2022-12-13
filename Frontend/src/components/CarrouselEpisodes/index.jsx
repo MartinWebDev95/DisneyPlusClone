@@ -4,7 +4,7 @@ import CardEpisodes from '../CardEpisodes';
 import useCarrousel from '../../hooks/useCarrousel';
 import { ContainerCarrousel, ButtonStyled, CarrouselStyled } from './styles';
 
-function CarrouselEpisodes({ collection }) {
+function CarrouselEpisodes({ collection = [], id, resetPosition }) {
   const carrousel = useRef(null);
 
   const {
@@ -16,7 +16,7 @@ function CarrouselEpisodes({ collection }) {
     handleTouchStart,
     handleTouchMove,
     handleTouchEnd,
-  } = useCarrousel(collection, carrousel);
+  } = useCarrousel(collection, carrousel, id, resetPosition);
 
   return (
     <ContainerCarrousel>
