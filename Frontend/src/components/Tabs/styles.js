@@ -11,6 +11,10 @@ const TabsStyled = styled.div`
   margin: 5rem auto 2rem auto;
 `;
 
+const SectionStyled = styled.section`
+  overflow: hidden;
+`;
+
 const TabStyled = styled.button`
   text-transform: uppercase;
   font-weight: bold;
@@ -43,4 +47,5 @@ const TabStyled = styled.button`
 export {
   TabsStyled,
   TabStyled,
+  SectionStyled,
 };
