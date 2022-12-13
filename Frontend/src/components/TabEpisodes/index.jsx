@@ -43,7 +43,7 @@ function TabEpisodes({ seasons, id }) {
         </ListOfSeasons>
       </Container>
 
-      <CarrouselEpisodes collection={episodes} />
+      <CarrouselEpisodes collection={episodes} id={seasonId} resetPosition />
     </>
   );
 }
