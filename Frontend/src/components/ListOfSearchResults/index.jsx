@@ -9,8 +9,7 @@ function ListOfSearchResults({ results, keyword }) {
         <NotFound>{`No se han encontrado resultados para "${keyword}"`}</NotFound>
       ) : (
         <ListStyled>
-          {
-          results?.map((item) => (
+          {results?.map((item) => (
             <Card
               key={item.id}
               item={item}
@@ -18,8 +17,7 @@ function ListOfSearchResults({ results, keyword }) {
               width="max-content"
               height="no-carousel"
             />
-          ))
-        }
+          ))}
         </ListStyled>
       )
   );

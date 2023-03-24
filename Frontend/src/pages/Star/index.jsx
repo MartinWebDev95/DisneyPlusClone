@@ -16,8 +16,6 @@ function Star() {
   const [seriesStarDrama, setSeriesStarDrama] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     Promise.all([getItemsFromStar('tv'), getItemsFromStar('movie')]).then((data) => {
       const newSeries = data[0].map((item) => ({ ...item, type: 'tv' }));
       const newMovies = data[1].map((item) => ({ ...item, type: 'movie' }));

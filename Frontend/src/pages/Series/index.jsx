@@ -13,21 +13,19 @@ function Series() {
   const [tv, setTv] = useState([]);
   const [genre, setGenre] = useState('');
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-
-    getItemsFromDisney('tv', page, genre).then((data) => {
-      if (page === 1) {
-        window.scrollTo(0, 0);
-        setTv(data);
-      } else {
-        setTv((previousData) => previousData.concat(data));
-      }
-
-      setLoading(false);
-    });
+    getItemsFromDisney('tv', page, genre)
+      .then((data) => {
+        if (page === 1) {
+          setTv(data);
+        } else {
+          setTv((previousData) => previousData.concat(data));
+        }
+      }).finally(
+        setLoading(false),
+      );
   }, [genre, page]);
 
   return (

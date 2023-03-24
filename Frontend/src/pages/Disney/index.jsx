@@ -22,8 +22,6 @@ function Disney() {
   const [moviesIceAge, setMoviesIceAge] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     getMoviesWaltDisneyAnimations().then((data) => {
       setMoviesWaltDisney(data);
     });

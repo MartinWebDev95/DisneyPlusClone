@@ -15,18 +15,16 @@ function Movies() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-
-    getItemsFromDisney('movie', page, genre).then((data) => {
-      if (page === 1) {
-        window.scrollTo(0, 0);
-        setMovies(data);
-      } else {
-        setMovies((previousData) => previousData.concat(data));
-      }
-
-      setLoading(false);
-    });
+    getItemsFromDisney('movie', page, genre)
+      .then((data) => {
+        if (page === 1) {
+          setMovies(data);
+        } else {
+          setMovies((previousData) => previousData.concat(data));
+        }
+      }).finally(
+        setLoading(false),
+      );
   }, [genre, page]);
 
   return (

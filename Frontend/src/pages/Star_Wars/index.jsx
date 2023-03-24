@@ -16,19 +16,20 @@ function StarWars() {
   const [legoStarWarsMovies, setLegoStarWarsMovies] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    getItemsFromBrand('movie', '1')
+      .then((data) => {
+        setStarWarsMovies(data);
+      });
 
-    getItemsFromBrand('movie', '1').then((data) => {
-      setStarWarsMovies(data);
-    });
+    getItemsFromBrand('tv', '1')
+      .then((data) => {
+        setStarWarsSeries(data);
+      });
 
-    getItemsFromBrand('tv', '1').then((data) => {
-      setStarWarsSeries(data);
-    });
-
-    getItemsCollection('302331').then((data) => {
-      setLegoStarWarsMovies(data);
-    });
+    getItemsCollection('302331')
+      .then((data) => {
+        setLegoStarWarsMovies(data);
+      });
   }, []);
 
   return (

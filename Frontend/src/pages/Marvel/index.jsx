@@ -19,8 +19,6 @@ function Marvel() {
   const [moviesThor, setMoviesThor] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     getItemsFromBrand('movie', '420')
       .then((data) => {
         setMoviesMarvel(data);

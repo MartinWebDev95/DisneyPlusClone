@@ -19,8 +19,6 @@ function Pixar() {
   const [carsMovies, setCarsMovies] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     getItemsFromBrand('movie', '3').then((data) => {
       setMoviesPixar(data);
     });

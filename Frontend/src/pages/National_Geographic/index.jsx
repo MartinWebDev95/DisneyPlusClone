@@ -15,8 +15,6 @@ function NationalGeographic() {
   const [seriesGeographic, setSeriesGeographic] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-
     getItemsFromBrand('movie', '7521').then((data) => {
       setMoviesGeographic(data);
     });
