@@ -1,101 +1,35 @@
-import { useState, useEffect } from 'react';
-
-import VideoBgMarvel from '../../../public/assets/videos/bg-marvel.mp4';
-import PosterImage from '../../../public/assets/img/categories/bg-marvel.jpg';
-
 import Carrousel from '../../components/Carrousel';
 import BackgroundVideo from '../../components/BackgroundVideo';
-
-import { getItemsCollection, getItemsFromBrand } from '../../services/getDataFromAPI';
-
 import Spacing from './styles';
+import useFetchFromApi from '../../hooks/useFetchFromApi';
+import brandData from '../../utils/brandData';
+import Spinner from '../../components/Spinner';
 
 function Marvel() {
-  const [moviesMarvel, setMoviesMarvel] = useState([]);
-  const [seriesMarvel, setSeriesMarvel] = useState([]);
-  const [moviesAvengers, setMoviesAvengers] = useState([]);
-  const [moviesSpiderman, setMoviesSpiderman] = useState([]);
-  const [moviesCaptainAmerica, setMoviesCaptainAmerica] = useState([]);
-  const [moviesThor, setMoviesThor] = useState([]);
-
-  useEffect(() => {
-    getItemsFromBrand('movie', '420')
-      .then((data) => {
-        setMoviesMarvel(data);
-      });
-
-    getItemsFromBrand('tv', '420')
-      .then((data) => {
-        setSeriesMarvel(data);
-      });
-
-    getItemsCollection('86311')
-      .then((data) => {
-        setMoviesAvengers(data);
-      });
-
-    getItemsCollection('531241')
-      .then((data) => {
-        setMoviesSpiderman(data);
-      });
-
-    getItemsCollection('131295')
-      .then((data) => {
-        setMoviesCaptainAmerica(data);
-      });
-
-    getItemsCollection('131296')
-      .then((data) => {
-        setMoviesThor(data);
-      });
-  }, []);
+  const { data, isLoading } = useFetchFromApi({ apiCalls: brandData, brand: 'marvel' });
 
   return (
-    <main>
-      <BackgroundVideo
-        bgVideo={VideoBgMarvel}
-        posterImage={PosterImage}
-        altText="Marvel Logo"
-      />
+    isLoading
+      ? (<Spinner />)
+      : (
+        <main>
+          <BackgroundVideo
+            bgVideo={brandData.marvel.videoBrand}
+            posterImage={brandData.marvel.posterBrand}
+            altText="Marvel Logo"
+          />
 
-      <Spacing />
+          <Spacing />
 
-      <Carrousel
-        collection={moviesMarvel}
-        title="Películas Marvel"
-        type="movie"
-      />
-
-      <Carrousel
-        collection={seriesMarvel}
-        title="Series Marvel"
-        type="tv"
-      />
-
-      <Carrousel
-        collection={moviesAvengers}
-        title="Los Vengadores"
-        type="movie"
-      />
-
-      <Carrousel
-        collection={moviesSpiderman}
-        title="Spiderman"
-        type="movie"
-      />
-
-      <Carrousel
-        collection={moviesCaptainAmerica}
-        title="El Capitán América"
-        type="movie"
-      />
-
-      <Carrousel
-        collection={moviesThor}
-        title="Thor"
-        type="movie"
-      />
-    </main>
+          {Object.values(data).map((collection) => (
+            <Carrousel
+              key={crypto.randomUUID()}
+              collection={collection.data}
+              title={collection.title}
+            />
+          ))}
+        </main>
+      )
   );
 }
 

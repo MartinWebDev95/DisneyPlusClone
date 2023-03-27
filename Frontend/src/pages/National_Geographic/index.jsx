@@ -1,51 +1,36 @@
-import { useState, useEffect } from 'react';
-
-import VideoBgNationalGeographic from '../../../public/assets/videos/bg-national-geographic.mp4';
-import PosterImage from '../../../public/assets/img/categories/bg-national-geographic.jpg';
-
 import Carrousel from '../../components/Carrousel';
 import BackgroundVideo from '../../components/BackgroundVideo';
 
-import { getItemsFromBrand } from '../../services/getDataFromAPI';
-
 import Spacing from './styles';
+import useFetchFromApi from '../../hooks/useFetchFromApi';
+import brandData from '../../utils/brandData';
+import Spinner from '../../components/Spinner';
 
 function NationalGeographic() {
-  const [moviesGeographic, setMoviesGeographic] = useState([]);
-  const [seriesGeographic, setSeriesGeographic] = useState([]);
-
-  useEffect(() => {
-    getItemsFromBrand('movie', '7521').then((data) => {
-      setMoviesGeographic(data);
-    });
-
-    getItemsFromBrand('tv', '7521').then((data) => {
-      setSeriesGeographic(data);
-    });
-  }, []);
+  const { data, isLoading } = useFetchFromApi({ apiCalls: brandData, brand: 'nationalGeographic' });
 
   return (
-    <main>
-      <BackgroundVideo
-        bgVideo={VideoBgNationalGeographic}
-        posterImage={PosterImage}
-        altText="National Geographic Logo"
-      />
+    isLoading
+      ? (<Spinner />)
+      : (
+        <main>
+          <BackgroundVideo
+            bgVideo={brandData.nationalGeographic.videoBrand}
+            posterImage={brandData.nationalGeographic.posterBrand}
+            altText="National Geographic Logo"
+          />
 
-      <Spacing />
+          <Spacing />
 
-      <Carrousel
-        collection={moviesGeographic}
-        title="En primer plano"
-        type="movie"
-      />
-
-      <Carrousel
-        collection={seriesGeographic}
-        title="Docuseries"
-        type="tv"
-      />
-    </main>
+          {Object.values(data).map((collection) => (
+            <Carrousel
+              key={crypto.randomUUID()}
+              collection={collection.data}
+              title={collection.title}
+            />
+          ))}
+        </main>
+      )
   );
 }
 

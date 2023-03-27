@@ -1,18 +1,25 @@
 import { useState, useEffect } from 'react';
+import getBrandState from '../helpers/getBrandState';
 
-function useFetchFromApi(url = '') {
-  const [data, setData] = useState([]);
+function useFetchFromApi({ apiCalls = [], brand = '' }) {
+  const [data, setData] = useState(getBrandState(apiCalls[brand]));
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  const getData = async () => {
-    try {
-      const response = await fetch(url);
-      const d = await response.json();
+  const getData = () => {
+    const { dataBrand } = apiCalls[brand];
 
-      setData(d);
+    try {
+      dataBrand.forEach(({ call, state, title }) => {
+        call.then((item) => {
+          setData((prevState) => ({
+            ...prevState,
+            [state]: { data: item, title },
+          }));
+        });
+      });
     } catch (err) {
-      setError(err);
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -20,7 +27,7 @@ function useFetchFromApi(url = '') {
 
   useEffect(() => {
     getData();
-  }, [url]);
+  }, [apiCalls[brand]]);
 
   return { data, isLoading, error };
 }
