@@ -12,7 +12,7 @@ import {
 } from './styles';
 
 function Carrousel({
-  collection = [], title = null, type = '', id = 0, resetPosition = false,
+  collection = [], title = null, id = 0, resetPosition = false,
 }) {
   const carrousel = useRef(null);
 
@@ -58,7 +58,7 @@ function Carrousel({
             <Card
               key={item.id}
               item={item}
-              type={item.type ? item.type : type}
+              type={item.first_air_date ? 'tv' : 'movie'}
             />
           ))}
         </CarrouselStyled>
