@@ -106,7 +106,7 @@ const getSeasonEpisodes = async (id, seasonNumber) => {
   return data.episodes;
 };
 
-const getItemsFromDisney = async (type, page, genre = '') => {
+const getItemsFromDisney = async (type, page = 1, genre = '') => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}discover/${type}?api_key=${import.meta.env.VITE_API_KEY}&with_watch_providers=337&with_genres=${genre}&watch_region=ES&sort_by=release_date.desc&language=es-ES&page=${page}`);
   const data = await response.json();
   return data.results;
