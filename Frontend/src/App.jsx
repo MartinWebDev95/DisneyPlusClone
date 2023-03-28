@@ -4,10 +4,9 @@ import Home from './pages/Home';
 import MyList from './pages/MyList';
 import Search from './pages/Search';
 import Detail from './pages/Detail';
-import Movies from './pages/Movies';
-import Series from './pages/Series';
 import AuthLayout from './layout/AuthLayout';
 import BrandPage from './pages/BrandPage';
+import Categories from './pages/Categories';
 
 function App() {
   return (
@@ -18,8 +17,8 @@ function App() {
           <Route path="home" element={<Home />} />
           <Route path="search" element={<Search />} />
           <Route path="my-list" element={<MyList />} />
-          <Route path="movies" element={<Movies />} />
-          <Route path="tv" element={<Series />} />
+          <Route path="movies" element={<Categories type="movie" />} />
+          <Route path="tv" element={<Categories type="tv" />} />
           <Route path="movie/:id" element={<Detail type="movie" />} />
           <Route path="tv/:id" element={<Detail type="tv" />} />
           <Route path="brand/disney" element={<BrandPage brand="disney" />} />
