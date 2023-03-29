@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { getItemsFromDisney } from '../services/getDataFromAPI';
 
-function usePageAndCategory({ type }) {
+function usePaginationAndGenre({ type }) {
   const [items, setItems] = useState([]);
   const [genre, setGenre] = useState('');
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   // Cuando se cambia de página entre películas y series se actualizan
   // los estados al valor por defecto
@@ -20,6 +20,8 @@ function usePageAndCategory({ type }) {
   }, [type]);
 
   useEffect(() => {
+    setLoading(true);
+
     getItemsFromDisney(type, page, genre)
       .then((data) => {
         if (page === 1) {
@@ -50,4 +52,4 @@ function usePageAndCategory({ type }) {
   };
 }
 
-export default usePageAndCategory;
+export default usePaginationAndGenre;
