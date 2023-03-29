@@ -2,13 +2,9 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 90%;
-  padding-left: 4rem;
+  padding-left: 0rem;
+  margin: 0 auto;
   margin-bottom: 2rem;
-  
-  @media screen and (max-width: 468px){
-    padding-left: 0;
-    margin: 0 auto;
-  }
 `;
 
 const ListOfSeasons = styled.ul`
