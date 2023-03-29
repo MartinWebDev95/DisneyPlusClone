@@ -1,13 +1,32 @@
+import {
+  useCallback, useEffect, useRef,
+} from 'react';
 import Spinner from '../../components/Spinner';
 import FilterBar from '../../components/FilterBar';
 import FilterList from '../../components/FilterList';
 import { MainStyled, DivSpinner } from './styles';
-import usePageAndCategory from '../../hooks/usePageAndCategory';
+import usePaginationAndGenre from '../../hooks/usePaginationAndGenre';
+import useNearScreen from '../../hooks/useNearScreen';
 
 function Categories({ type }) {
   const {
     loading, items, genre, handleGenre, handlePage,
-  } = usePageAndCategory({ type });
+  } = usePaginationAndGenre({ type });
+
+  const externalRef = useRef();
+
+  const { nearScreen } = useNearScreen({
+    externalRef: loading ? null : externalRef,
+    once: false,
+  });
+
+  const handleNextPage = useCallback(() => handlePage(), [handlePage]);
+
+  useEffect(() => {
+    if (nearScreen) {
+      handleNextPage();
+    }
+  }, [nearScreen]);
 
   return (
     <>
@@ -26,11 +45,14 @@ function Categories({ type }) {
                 <Spinner />
               </DivSpinner>
             ) : (
-              <FilterList
-                items={items}
-                handlePage={handlePage}
-                type={type}
-              />
+              <>
+                <FilterList
+                  items={items}
+                  type={type}
+                />
+
+                <div id="visor" ref={externalRef} />
+              </>
             )
         }
       </MainStyled>
