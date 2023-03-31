@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
-import getBrandState from '../helpers/getBrandState';
+import getPageState from '../helpers/getPageState';
 
-function useFetchFromApi({ apiCalls = [], brand = '' }) {
-  const [data, setData] = useState(getBrandState(apiCalls[brand]));
-  const [isLoading, setLoading] = useState(true);
+function useFetchFromApi({ apiCalls = [], namePage = '' }) {
+  const [data, setData] = useState(getPageState(apiCalls[namePage]));
+  const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   const getData = () => {
-    const { dataBrand } = apiCalls[brand];
+    setLoading(true);
+
+    const { dataPage } = apiCalls[namePage];
 
     try {
-      dataBrand.forEach(({ call, state, title }) => {
+      dataPage.forEach(({ call, state, title }) => {
         call.then((item) => {
           setData((prevState) => ({
             ...prevState,
@@ -27,7 +29,7 @@ function useFetchFromApi({ apiCalls = [], brand = '' }) {
 
   useEffect(() => {
     getData();
-  }, [apiCalls[brand]]);
+  }, [apiCalls[namePage]]);
 
   return { data, isLoading, error };
 }
