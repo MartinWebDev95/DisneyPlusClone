@@ -13,7 +13,7 @@ const brandData = {
   marvel: {
     posterBrand: '/assets/img/categories/bg-marvel.jpg',
     videoBrand: '/assets/videos/bg-marvel.mp4',
-    dataBrand: [
+    dataPage: [
       {
         call: getItemsFromBrand('movie', '420'),
         state: 'moviesMarvel',
@@ -50,7 +50,7 @@ const brandData = {
   disney: {
     posterBrand: '/assets/img/categories/bg-disney.jpg',
     videoBrand: '/assets/videos/bg-disney.mp4',
-    dataBrand: [
+    dataPage: [
       {
         call: getMoviesWaltDisneyAnimations(),
         state: 'moviesWaltDisney',
@@ -77,7 +77,7 @@ const brandData = {
   pixar: {
     posterBrand: '/assets/img/categories/bg-pixar.jpg',
     videoBrand: '/assets/videos/bg-pixar.mp4',
-    dataBrand: [
+    dataPage: [
       {
         call: getItemsFromBrand('movie', '3'),
         state: 'moviesPixar',
@@ -99,7 +99,7 @@ const brandData = {
   nationalGeographic: {
     posterBrand: '/assets/img/categories/bg-national-geographic.jpg',
     videoBrand: '/assets/videos/bg-national-geographic.mp4',
-    dataBrand: [
+    dataPage: [
       {
         call: getItemsFromBrand('movie', '7521'),
         state: 'moviesGeographic',
@@ -116,7 +116,7 @@ const brandData = {
   starWars: {
     posterBrand: '/assets/img/categories/bg-star-wars.jpg',
     videoBrand: '/assets/videos/bg-star-wars.mp4',
-    dataBrand: [
+    dataPage: [
       {
         call: getItemsFromBrand('movie', '1'),
         state: 'starWarsMovies',
@@ -138,7 +138,7 @@ const brandData = {
   star: {
     posterBrand: '/assets/img/categories/bg-brand-star.jpg',
     videoBrand: '/assets/videos/bg-brand-star.mp4',
-    dataBrand: [
+    dataPage: [
       {
         call: getItemsFromStar('tv'),
         state: 'itemsStar',
