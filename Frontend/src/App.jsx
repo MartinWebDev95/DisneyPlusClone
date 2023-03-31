@@ -21,12 +21,12 @@ function App() {
           <Route path="tv" element={<Categories type="tv" />} />
           <Route path="movie/:id" element={<Detail type="movie" />} />
           <Route path="tv/:id" element={<Detail type="tv" />} />
-          <Route path="brand/disney" element={<BrandPage brand="disney" />} />
-          <Route path="brand/marvel" element={<BrandPage brand="marvel" />} />
-          <Route path="brand/pixar" element={<BrandPage brand="pixar" />} />
-          <Route path="brand/star" element={<BrandPage brand="star" />} />
-          <Route path="brand/star-wars" element={<BrandPage brand="starWars" />} />
-          <Route path="brand/national-geographic" element={<BrandPage brand="nationalGeographic" />} />
+          <Route path="brand/disney" element={<BrandPage namePage="disney" />} />
+          <Route path="brand/marvel" element={<BrandPage namePage="marvel" />} />
+          <Route path="brand/pixar" element={<BrandPage namePage="pixar" />} />
+          <Route path="brand/star" element={<BrandPage namePage="star" />} />
+          <Route path="brand/star-wars" element={<BrandPage namePage="starWars" />} />
+          <Route path="brand/national-geographic" element={<BrandPage namePage="nationalGeographic" />} />
         </Route>
       </Routes>
     </div>

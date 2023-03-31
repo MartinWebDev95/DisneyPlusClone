@@ -5,8 +5,8 @@ import useFetchFromApi from '../../hooks/useFetchFromApi';
 import brandData from '../../utils/brandData';
 import Spinner from '../../components/Spinner';
 
-function BrandPage({ brand }) {
-  const { data, isLoading } = useFetchFromApi({ apiCalls: brandData, brand });
+function BrandPage({ namePage }) {
+  const { data, isLoading } = useFetchFromApi({ apiCalls: brandData, namePage });
 
   return (
     isLoading
@@ -14,9 +14,11 @@ function BrandPage({ brand }) {
       : (
         <main>
           <BackgroundVideo
-            bgVideo={brandData[brand].videoBrand}
-            posterImage={brandData[brand].posterBrand}
-            altText={`${brand.substring(0, 1).toUpperCase() + brand.substring(1, brand.length)}`}
+            bgVideo={brandData[namePage].videoBrand}
+            posterImage={brandData[namePage].posterBrand}
+            altText={
+              namePage.substring(0, 1).toUpperCase() + namePage.substring(1, namePage.length)
+            }
           />
 
           <Spacing />
