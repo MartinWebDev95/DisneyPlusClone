@@ -7,7 +7,6 @@ const Container = styled.div`
   margin: 8rem auto 0 auto;
   
   @media screen and (max-width: 468px){
-    width: 100%;
     overflow-x: hidden;
   }
 `;
@@ -45,21 +44,23 @@ const ContainerImages = styled.div`
   align-items: center;
   transform: translateX(0%);
 
-  @media screen and (max-width: 468px){
-    column-gap: 0rem;
-  }
+  /* @media screen and (max-width: 768px){
+    column-gap: 2rem;
+  } */
 `;
 
 const Slide = styled.div`
   width: 100%;
-  margin-inline: 4.2rem;
+  //margin-inline: var(--slider-margin-inline);
+  margin-inline: 4rem;
   height: 20rem;
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px;
   border-radius: 5px;
   transition: all .3s ease-in-out;
-
+  
   @media screen and (max-width: 768px){
     margin-inline: 0rem;
+    border-radius: 0px;
   }
 `;
 
@@ -78,8 +79,13 @@ const LinkStyled = styled(Link)`
     outline: 3px solid #D7DEE8;
   } 
 
-  @media screen and (max-width: 468px){
-    border-radius: 0rem;
+  @media screen and (max-width: 768px){
+    border-radius: 0px;
+    outline: 0px solid #D7DEE8;
+
+    &:hover{
+      outline: 0px solid #D7DEE8;
+    } 
   }
 `;
 
