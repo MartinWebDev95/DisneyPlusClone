@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const CarrouselStyled = styled.div`
   display: flex;
-  width: calc(100% - 2 * var(--slider-padding));
+  width: calc(100% - 2 * var(--carrousel-padding));
   transform: translateX(0%);
   transition: all .5s ease-in-out;
   
@@ -28,7 +28,7 @@ const ButtonStyled = styled.button`
   border: none;
   flex-grow: 0;
   flex-shrink: 0;
-  width: var(--slider-padding);
+  width: var(--carrousel-padding);
   opacity: 0;
   z-index: -1;
   transition: all .3s ease-in-out;

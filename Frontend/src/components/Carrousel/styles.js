@@ -33,7 +33,7 @@ const ButtonStyled = styled.button`
   border: none;
   flex-grow: 0;
   flex-shrink: 0;
-  width: var(--slider-padding);
+  width: var(--carrousel-padding);
   opacity: 0;
   z-index: -1;
   transition: all .3s ease-in-out;
