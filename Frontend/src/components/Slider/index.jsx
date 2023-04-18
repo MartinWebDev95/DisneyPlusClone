@@ -8,7 +8,17 @@ import {
 function Slider({ collection }) {
   const containerImgs = useRef(null);
 
-  const { setIsEnter, handleClickNext, handleClickPrevious } = useSlider({
+  const {
+    setIsEnter,
+    handleClickNext,
+    handleClickPrevious,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+    handleTouchEnd,
+    handleTouchMove,
+    handleTouchStart,
+  } = useSlider({
     externalRef: containerImgs,
   });
 
@@ -21,7 +31,16 @@ function Slider({ collection }) {
         <IoIosArrowBack />
       </ButtonStyled>
 
-      <ContainerImages quantity={collection?.length} ref={containerImgs}>
+      <ContainerImages
+        quantity={collection?.length}
+        ref={containerImgs}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         {collection?.map((item) => (
           <Slide key={item.id}>
             <LinkStyled
