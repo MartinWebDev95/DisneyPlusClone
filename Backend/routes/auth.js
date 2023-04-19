@@ -23,6 +23,12 @@ router.get('/login/success', (req, res) => {
       message: 'successfull',
       user: req.user,
     });
+  } else {
+    res.status(403).json({
+      success: false,
+      message: 'unsuccessfull',
+      user: null,
+    });
   }
 });
 
