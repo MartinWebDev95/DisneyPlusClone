@@ -1,5 +1,5 @@
 import {
-  useState, createContext, useMemo, useContext, useEffect, useRef,
+  useState, createContext, useMemo, useContext, useEffect,
 } from 'react';
 
 const authContext = createContext();
@@ -12,7 +12,6 @@ const useAuth = () => {
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const isAuth = useRef(false);
 
   useEffect(() => {
     const getUser = async () => {
