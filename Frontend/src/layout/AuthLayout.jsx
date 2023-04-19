@@ -4,10 +4,8 @@ import Footer from '../components/Footer';
 import { useAuth } from '../context/AuthContext';
 import Spinner from '../components/Spinner';
 
-function AuthLayout({ children }) {
+function AuthLayout() {
   const { user, loading } = useAuth();
-
-  console.log({ user, loading });
 
   if (loading) {
     return <Spinner />;
@@ -18,7 +16,6 @@ function AuthLayout({ children }) {
       <>
         <Header position="fixed" />
         <Outlet />
-        {children}
         <Footer />
       </>
     ) : <Navigate to="/" />;
