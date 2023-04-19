@@ -33,9 +33,11 @@ function Detail({ type }) {
   const { hours, minutesLeft } = useHoursAndMinutes(itemDetail?.runtime);
 
   return (
-    // Cuando termine de cargar muestro todos los detalles de la película
-    !isLoading
+    // Cuando termine de cargar muestro todos los detalles de la película o serie
+    isLoading
       ? (
+        <Spinner />
+      ) : (
         <main>
           <Background
             ref={background}
@@ -86,8 +88,6 @@ function Detail({ type }) {
 
           <Tabs item={itemDetail} id={id} type={type} />
         </main>
-      ) : (
-        <Spinner />
       )
   );
 }
