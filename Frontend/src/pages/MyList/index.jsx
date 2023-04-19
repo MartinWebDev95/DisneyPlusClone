@@ -9,19 +9,20 @@ import ListOfItems from '../../components/ListOfItems';
 import Container from './styles';
 
 function MyList() {
-  const { user, loading } = useAuth();
+  const { user } = useAuth();
   const [itemsMyList, setItemsMyList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const { getAllItemsFromMyList } = useMyList();
 
   useEffect(() => {
-    if (!loading) {
-      getAllItemsFromMyList({ userId: user?.id }).then((data) => {
+    getAllItemsFromMyList({ userId: user?.id })
+      .then((data) => {
         setItemsMyList(data);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
-    }
-  }, [loading]);
+  }, []);
 
   return (
     <main>
