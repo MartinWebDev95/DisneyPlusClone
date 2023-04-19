@@ -42,8 +42,8 @@ const updateItemFromMyList = async (req, res) => {
     });
 
     return res.status(200).json({ ok: true });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    throw new Error(err.message);
   }
 };
 
@@ -54,7 +54,7 @@ const getItemsFromMyList = async (req, res) => {
   // Obtener todos los items de la BD
   const allItems = await MyList.find();
 
-  // Obtener solo los items que tengan el usuario autenticado actualmente como subdocumento
+  // Obtener solo los items que tengan el usuario autenticado
   const filterItems = allItems.filter((item) => (
     item.usersId.some((subId) => subId.userId === userId)
   ));
@@ -80,17 +80,27 @@ const deleteItemFromMyList = async (req, res) => {
   const { userId, idMongoose } = req.body;
 
   try {
-    await MyList.updateOne({ _id: idMongoose }, {
-      $pull: {
-        usersId: {
-          userId,
+    // Obtener el item específico
+    const itemToDelete = await MyList.findById({ _id: idMongoose }).exec();
+
+    // Si la película o serie pertenece a mas de un usuario, solo se elimina al usuario actual del
+    // array de usuarios, pero si solo pertenece a un usuario, se elimina la película o serie por
+    // completo de la BD
+    if (itemToDelete?.usersId.length > 1) {
+      await MyList.updateOne({ _id: idMongoose }, {
+        $pull: {
+          usersId: {
+            userId,
+          },
         },
-      },
-    });
+      });
+    } else {
+      await MyList.deleteOne({ _id: idMongoose });
+    }
 
     return res.status(200).json({ ok: true });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    throw new Error(err.message);
   }
 };
 
