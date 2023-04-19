@@ -6,7 +6,6 @@ function useCarrousel(collection, carrousel, id, resetPosition) {
   let isDown = false;
   let isTouching = false;
   let startPointer;
-  let scrollLeft;
   let currentSliding = total;
   let itemsPerScreen = 0;
   let maxSliding = 0;
@@ -58,7 +57,6 @@ function useCarrousel(collection, carrousel, id, resetPosition) {
 
     // Se obtiene la posición inicial del cursor en el carousel
     startPointer = (e.pageX - carrousel.current.offsetLeft);
-    scrollLeft = carrousel.current.scrollLeft;
   };
 
   const handleMouseMove = (e) => {
@@ -67,15 +65,15 @@ function useCarrousel(collection, carrousel, id, resetPosition) {
     e.preventDefault();
 
     // Se obtiene la posicion en todo momento del cursor en el carousel
-    const pointer = e.pageX - carrousel.current.offsetLeft;
+    const pointer = e.pageX;
 
     // Se calcula la distancia de desplazamiento del carousel
     // y transformo el desplazamiento del carousel que está en
     // píxeles a porcentaje
-    currentSliding = (((scrollLeft - (pointer - startPointer)) * 6.25) / 100);
+    currentSliding = (((startPointer - pointer) * 6.25) / 100);
 
     // Se va actualizando la posición del carousel en el momento
-    carrousel.current.style.transform = `translateX(-${total + (currentSliding)}%)`;
+    carrousel.current.style.transform = `translateX(-${total + currentSliding}%)`;
     carrousel.current.style.transition = 'none';
   };
 
@@ -116,7 +114,6 @@ function useCarrousel(collection, carrousel, id, resetPosition) {
     isTouching = true;
 
     startPointer = (e.changedTouches[0].pageX - carrousel.current.offsetLeft);
-    scrollLeft = carrousel.current.scrollLeft;
   };
 
   const handleTouchMove = (e) => {
@@ -124,7 +121,7 @@ function useCarrousel(collection, carrousel, id, resetPosition) {
 
     const pointer = e.changedTouches[0].pageX - carrousel.current.offsetLeft;
 
-    currentSliding = (((scrollLeft - (pointer - startPointer)) * 6.25) / 100);
+    currentSliding = (((startPointer - pointer) * 6.25) / 100);
 
     carrousel.current.style.transform = `translateX(-${total + (currentSliding)}%)`;
     carrousel.current.style.transition = 'none';
