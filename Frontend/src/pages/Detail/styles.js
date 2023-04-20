@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const Background = styled.div`
   background: linear-gradient(to right, rgb(30, 31, 42), rgb(30, 31, 42, 0.1)), url(${(props) => props.bgImg}) no-repeat center;

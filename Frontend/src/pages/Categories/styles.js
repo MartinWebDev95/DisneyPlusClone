@@ -1,5 +1,4 @@
-/* eslint-disable max-len */
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const MainStyled = styled.main`
   margin: 5.4rem auto 0 auto;
