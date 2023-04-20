@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro';
+import styled from 'styled-components';
 
 const FooterStyled = styled.footer`
   background-color: #090B13;
