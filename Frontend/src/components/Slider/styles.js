@@ -43,15 +43,10 @@ const ContainerImages = styled.div`
   flex-flow: row nowrap;
   align-items: center;
   transform: translateX(0%);
-
-  /* @media screen and (max-width: 768px){
-    column-gap: 2rem;
-  } */
 `;
 
 const Slide = styled.div`
   width: 100%;
-  //margin-inline: var(--slider-margin-inline);
   margin-inline: 4rem;
   height: 20rem;
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px;

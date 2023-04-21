@@ -73,7 +73,7 @@ const MainStyled = styled.main`
 `;
 
 const Container = styled.div`
-  background-image: url("../../../public/assets/img/original.jpeg");
+  background-image: url("/assets/img/original.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
