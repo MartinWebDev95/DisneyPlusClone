@@ -26,7 +26,7 @@ function AuthProvider({ children }) {
           },
         });
 
-        if (response.status !== 200) {
+        if (response.status !== 200 && response.status !== 403) {
           throw new Error('Authentication has been failed');
         }
 
@@ -38,7 +38,9 @@ function AuthProvider({ children }) {
       } catch (err) {
         throw new Error(err.message);
       } finally {
-        setLoading(false);
+        if (loading) {
+          setLoading(false);
+        }
       }
     };
 
@@ -47,7 +49,6 @@ function AuthProvider({ children }) {
 
   const handleLogout = () => {
     window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, '_self');
-    setUser(null);
   };
 
   const handleLogin = () => {
