@@ -1,3 +1,14 @@
 {
-  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }]
+  "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "access-control-allow-origin",
+          "value": "https://disneyplus-clone-app.vercel.app/*"
+        }
+      ]
+    }
+  ]
 }
