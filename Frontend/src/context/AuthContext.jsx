@@ -38,9 +38,11 @@ function AuthProvider({ children }) {
       } catch (err) {
         throw new Error(err.message);
       } finally {
-        if (loading) {
-          setLoading(false);
-        }
+        setTimeout(() => {
+          if (loading) {
+            setLoading(false);
+          }
+        }, 1000);
       }
     };
 
