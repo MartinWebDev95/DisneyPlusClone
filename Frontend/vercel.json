@@ -1,9 +1,11 @@
 {
-  "headers": [
+  "redirects": [
     {
-      "source": "/(.*)",
-      "headers": [
+      "source": "/[^.]+",
+      "destination": "/",
+      "has": [
         {
+          "type": "header",
           "key": "access-control-allow-origin",
           "value": "https://disneyplus-clone-app.vercel.app/*"
         }
