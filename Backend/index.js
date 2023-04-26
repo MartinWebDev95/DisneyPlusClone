@@ -26,7 +26,7 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 server.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: '*',
   methods: 'GET, POST, PUT, DELETE',
   credentials: true,
 }));
