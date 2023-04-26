@@ -28,7 +28,14 @@ server.use(passport.session());
 server.use(cors({
   origin: 'https://disneyplus-clone-app.vercel.app',
   methods: 'GET, POST, PUT, DELETE',
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  allowedHeaders: [
+    'Origin',
+    'X-Requested-With',
+    'Accept',
+    'Content-Type',
+    'Authorization',
+    'Access-Control-Allow-Credentials',
+  ],
   credentials: true,
 }));
 
