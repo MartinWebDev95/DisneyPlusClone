@@ -26,7 +26,7 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 server.use(cors({
-  origin: 'https://disneyplus-clone-app.vercel.app',
+  origin: process.env.FRONTEND_URL,
   methods: 'GET, POST, PUT, DELETE',
   allowedHeaders: [
     'Origin',
