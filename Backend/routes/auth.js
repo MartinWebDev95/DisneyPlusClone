@@ -24,10 +24,8 @@ router.get('/login/success', (req, res) => {
       user: req.user,
     });
   } else {
-    res.status(403).json({
+    res.json({
       success: false,
-      message: 'unsuccessfull',
-      user: null,
     });
   }
 });
