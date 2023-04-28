@@ -6,15 +6,9 @@ import { BiDotsVerticalRounded } from 'react-icons/bi';
 import {
   NavStyled,
   Logo,
-  Profile,
   LinkItem,
   NavList,
   HeaderStyled,
-  DivProfile,
-  DivSubmenu,
-  NameUser,
-  ProfileImage,
-  ButtonStyled,
   ContainerNav,
   MenuResponsive,
   MenuResponsiveItem,
@@ -25,11 +19,10 @@ import {
 } from './styles';
 
 import useOpacity from '../../hooks/useOpacity';
-import { useAuth } from '../../context/AuthContext';
+import ProfileMenu from '../ProfileMenu';
 
 function Header() {
   const { opacity } = useOpacity();
-  const { user, handleLogout } = useAuth();
 
   return (
     <HeaderStyled opacity={opacity.toString()}>
@@ -111,26 +104,8 @@ function Header() {
           </NavList>
         </ContainerNav>
 
-        <Profile>
-          <DivProfile>
-            <NameUser>
-              {`${user?.displayName.substring(0, 15)} ...`}
-            </NameUser>
+        <ProfileMenu />
 
-            <ProfileImage
-              src={`${user?.photos[0]?.value}`}
-              referrerpolicy="no-referrer"
-              alt="Profile"
-            />
-          </DivProfile>
-
-          <DivSubmenu>
-            <ul>
-              <ButtonStyled type="button" onClick={handleLogout}>Cerrar sesión</ButtonStyled>
-              <p>Coded by Juan Antonio Martín</p>
-            </ul>
-          </DivSubmenu>
-        </Profile>
       </NavStyled>
     </HeaderStyled>
   );
