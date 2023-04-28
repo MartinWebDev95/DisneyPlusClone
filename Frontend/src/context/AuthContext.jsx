@@ -26,10 +26,6 @@ function AuthProvider({ children }) {
           },
         });
 
-        if (response.status !== 200 && response.status !== 403) {
-          throw new Error('Authentication has been failed');
-        }
-
         const data = await response.json();
 
         if (data.success) {
@@ -38,11 +34,7 @@ function AuthProvider({ children }) {
       } catch (err) {
         throw new Error(err.message);
       } finally {
-        setTimeout(() => {
-          if (loading) {
-            setLoading(false);
-          }
-        }, 1000);
+        setLoading(false);
       }
     };
 
