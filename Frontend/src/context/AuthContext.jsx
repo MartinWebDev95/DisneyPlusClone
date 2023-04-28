@@ -1,5 +1,5 @@
 import {
-  useState, createContext, useMemo, useContext, useEffect,
+  useState, createContext, useMemo, useContext, useEffect, useRef,
 } from 'react';
 
 const authContext = createContext();
@@ -12,6 +12,7 @@ const useAuth = () => {
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const firstRender = useRef(true);
 
   useEffect(() => {
     const getUser = async () => {
@@ -38,7 +39,10 @@ function AuthProvider({ children }) {
       }
     };
 
-    getUser();
+    if (firstRender.current) {
+      getUser();
+      firstRender.current = false;
+    }
   }, []);
 
   const handleLogout = () => {
