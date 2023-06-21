@@ -1,11 +1,8 @@
 /* eslint-disable no-unused-expressions */
 import { useState, useEffect } from 'react';
 
-import Carrousel from '../Carrousel';
 import TabDetail from '../TabDetail';
 import TabEpisodes from '../TabEpisodes';
-
-import useHoursAndMinutes from '../../hooks/useHoursAndMinutes';
 
 import {
   getSimilarItems, getCast,
@@ -19,7 +16,6 @@ function Tabs({ item, id, type }) {
   const [similarItems, setSimilarItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [cast, setCast] = useState([]);
-  const { hours, minutesLeft } = useHoursAndMinutes(item?.runtime || item?.episode_run_time);
 
   useEffect(() => {
     try {
@@ -106,13 +102,9 @@ function Tabs({ item, id, type }) {
       {/* Se muestran los detalles de la serie o película */}
       {(tabSelected === 'details' && !loading) && (
         <TabDetail
-          title={item.title || item.name}
-          overview={item.overview}
-          date={item.first_air_date || item.release_date}
-          genres={item.genres}
+          item={item}
           cast={cast}
-          hours={hours}
-          minutesLeft={minutesLeft}
+          type={type}
         />
       )}
 

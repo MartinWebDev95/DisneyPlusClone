@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
 import {
   Container,
   Title,
@@ -7,16 +8,14 @@ import {
   ContainerDetails,
 } from './styles';
 
-function TabDetail({
-  title, overview, date, genres, cast, hours, minutesLeft,
-}) {
+function TabDetail({ item, cast, type }) {
   return (
     <Container>
       <div>
-        <Title>{title}</Title>
+        <Title>{item.title || item.name}</Title>
 
         <Sinopsis>
-          {overview}
+          {item.overview}
         </Sinopsis>
       </div>
 
@@ -25,24 +24,20 @@ function TabDetail({
           <Detail>
             Duración:
             <span>
-              {
-                hours === 0 ? (
-                  `${minutesLeft} min`
-                ) : (
-                  `${hours} h ${minutesLeft} min`
-                )
-              }
+              {type === 'movie'
+                ? getHoursAndMinutes(item?.runtime)
+                : getHoursAndMinutes(item?.episode_run_time)}
             </span>
           </Detail>
 
           <Detail>
             Fecha de estreno:
-            <span>{date?.split('-')[0]}</span>
+            <span>{item.first_air_date?.split('-')[0] || item.release_date?.split('-')[0]}</span>
           </Detail>
 
           <Detail>
             Género:
-            <span>{genres?.map((genre) => genre.name).join(', ')}</span>
+            <span>{item.genres?.map((genre) => genre.name).join(', ')}</span>
           </Detail>
         </div>
 
