@@ -4,7 +4,6 @@ import Spinner from '../../components/Spinner';
 import Tabs from '../../components/Tabs';
 
 import useManipulateMyList from '../../hooks/useManipulateMyList';
-import useHoursAndMinutes from '../../hooks/useHoursAndMinutes';
 import useOpacity from '../../hooks/useOpacity';
 
 import {
@@ -18,6 +17,7 @@ import {
   ButtonSecondary,
   RoundedButton,
 } from './styles';
+import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
 
 function Detail({ type }) {
   const { id } = useParams();
@@ -29,8 +29,6 @@ function Detail({ type }) {
   const {
     handleSaveMyList, selected, itemDetail, isLoading,
   } = useManipulateMyList({ id, type });
-
-  const { hours, minutesLeft } = useHoursAndMinutes(itemDetail?.runtime);
 
   return (
     // Cuando termine de cargar muestro todos los detalles de la película o serie
@@ -52,11 +50,7 @@ function Detail({ type }) {
 
               {' - '}
 
-              {type === 'movie' && (
-                hours !== 0
-                  ? `${hours}h ${minutesLeft}min`
-                  : `${minutesLeft}min`
-              )}
+              {type === 'movie' && (getHoursAndMinutes(itemDetail?.runtime))}
 
               {type === 'tv' && `${itemDetail.number_of_seasons} temporadas`}
             </p>
