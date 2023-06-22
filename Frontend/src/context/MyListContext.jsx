@@ -32,9 +32,9 @@ function MyListProvider({ children }) {
     }
   };
 
-  const getItemFromMyList = async (idItem) => {
+  const getItemFromMyList = async ({ userId, idItem }) => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/my-list/${idItem}`, {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/my-list/${userId}/${idItem}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
