@@ -22,8 +22,10 @@ router.route('/')
 router.route('/all/:userId')
   .get(getItemsFromMyList);
 
+router.route('/:userId/:id')
+  .get(getItemFromMyList);
+
 router.route('/:id')
-  .get(getItemFromMyList)
   .delete(jsonParser, deleteItemFromMyList)
   .put(jsonParser, updateItemFromMyList);
 
