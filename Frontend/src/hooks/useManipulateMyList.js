@@ -17,7 +17,6 @@ function useManipulateMyList({ id, type }) {
     addItemToMyList,
     getItemFromMyList,
     updateItemFromMyList,
-    getAllItemsFromMyList,
     deleteItemFromMyList,
   } = useMyList();
 
@@ -31,7 +30,7 @@ function useManipulateMyList({ id, type }) {
 
   useEffect(() => {
     // Compruebo si ya existe la pelicula o serie en la base de datos
-    getItemFromMyList(id)
+    getItemFromMyList({ userId: user?.id, idItem: id })
       .then((data) => {
         setExists(data.ok);
 
@@ -39,21 +38,16 @@ function useManipulateMyList({ id, type }) {
         if (data.ok) {
           setIdMongoose(data.itemMyList[0]._id);
         }
-      });
 
-    // Compruebo si la pelicula o serie guardada en la base de datos pertenece al usuario actual
-    getAllItemsFromMyList({ userId: user?.id })
-      .then((data) => {
-        data.forEach((dataItem) => {
-          if (dataItem.idItem === id) {
-            setSelected(true);
-          }
-        });
+        // Compruebo si la pelicula o serie guardada en la base de datos pertenece al usuario actual
+        if (data.belongsToUser) {
+          setSelected(true);
+        }
       })
       .finally(() => {
         setLoading(false);
       });
-  }, [selected]);
+  }, []);
 
   const handleSaveMyList = async () => {
     // Si la película o serie ya existe en la BD, se actualiza
@@ -77,7 +71,7 @@ function useManipulateMyList({ id, type }) {
     // Si el botón está seleccionado quiere decir que está en la BD, por lo tanto,
     // se elimina el usuario actual de la colección de usuarios de la película o serie
     if (selected) {
-      await deleteItemFromMyList({ idItem: id, userId: user.id, idMongoose });
+      await deleteItemFromMyList({ idItem: id, userId: user?.id, idMongoose });
 
       setSelected(false);
     }
