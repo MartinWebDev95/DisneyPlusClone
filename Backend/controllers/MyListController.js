@@ -67,12 +67,15 @@ const getItemFromMyList = async (req, res) => {
   // Obtener el item específico
   const itemMyList = await MyList.find().where('idItem').equals(req.params.id);
 
-  // Si el item no existe...
+  // Si el item no existe en la BD se devuelve false
   if (itemMyList.length === 0) {
     return res.json({ ok: false });
   }
 
-  return res.status(200).json({ ok: true, itemMyList });
+  // Comprobar si el item pertenece al usuario actual
+  const belongsToUser = itemMyList[0]?.usersId.some((subId) => subId.userId === req.params.userId);
+
+  return res.status(200).json({ ok: true, itemMyList, belongsToUser });
 };
 
 // Eliminar una película o serie que pertenezca al usuario autenticado actualmente
