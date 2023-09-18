@@ -9,7 +9,7 @@ function useSlider({ externalRef = null }) {
   const imageSlideWidth = useRef(0);
   const lastElement = useRef(null);
   const firstRender = useRef(true);
-  const valueTranslate = 2.56;
+  const valueTranslate = 2.63;
 
   // State que se actualiza cada vez que el mouse entra y sale del slider container
   const [isEnter, setIsEnter] = useState(false);
