@@ -5,13 +5,13 @@ import { useAuth } from '../context/AuthContext';
 import Spinner from '../components/Spinner';
 
 function AuthLayout() {
-  const { user, loading } = useAuth();
+  const { currentUser, loading } = useAuth();
 
   if (loading) {
     return <Spinner />;
   }
 
-  return user
+  return currentUser
     ? (
       <>
         <Header position="fixed" />
