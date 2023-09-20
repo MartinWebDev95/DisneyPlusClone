@@ -7,13 +7,18 @@ import {
 import { useAuth } from '../../context/AuthContext';
 
 function Login() {
-  const { handleLogin } = useAuth();
+  const { handleLoginWithGoogle } = useAuth();
 
   return (
     <Container>
       <HeaderStyled>
         <NavStyled>
-          <ButtonStyled type="button" onClick={handleLogin}>Iniciar Sesión</ButtonStyled>
+          <ButtonStyled
+            type="button"
+            onClick={handleLoginWithGoogle}
+          >
+            Iniciar Sesión
+          </ButtonStyled>
         </NavStyled>
       </HeaderStyled>
 
