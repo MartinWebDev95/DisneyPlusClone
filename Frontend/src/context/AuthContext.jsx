@@ -1,6 +1,9 @@
 import {
-  useState, createContext, useMemo, useContext, useEffect, useRef,
+  useState, createContext, useMemo, useContext, useEffect,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
+import supabase from '../../supabase';
+import getInfoCurrentUser from '../services/getInfoCurrentUser';
 
 const authContext = createContext();
 
@@ -10,52 +13,54 @@ const useAuth = () => {
 };
 
 function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const firstRender = useRef(true);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/auth/login/success`, {
-          method: 'GET',
-          credentials: 'include',
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Credentials': true,
-          },
-        });
+    setLoading(true);
 
-        const data = await response.json();
+    // Receive a notification every time an auth event happens.
+    supabase.auth.onAuthStateChange((event, session) => {
+      // If session is null that means the user is not logged so redirect the user to login page
+      if (!session) {
+        navigate('/');
 
-        if (data.success) {
-          setUser(data.user);
-        }
-      } catch (err) {
-        throw new Error(err.message);
-      } finally {
+        setCurrentUser(null);
+
         setLoading(false);
-      }
-    };
+      } else {
+        navigate('/home');
 
-    if (firstRender.current) {
-      getUser();
-      firstRender.current = false;
-    }
+        getInfoCurrentUser()
+          .then((infoUser) => {
+            setCurrentUser(infoUser);
+          }).finally(() => {
+            setLoading(false);
+          });
+      }
+    });
   }, []);
 
-  const handleLogout = () => {
-    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/logout`, '_self');
+  // Sign in with Google OAuth
+  const handleLoginWithGoogle = async () => {
+    try {
+      await supabase.auth.signInWithOAuth({
+        provider: 'google',
+      });
+    } catch (error) {
+      throw new Error(error.message);
+    }
   };
 
-  const handleLogin = () => {
-    window.open(`${import.meta.env.VITE_BACKEND_URL}/auth/google`, '_self');
+  // Logout
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
   };
 
   const value = useMemo(() => ({
-    user, setUser, loading, setLoading, handleLogout, handleLogin,
-  }), [user, loading]);
+    currentUser, setCurrentUser, loading, setLoading, handleLoginWithGoogle, handleLogout,
+  }), [currentUser, loading]);
 
   return (
     <authContext.Provider value={value}>
