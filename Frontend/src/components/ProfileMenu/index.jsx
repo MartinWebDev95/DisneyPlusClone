@@ -5,18 +5,18 @@ import {
 } from './styles';
 
 function ProfileMenu() {
-  const { user, handleLogout, loading } = useAuth();
+  const { currentUser, loading, handleLogout } = useAuth();
 
   return (
     !loading && (
       <Profile>
         <DivProfile>
           <NameUser>
-            {`${user?.displayName.substring(0, 15)}...`}
+            {`${currentUser?.name.substring(0, 15)}...`}
           </NameUser>
 
           <ProfileImage
-            src={user.photos[0].value}
+            src={currentUser?.photo}
             referrerpolicy="no-referrer"
             alt="Profile"
           />
@@ -24,7 +24,13 @@ function ProfileMenu() {
 
         <DivSubmenu>
           <ul>
-            <ButtonStyled type="button" onClick={handleLogout}>Cerrar sesión</ButtonStyled>
+            <ButtonStyled
+              type="button"
+              onClick={handleLogout}
+            >
+              Cerrar sesión
+            </ButtonStyled>
+
             <p>Coded by Juan Antonio Martín</p>
           </ul>
         </DivSubmenu>
