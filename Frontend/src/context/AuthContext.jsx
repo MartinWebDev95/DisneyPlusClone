@@ -14,24 +14,23 @@ const useAuth = () => {
 
 function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
-
-    // Receive a notification every time an auth event happens.
+    // Recibe una notificación cada vez que ocurre un evento auth
     supabase.auth.onAuthStateChange((event, session) => {
-      // If session is null that means the user is not logged so redirect the user to login page
+      // Si la session es null significa que el usuario no está logeado, por lo tanto,
+      // se redirecciona al usuario a la página de login
       if (!session) {
         navigate('/');
 
         setCurrentUser(null);
 
         setLoading(false);
-      } else {
-        navigate('/home');
+      }
 
+      if (session && event === 'INITIAL_SESSION') {
         getInfoCurrentUser()
           .then((infoUser) => {
             setCurrentUser(infoUser);
@@ -42,18 +41,21 @@ function AuthProvider({ children }) {
     });
   }, []);
 
-  // Sign in with Google OAuth
+  // Iniciar sesión con Google OAuth
   const handleLoginWithGoogle = async () => {
     try {
       await supabase.auth.signInWithOAuth({
         provider: 'google',
+        options: {
+          redirectTo: import.meta.env.VITE_REDIRECT_TO,
+        },
       });
     } catch (error) {
       throw new Error(error.message);
     }
   };
 
-  // Logout
+  // Cerrar sesión
   const handleLogout = async () => {
     await supabase.auth.signOut();
   };
