@@ -4,8 +4,7 @@ const addItemToDB = async (item) => {
   try {
     const { data } = await supabase
       .from('movies_series')
-      .insert(item)
-      .select();
+      .insert(item);
 
     return data;
   } catch (error) {
