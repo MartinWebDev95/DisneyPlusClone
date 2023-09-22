@@ -1,6 +1,6 @@
 import supabase from '../../supabase';
 
-// Gets the current user details if there is an existing session
+// Obtengo los detalles del usuario actual si existe una sesión activa
 const getInfoCurrentUser = async () => {
   const { data: { user } } = await supabase.auth.getUser();
 
