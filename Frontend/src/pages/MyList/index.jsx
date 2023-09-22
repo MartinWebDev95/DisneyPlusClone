@@ -1,21 +1,21 @@
 /* eslint-disable no-nested-ternary */
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../context/AuthContext';
-import { useMyList } from '../../context/MyListContext';
 
 import Spinner from '../../components/Spinner';
 import ListOfItems from '../../components/ListOfItems';
 
 import Container from './styles';
+import getAllItemsFromMyList from '../../services/getAllItemsFromMyList';
 
 function MyList() {
-  const { user } = useAuth();
+  const { currentUser } = useAuth();
   const [itemsMyList, setItemsMyList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { getAllItemsFromMyList } = useMyList();
 
   useEffect(() => {
-    getAllItemsFromMyList({ userId: user?.id })
+    // Obtengo todas las películas y series que tiene guardadas el usuario actual en su lista
+    getAllItemsFromMyList({ userId: currentUser?.id })
       .then((data) => {
         setItemsMyList(data);
       })
