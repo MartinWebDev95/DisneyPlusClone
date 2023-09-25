@@ -15,17 +15,18 @@ const Profile = styled.div`
   top: 0;
   right: 0;
   background-color: transparent;
-  z-index: 10;
   border: 1px solid transparent;
   border-radius: 0px 0px 0px 10px;
   width: fit-content;
   height: 0px;
+  z-index: 2;
   transition: height .3s ease-in-out;
 
   &:hover{
     background-color: #131313;
     border: 1px solid #414141;
     height: 300px;
+    z-index: 10;
   }
 `;
 

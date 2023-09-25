@@ -176,6 +176,7 @@ const MenuResponsiveList = styled.ul`
   padding: 1rem;
   border-radius: 5px;
   display: none;
+  z-index: 5;
 
   ${MenuResponsive}:hover &{
     display: block;
