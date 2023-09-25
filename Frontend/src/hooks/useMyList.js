@@ -5,8 +5,9 @@ import { getItemDetail } from '../services/getDataFromAPI';
 import addItemToDB from '../services/addItemToDB';
 import addItemToMyList from '../services/addItemToMyList';
 import getItemFromMyList from '../services/getItemFromMyList';
+import deleteItemFromMyList from '../services/deleteItemFromMyList';
 
-function useManipulateMyList({ id, type }) {
+function useMyList({ id, type }) {
   const { currentUser } = useAuth();
 
   const [itemDetail, setItemDetail] = useState({});
@@ -20,9 +21,6 @@ function useManipulateMyList({ id, type }) {
     getItemDetail(id, type)
       .then((data) => {
         setItemDetail(data);
-      })
-      .finally(() => {
-        setLoading(false);
       });
 
     // Compruebo si la película o serie está guardada en la lista del usuario actual
@@ -33,24 +31,34 @@ function useManipulateMyList({ id, type }) {
         } else {
           setSelected(false);
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, [id]);
 
   const handleSaveMyList = async () => {
-    // Añadir la película o serie a la base de datos
-    await addItemToDB({
-      idItem: id,
-      posterPath: itemDetail.poster_path,
-      type,
-    });
+    if (selected) {
+      setSelected(false);
 
-    // Relacionar la película o serie añadida con el usuario actual
-    await addItemToMyList({
-      idUser: currentUser.id,
-      idItem: id,
-    });
+      // Eliminar la película o serie de la lista del usuario actual
+      await deleteItemFromMyList({ idItem: id, userId: currentUser.id });
+    } else {
+      setSelected(true);
 
-    setSelected(true);
+      // Añadir la película o serie a la base de datos
+      await addItemToDB({
+        item_id: id,
+        poster_path: itemDetail.poster_path,
+        type,
+      });
+
+      // Relacionar la película o serie añadida con el usuario actual
+      await addItemToMyList({
+        user_id: currentUser.id,
+        item_id: id,
+      });
+    }
   };
 
   return {
@@ -58,4 +66,4 @@ function useManipulateMyList({ id, type }) {
   };
 }
 
-export default useManipulateMyList;
+export default useMyList;

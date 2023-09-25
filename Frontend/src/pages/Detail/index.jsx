@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Spinner from '../../components/Spinner';
 import Tabs from '../../components/Tabs';
 
-import useManipulateMyList from '../../hooks/useManipulateMyList';
+import useMyList from '../../hooks/useMyList';
 import useOpacity from '../../hooks/useOpacity';
 
 import {
@@ -17,6 +17,7 @@ import {
   ButtonSecondary,
   RoundedButton,
 } from './styles';
+
 import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
 
 function Detail({ type }) {
@@ -28,7 +29,7 @@ function Detail({ type }) {
   // Custom hook que muestra los detalles de la película o serie
   const {
     handleSaveMyList, selected, itemDetail, isLoading,
-  } = useManipulateMyList({ id, type });
+  } = useMyList({ id, type });
 
   return (
     // Cuando termine de cargar muestro todos los detalles de la película o serie
