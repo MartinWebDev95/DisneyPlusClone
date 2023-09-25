@@ -4,9 +4,9 @@ const getItemFromMyList = async ({ idItem, userId }) => {
   try {
     const { data } = await supabase
       .from('mylist')
-      .select('movies_series(idItem, posterPath, type)')
-      .eq('idItem', idItem)
-      .eq('idUser', userId);
+      .select('movies_series(item_id, poster_path, type)')
+      .eq('user_id', userId)
+      .eq('item_id', idItem);
 
     return data;
   } catch (error) {
