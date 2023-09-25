@@ -6,11 +6,11 @@ function Card({
   item, type, width = '', height = '',
 }) {
   return (
-    <LinkStyled to={`/${type}/${item.id || item.idItem}`} width={width}>
+    <LinkStyled to={`/${type}/${item.id || item.item_id}`} width={width}>
       {item.poster_path !== null
         ? (
           <ImageStyled
-            src={`https://image.tmdb.org/t/p/w200${item.poster_path || item.posterPath}`}
+            src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
             alt={item.title || item.name}
             available
             loading="lazy"
