@@ -8,6 +8,7 @@ const Background = styled.div`
   height: 100%;
   top: 0;
   left: 0;
+  bottom: 0;
   z-index: -1;
 `;
 
@@ -69,6 +70,7 @@ const ButtonPrimary = styled.button`
   gap: 0.5rem;
   text-transform: uppercase;
   font-weight: bold;
+  color: #000;
   border-radius: 5px;
   border: none;
   transition: all 0.3s ease-in-out;

@@ -3,11 +3,15 @@ import styled from 'styled-components';
 const SectionDataStyled = styled.section`
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );
+  grid-template-columns: repeat( auto-fill, minmax(150px, 1fr) );
   padding-top: 1rem;
   width: 90%;
   margin: 0 auto;
   padding-top: 10rem;
+
+  @media screen and (min-width: 480px){
+    grid-template-columns: repeat( auto-fill, minmax(200px, 1fr) );
+  }
 `;
 
 const ButtonStyled = styled.button`

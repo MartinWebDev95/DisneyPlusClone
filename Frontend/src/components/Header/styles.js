@@ -169,11 +169,11 @@ const MenuResponsive = styled.li`
 
 const MenuResponsiveList = styled.ul`
   position: absolute;
-  left: 0px;
+  left: -25px;
   top: 20px;
   background-color: #131313;
   border: 1px solid #414141;
-  padding: 1rem;
+  padding: .5rem;
   border-radius: 5px;
   display: none;
   z-index: 5;
@@ -181,14 +181,23 @@ const MenuResponsiveList = styled.ul`
   ${MenuResponsive}:hover &{
     display: block;
   }
+
+  @media (min-width: 410px) {
+    padding: 1rem;
+    left: 0px;
+  }
 `;
 
 const MenuResponsiveItem = styled.li`
   display: block;
-  padding-bottom: 1rem;
+  padding-bottom: .5rem;
 
   &:last-of-type{
     padding-bottom: 0rem;
+  }
+
+  @media (min-width: 410px) {
+    padding-bottom: 1rem;
   }
 `;
 

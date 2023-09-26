@@ -52,6 +52,10 @@ const CardStyle = styled(Link)`
 
   @media screen and (max-width: 768px){
     width: 100%;
+
+    video{
+      visibility: hidden;
+    }
   }
 `;
 
