@@ -20,6 +20,8 @@ const CardStyle = styled(Link)`
   border-radius: .5rem;
   border: 3px solid #4D4D4D;
   width: 50%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
   background: linear-gradient(rgb(48, 50, 62), rgb(30, 31, 42));
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px;
   transform: scale(1);
@@ -31,6 +33,7 @@ const CardStyle = styled(Link)`
     position: absolute;
     top: 0;
     left: 0;
+    bottom: 0;
   }
 
   video{
@@ -54,7 +57,7 @@ const CardStyle = styled(Link)`
     width: 100%;
 
     video{
-      visibility: hidden;
+      display: none;
     }
   }
 `;
