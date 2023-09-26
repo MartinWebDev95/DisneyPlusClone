@@ -4,7 +4,7 @@ const FormStyled = styled.form`
   width: 100%;
   position: fixed;
   width: 100%;
-  top: 0;
+  top: -1px;
   z-index: 1;
   padding-top: 4.7rem;
 `;
