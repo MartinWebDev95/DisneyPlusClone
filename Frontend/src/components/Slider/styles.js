@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 const Container = styled.div`
-  position: relative;
   width: 100%;
-  margin: 8rem auto 0 auto;
+  padding-top: 8rem;
   
   @media screen and (max-width: 468px){
     overflow-x: hidden;
   }
+`;
+
+const Wrapper = styled.div`
+  position: relative;
 `;
 
 const ButtonStyled = styled.button`
@@ -85,5 +88,5 @@ const LinkStyled = styled(Link)`
 `;
 
 export {
-  Container, ContainerImages, LinkStyled, ButtonStyled, Slide,
+  Container, Wrapper, ContainerImages, LinkStyled, ButtonStyled, Slide,
 };
