@@ -150,11 +150,15 @@ const ListItem = styled.li`
 `;
 
 const MenuResponsive = styled.li`
-  padding-right: 1rem;
+  padding: 1rem;
   display: block;
   position: relative;
 
   svg{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
   }
 
@@ -170,7 +174,8 @@ const MenuResponsive = styled.li`
 const MenuResponsiveList = styled.ul`
   position: absolute;
   left: -25px;
-  top: 20px;
+  top: 25px;
+  width: fit-content;
   background-color: #131313;
   border: 1px solid #414141;
   padding: .5rem;
@@ -208,9 +213,15 @@ const LinkItem = styled(Link)`
   color: white;
   text-decoration: none;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   gap: .5rem;
   padding: .5rem;
+
+  svg{
+    position: static;
+    transform: none;
+  }
 `;
 
 const ItemMenu = styled.span`

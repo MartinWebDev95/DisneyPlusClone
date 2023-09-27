@@ -30,6 +30,7 @@ const Title = styled.h2`
 `;
 
 const Sinopsis = styled.p`
+  margin-top: 1rem;
   font-size: 1.4em;
   color: #CCCDCF;
 
