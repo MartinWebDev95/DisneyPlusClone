@@ -41,11 +41,25 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url("/assets/img/background.png") no-repeat center, 
-  linear-gradient(to right, rgb(30, 31, 42), rgb(30, 31, 42));
+  background: #0B0D15 url("/assets/img/background.png") center center no-repeat;
   background-size: cover;
   overflow-x: hidden;
-  min-height: 100vh;
+  height: 100%;
+}
+
+a{
+  text-decoration: none;
+}
+
+ul, p{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+img, picture{
+  max-width: 100%;
+  display: block;
 }
 
 code {
