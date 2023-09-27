@@ -26,6 +26,7 @@ const Title = styled.p`
   color: #EAEAD7;
   font-weight: bold;
   font-size: 1.5rem;
+  margin-bottom: 1rem;
 `;
 
 const ButtonStyled = styled.button`

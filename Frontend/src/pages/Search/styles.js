@@ -30,15 +30,16 @@ const SearchField = styled.input`
 const Container = styled.section`
   width: 90%;
   margin: 0 auto;
-  margin-top: 12rem;
+  padding-top: 12rem;
 
   h1{
     color: #F9F9F9;
     font-size: 1.2em;
+    margin: 0;
   }
 
   @media screen and (min-width: 768px){
-    margin-top: 15rem;
+    padding-top: 15rem;
   }
 `;
 

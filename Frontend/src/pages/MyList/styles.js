@@ -2,7 +2,8 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   width: 90%;
-  margin: 8rem auto 0 auto;
+  padding-top: 6rem;
+  margin: 0 auto;
 
   h1{
     color: white;
