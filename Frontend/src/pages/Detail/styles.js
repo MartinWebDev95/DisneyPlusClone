@@ -25,6 +25,7 @@ const Title = styled.h1`
   color: #fff;
   margin: 0;
   width: 50%;
+  margin-bottom: 1rem;
 
   @media screen and (max-width: 768px){
     font-size: 3em;
@@ -34,6 +35,7 @@ const Title = styled.h1`
 const Genres = styled.div`
   display: flex;
   gap: 1rem;
+  margin-top: .5rem;
 
   span{
     color: #fff;

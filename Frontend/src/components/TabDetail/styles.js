@@ -41,6 +41,11 @@ const Sinopsis = styled.p`
 
 const Detail = styled.p`
   color: #BDC7CA;
+  margin-bottom: .5rem;
+  
+  &:last-of-type{
+    margin-bottom: 0rem;
+  }
   
   span{
     display: block;

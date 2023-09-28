@@ -44,6 +44,10 @@ const ImageStyled = styled.img`
   @media screen and (max-width: 468px){
     border: none;
 
+    ${(props) => ((props.height === 'no-carousel')
+    ? 'height: auto;'
+    : 'height: 15rem;')}
+
     &:hover{
       border: none;
       transform: none;
