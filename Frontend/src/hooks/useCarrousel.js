@@ -82,15 +82,12 @@ function useCarrousel(collection, carrousel, id, resetPosition) {
     itemsPerScreen = getComputedStyle(document.documentElement).getPropertyValue('--items-per-screen');
     maxSliding = ((collection.length / itemsPerScreen) * 100) - 100;
 
-    // Si se ha desplazado mas de un 20% se realiza
-    // el desplazamiento completo y se muestran los siguentes items
-    // En el caso de que no se haya desplazado mas de 20% el carousel no se desplaza
-
+    // Desplazamiento del carrousel
     if ((total + currentSliding) < 0) {
       total = 0;
-    } else if ((currentSliding > 20) && (total < maxSliding)) {
+    } else if ((currentSliding > 0) && (total < maxSliding)) {
       total += 100;
-    } else if ((currentSliding < -20) && (total > 0)) {
+    } else if ((currentSliding < 0) && (total > 0)) {
       total -= 100;
     } else if (total === 0) {
       total = 0;
@@ -134,9 +131,9 @@ function useCarrousel(collection, carrousel, id, resetPosition) {
 
     if ((total + currentSliding) < 0) {
       total = 0;
-    } else if ((currentSliding > 20) && (total < maxSliding)) {
+    } else if ((currentSliding > 0) && (total < maxSliding)) {
       total += 100;
-    } else if ((currentSliding < -20) && (total > 0)) {
+    } else if ((currentSliding < 0) && (total > 0)) {
       total -= 100;
     } else if (total === 0) {
       total = 0;
