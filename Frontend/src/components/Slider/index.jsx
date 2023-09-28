@@ -23,11 +23,11 @@ function Slider({ collection }) {
   });
 
   return (
-    <Container
-      onMouseEnter={() => setIsEnter(true)}
-      onMouseLeave={() => setIsEnter(false)}
-    >
-      <Wrapper>
+    <Container>
+      <Wrapper
+        onMouseEnter={() => setIsEnter(true)}
+        onMouseLeave={() => setIsEnter(false)}
+      >
         <ButtonStyled align="left" onClick={handleClickPrevious}>
           <IoIosArrowBack />
         </ButtonStyled>
