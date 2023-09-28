@@ -12,7 +12,6 @@ function Card({
           <ImageStyled
             src={`https://image.tmdb.org/t/p/w200${item.poster_path}`}
             alt={item.title || item.name}
-            available
             loading="lazy"
             height={height}
           />
@@ -20,7 +19,6 @@ function Card({
           <ImageStyled
             src={BlankImage}
             alt="No available"
-            available={false}
             loading="lazy"
             height={height}
           />
