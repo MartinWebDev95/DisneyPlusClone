@@ -1,7 +1,7 @@
 import {
   useState, createContext, useMemo, useContext, useEffect,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import supabase from '../../supabase';
 import getInfoCurrentUser from '../services/getInfoCurrentUser';
 
@@ -16,6 +16,7 @@ function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     // Recibe una notificación cada vez que ocurre un evento auth
@@ -28,6 +29,12 @@ function AuthProvider({ children }) {
         setCurrentUser(null);
 
         setLoading(false);
+      }
+
+      // Si existe una session activa no se permite al usuario volver a la
+      // página de inicio de sesión
+      if (session && location.pathname === '/') {
+        navigate('/home');
       }
 
       if (session && event === 'INITIAL_SESSION') {
