@@ -25,39 +25,48 @@ const ButtonStyled = styled.button`
   ${(props) => ((props.align === 'left') ? 'left: 0' : 'right: 0')};
   
   svg{
-    color: #EAEAD7;
-    font-size: 3rem;
+    color: black;
+    font-size: 2rem;
     transition: .3s all ease-in-out;
+    border-radius: 50%;
+    background: #EAEAD7;
 
     &:hover{
       cursor: pointer;
-      color: #A2A2A2;
     }
-  }
 
-  @media screen and (max-width: 768px){
-    display: none;
+    @media screen and (min-width: 768px){
+      color: #EAEAD7;
+      background: transparent;
+      border-radius: none;
+      font-size: 3rem;
+
+      &:hover{
+        cursor: pointer;
+        color: #A2A2A2;
+      }
+    } 
   }
 `;
 
 const ContainerImages = styled.div`
-  width: ${(props) => (`${((props.quantity * 100))}%`)};
+  width: 100%;
   display: flex;
+  gap: 2rem;
   flex-flow: row nowrap;
   align-items: center;
   transform: translateX(0%);
 `;
 
 const Slide = styled.div`
-  width: 100%;
-  margin-inline: 4rem;
+  min-width: 100%;
+  padding-inline: 4rem;
   height: 20rem;
-  box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px;
   border-radius: 5px;
   transition: all .3s ease-in-out;
   
   @media screen and (max-width: 768px){
-    margin-inline: 0rem;
+    padding-inline: 0rem;
     border-radius: 0px;
   }
 `;
@@ -72,6 +81,7 @@ const LinkStyled = styled(Link)`
   width: 100%;
   height: 20rem;
   outline: 3px solid transparent;
+  box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px;
 
   &:hover{
     outline: 3px solid #D7DEE8;

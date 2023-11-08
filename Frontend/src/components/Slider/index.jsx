@@ -12,15 +12,7 @@ function Slider({ collection }) {
     setIsEnter,
     handleClickNext,
     handleClickPrevious,
-    handleMouseDown,
-    handleMouseMove,
-    handleMouseUp,
-    handleTouchEnd,
-    handleTouchMove,
-    handleTouchStart,
-  } = useSlider({
-    externalRef: containerImgs,
-  });
+  } = useSlider({ externalRef: containerImgs });
 
   return (
     <Container>
@@ -35,12 +27,6 @@ function Slider({ collection }) {
         <ContainerImages
           quantity={collection?.length}
           ref={containerImgs}
-          onMouseDown={handleMouseDown}
-          onMouseMove={handleMouseMove}
-          onMouseUp={handleMouseUp}
-          onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
         >
           {collection?.map((item) => (
             <Slide key={item.id}>
