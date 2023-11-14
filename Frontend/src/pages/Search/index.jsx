@@ -9,7 +9,7 @@ import {
 
 function Search() {
   const {
-    results, keyword, loading, handleChange,
+    results, loading, handleSearch, searchParams,
   } = useSearch();
 
   return (
@@ -19,9 +19,9 @@ function Search() {
           type="text"
           name=""
           id=""
-          value={keyword}
-          placeholder="Título, personaje o género"
-          onChange={handleChange}
+          defaultValue={searchParams.get('query')?.toString()}
+          placeholder="Título"
+          onChange={(e) => handleSearch(e.target.value)}
         />
       </FormStyled>
 
@@ -30,7 +30,12 @@ function Search() {
 
         {loading
           ? (<Spinner />)
-          : (<ListOfSearchResults results={results} keyword={keyword} />)}
+          : (
+            <ListOfSearchResults
+              results={results}
+              keyword={searchParams.get('query')?.toString()}
+            />
+          )}
       </Container>
     </main>
   );
