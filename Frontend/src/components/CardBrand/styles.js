@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;

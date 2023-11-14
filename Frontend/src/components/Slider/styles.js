@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const Container = styled.div`
+const Container = styled.section`
   width: 100%;
   padding-top: 8rem;
   
