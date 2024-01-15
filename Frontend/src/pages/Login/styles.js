@@ -8,11 +8,12 @@ const HeaderStyled = styled.header`
 const NavStyled = styled.nav`
   padding: 1rem 2rem;
   display: flex;
-  justify-content: flex-end; 
-  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
   
   @media screen and (max-width: 468px){
-    justify-content: center; 
+    align-items: center;
   }
 `;
 
