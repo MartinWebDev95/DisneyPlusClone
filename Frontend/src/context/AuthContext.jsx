@@ -21,7 +21,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     // Recibe una notificación cada vez que ocurre un evento auth
     supabase.auth.onAuthStateChange((event, session) => {
-      // Si la session es null significa que el usuario no está logeado, por lo tanto,
+      // Si la session es null significa que el usuario no está logueado, por lo tanto,
       // se redirecciona al usuario a la página de login
       if (!session) {
         navigate('/');
@@ -31,13 +31,15 @@ function AuthProvider({ children }) {
         setLoading(false);
       }
 
-      // Si existe una session activa no se permite al usuario volver a la
+      // Si existe una sesión activa no se permite al usuario volver a la
       // página de inicio de sesión
       if (session && location.pathname === '/') {
         navigate('/home');
       }
 
-      if (session && event === 'INITIAL_SESSION') {
+      // Se obtiene la información del usuario si existe una sesión y
+      // ocurre alguno de los dos eventos
+      if (session && (event === 'INITIAL_SESSION' || event === 'SIGNED_IN')) {
         getInfoCurrentUser()
           .then((infoUser) => {
             setCurrentUser(infoUser);
@@ -62,13 +64,34 @@ function AuthProvider({ children }) {
     }
   };
 
+  // Iniciar sesión con una cuenta demo
+  const handleLoginWithDemoUser = async () => {
+    try {
+      await supabase.auth.signInWithPassword({
+        email: import.meta.env.VITE_DEMO_EMAIL,
+        password: import.meta.env.VITE_DEMO_PASSWORD,
+      });
+
+      // Redireccionar al usuario hacia home
+      navigate('/home');
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  };
+
   // Cerrar sesión
   const handleLogout = async () => {
     await supabase.auth.signOut();
   };
 
   const value = useMemo(() => ({
-    currentUser, setCurrentUser, loading, setLoading, handleLoginWithGoogle, handleLogout,
+    currentUser,
+    setCurrentUser,
+    loading,
+    setLoading,
+    handleLoginWithGoogle,
+    handleLoginWithDemoUser,
+    handleLogout,
   }), [currentUser, loading]);
 
   return (
