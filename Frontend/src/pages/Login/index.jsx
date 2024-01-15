@@ -1,5 +1,3 @@
-import Logo from '/assets/img/logo.svg';
-
 import {
   HeaderStyled, NavStyled, ButtonStyled, MainStyled, Container,
 } from './styles';
@@ -7,7 +5,7 @@ import {
 import { useAuth } from '../../context/AuthContext';
 
 function Login() {
-  const { handleLoginWithGoogle } = useAuth();
+  const { handleLoginWithGoogle, handleLoginWithDemoUser } = useAuth();
 
   return (
     <Container>
@@ -19,11 +17,19 @@ function Login() {
           >
             Iniciar Sesión
           </ButtonStyled>
+
+          <ButtonStyled
+            type="button"
+            onClick={handleLoginWithDemoUser}
+          >
+            Iniciar Sesión usuario demo
+          </ButtonStyled>
         </NavStyled>
       </HeaderStyled>
 
       <MainStyled>
-        <img src={Logo} alt="Logo Disney" />
+        <img src="/assets/img/logo.svg" alt="Logo Disney" />
+
         <h1>
           <span>
             Historias que esperas +
