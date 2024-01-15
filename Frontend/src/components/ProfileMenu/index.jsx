@@ -12,11 +12,11 @@ function ProfileMenu() {
       <Profile>
         <DivProfile>
           <NameUser>
-            {`${currentUser?.name.substring(0, 15)}...`}
+            {currentUser?.name ? `${currentUser?.name.substring(0, 15)}...` : 'Usuario demo'}
           </NameUser>
 
           <ProfileImage
-            src={currentUser?.photo}
+            src={currentUser?.photo ? currentUser?.photo : '/assets/img/profile.png'}
             referrerpolicy="no-referrer"
             alt="Profile"
           />
