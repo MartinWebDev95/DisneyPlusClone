@@ -23,7 +23,7 @@ This project consists of creating a clone of the Disney Plus website where you c
 [Button Vite]:https://img.shields.io/badge/Vite-000000?style=for-the-badge&logo=vite
 [Button ESLint]:https://img.shields.io/badge/ESLint-000000?style=for-the-badge&logo=eslint
 
-[![Button React]](https://es.react.dev/)
+[![Button React]](https://react.dev/)
 [![Button Supabase]](https://supabase.com/)
 [![Button Styled Components]](https://styled-components.com/)
 [![Button React Router]](https://reactrouter.com/en/main)
