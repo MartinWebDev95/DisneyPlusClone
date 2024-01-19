@@ -48,19 +48,19 @@ Este proyecto consiste en crear un clon de la página web de Disney Plus donde t
 ## 📸 Algunas capturas del proyecto!
 ---
 
-![Login Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/tree/master/Frontend/public/assets/img/screenshots/loginPage.png)
+![Login Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/loginPage.png)
 
-![Main Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/tree/master/Frontend/public/assets/img/screenshots/mainPage.png)
+![Main Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/mainPage.png)
 
-![Brand Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/tree/master/Frontend/public/assets/img/screenshots/brandPage.png)
+![Brand Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/brandPage.png)
 
-![Search Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/tree/master/Frontend/public/assets/img/screenshots/searchPage.png)
+![Search Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/searchPage.png)
 
-![Detail Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/tree/master/Frontend/public/assets/img/screenshots/detailPage.png)
+![Detail Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/detailPage.png)
 
-![My List Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/tree/master/Frontend/public/assets/img/screenshots/myListPage.png)
+![My List Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/myListPage.png)
 
-![Series Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/tree/master/Frontend/public/assets/img/screenshots/seriesPage.png)
+![Series Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/seriesPage.png)
 
 ## 🗃️ Estructura del proyecto
 ---
