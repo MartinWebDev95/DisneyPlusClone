@@ -7,7 +7,7 @@ function Footer() {
   return (
     <FooterStyled>
       <Container>
-        <Logo>
+        <Logo to="/home">
           <img src="/assets/img/logo.svg" alt="logo" />
         </Logo>
 

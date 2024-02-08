@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-expressions */
-import useOpacity from '../../hooks/useOpacity';
 import listGenres from '../../utils/listGenres';
 import {
   Title, FormStyled, OptionStyled, SectionFormStyled,
@@ -8,10 +7,8 @@ import {
 function FilterBar({
   title, genre, handleGenre, type,
 }) {
-  const { opacity } = useOpacity();
-
   return (
-    <SectionFormStyled opacity={opacity.toString()}>
+    <SectionFormStyled>
 
       <Title>{title}</Title>
 

@@ -1,9 +1,15 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const Title = styled.h1`
   color: #DBDBDB;
   font-size: clamp(2rem, 6vw, 3rem); 
   margin: 0;
+`;
+
+const opacityHeader = keyframes`
+  to {
+    background-color: rgba(20, 22, 31, 1);
+  }
 `;
 
 const SectionFormStyled = styled.section`
@@ -18,10 +24,10 @@ const SectionFormStyled = styled.section`
   padding-bottom: 3rem;
   flex-direction: column;
   gap: 0;
-  
-  ${(props) => (props.opacity === 'false'
-    ? 'background-color: rgba(20, 22, 31, 0);'
-    : 'background-color: rgba(20, 22, 31, 1);')};
+  background-color: rgba(20, 22, 31, 0);
+  animation: ${opacityHeader} linear both;
+  animation-timeline: scroll();
+  animation-range: 0 100px;
 
   @media screen and (min-width: 500px){
     flex-direction: row;

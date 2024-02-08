@@ -1,16 +1,22 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link } from 'react-router-dom';
 
-const HeaderStyled = styled.header`
-  ${(props) => (props.opacity === 'false'
-    ? 'background: linear-gradient(to bottom, rgb(30, 31, 42), transparent)'
-    : 'background: #090B13')};
+const opacityHeader = keyframes`
+  to {
+    background: #090B13;
+  }
+`;
 
+const HeaderStyled = styled.header`
+  background: linear-gradient(to bottom, rgb(30, 31, 42), transparent);
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 3;
+  animation: ${opacityHeader} linear both;
+  animation-timeline: scroll();
+  animation-range: 0 100px;
 `;
 
 const ContainerNav = styled.div`

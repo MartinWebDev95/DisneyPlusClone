@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FooterStyled = styled.footer`
@@ -15,11 +16,15 @@ const Container = styled.div`
   padding-block: 1rem;
 `;
 
-const Logo = styled.a`
+const Logo = styled(Link)`
   img{
     width: 30%;
     display: block;
     margin: 0 auto;
+  }
+
+  &:hover {
+    cursor: pointer;
   }
 `;
 

@@ -1,15 +1,13 @@
 import { useState } from 'react';
-import useOpacity from '../../hooks/useOpacity';
 import {
   VideoStyled, ImageStyled, DivOpacity, Wrapper, DivStyled,
 } from './styles';
 
 function BackgroundVideo({ bgVideo, posterImage, altText }) {
   const [opacityImage, setOpacityImage] = useState(false);
-  const { background } = useOpacity();
 
   return (
-    <DivOpacity ref={background}>
+    <DivOpacity>
       <VideoStyled autoPlay playsInline muted onEnded={() => setOpacityImage(true)}>
         <source src={bgVideo} type="video/mp4" />
       </VideoStyled>

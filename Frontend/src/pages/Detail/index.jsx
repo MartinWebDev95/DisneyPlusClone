@@ -4,7 +4,6 @@ import Spinner from '../../components/Spinner';
 import Tabs from '../../components/Tabs';
 
 import useMyList from '../../hooks/useMyList';
-import useOpacity from '../../hooks/useOpacity';
 
 import {
   Background,
@@ -23,9 +22,6 @@ import getHoursAndMinutes from '../../helpers/getHoursAndMinutes';
 function Detail({ type }) {
   const { id } = useParams();
 
-  // Custom hook que controla la opacidad del navbar y del fondo de la página de detalles
-  const { background } = useOpacity();
-
   // Custom hook que muestra los detalles de la película o serie
   const {
     handleSaveMyList, selected, itemDetail, isLoading,
@@ -39,7 +35,7 @@ function Detail({ type }) {
       ) : (
         <main>
           <Background
-            ref={background}
+            // ref={background}
             bgImg={`https://image.tmdb.org/t/p/original${itemDetail.backdrop_path}`}
           />
 

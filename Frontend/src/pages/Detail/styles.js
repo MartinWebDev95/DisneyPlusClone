@@ -1,4 +1,10 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const opacityBackground = keyframes`
+  to {
+    opacity: 0.2;
+  }
+`;
 
 const Background = styled.div`
   background: linear-gradient(to right, rgb(30, 31, 42), rgb(30, 31, 42, 0.1)), url(${(props) => props.bgImg}) no-repeat center;
@@ -10,6 +16,9 @@ const Background = styled.div`
   left: 0;
   bottom: 0;
   z-index: -1;
+  animation: ${opacityBackground} linear both;
+  animation-timeline: scroll();
+  animation-range: 0 100px;
 `;
 
 const Container = styled.div`

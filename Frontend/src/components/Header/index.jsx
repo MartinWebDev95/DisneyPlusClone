@@ -18,14 +18,11 @@ import {
   ListItem,
 } from './styles';
 
-import useOpacity from '../../hooks/useOpacity';
 import ProfileMenu from '../ProfileMenu';
 
 function Header() {
-  const { opacity } = useOpacity();
-
   return (
-    <HeaderStyled opacity={opacity.toString()}>
+    <HeaderStyled>
       <NavStyled>
         <ContainerNav>
           <Logo to="/home">

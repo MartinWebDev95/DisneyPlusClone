@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 const VideoStyled = styled.video`
   width: 100%;
@@ -17,6 +17,12 @@ const ImageStyled = styled.img`
   transition: all .3s ease-in-out;
 `;
 
+const opacityBackground = keyframes`
+  to {
+    opacity: 0.2;
+  }
+`;
+
 const DivOpacity = styled.div`
   width: 100%;
   height: 100%;
@@ -25,7 +31,9 @@ const DivOpacity = styled.div`
   top: 0;
   left: 0;
   z-index: -1;
-  opacity: 1;
+  animation: ${opacityBackground} linear both;
+  animation-timeline: scroll();
+  animation-range: 0 300px;
 `;
 
 const DivStyled = styled.div`
