@@ -41,10 +41,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #0B0D15 url("/assets/img/background.png") center center no-repeat;
-  background-size: cover;
+  background: #0B0D15 url("/assets/img/background.png") 50% no-repeat fixed;
   overflow-x: hidden;
-  height: 100%;
 }
 
 a{
