@@ -116,11 +116,11 @@ function useCarrousel(collection, carrousel, id, resetPosition) {
   const handleTouchMove = (e) => {
     if (!isTouching) return;
 
-    const pointer = e.changedTouches[0].pageX - carrousel.current.offsetLeft;
+    const pointer = e.changedTouches[0].pageX;
 
     currentSliding = (((startPointer - pointer) * 6.25) / 100);
 
-    carrousel.current.style.transform = `translateX(-${total + (currentSliding)}%)`;
+    carrousel.current.style.transform = `translateX(-${total + currentSliding}%)`;
     carrousel.current.style.transition = 'none';
   };
 
