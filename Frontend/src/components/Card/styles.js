@@ -37,7 +37,6 @@ const ImageStyled = styled.img`
 
   &:hover{
     border: 3px solid #D7DEE8;
-    cursor: pointer;
     transform: scale(1.05);
   }
 
