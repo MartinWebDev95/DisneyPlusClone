@@ -1,5 +1,5 @@
-import CardBrand from '../../components/CardBrand';
 import Carrousel from '../../components/Carrousel';
+import ListOfCardsBrand from '../../components/ListOfCardsBrand';
 import Slider from '../../components/Slider';
 import Spinner from '../../components/Spinner';
 import removeBlankImagesFromSlider from '../../helpers/removeBlankImagesFromSlider';
@@ -21,7 +21,7 @@ function Home() {
           />
 
           <Container>
-            <CardBrand />
+            <ListOfCardsBrand />
           </Container>
 
           {Object.values(data).map((collection) => (
