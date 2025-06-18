@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import { ImageStyled, LinkStyled } from './styles';
-import BlankImage from '/assets/img/no-picture-available.png';
 
 function Card({
   item, type, width = '', height = '',
@@ -18,7 +17,7 @@ function Card({
           />
         ) : (
           <ImageStyled
-            src={BlankImage}
+            src="/assets/img/no-picture-available.png"
             alt="No available"
             loading="lazy"
             height={height}

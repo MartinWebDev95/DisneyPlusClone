@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import BlankImage from '/assets/img/no-photo-available-icon.jpg';
 import {
   Sinopsis, Title, DivStyled, ImageStyled,
 } from './styles';
@@ -31,7 +30,7 @@ function CardEpisodes({ item }) {
       ) : (
         <DivStyled>
           <ImageStyled
-            src={BlankImage}
+            src="/assets/img/no-photo-available-icon.jpg"
             alt="No available"
             loading="lazy"
           />
