@@ -8,6 +8,8 @@ const ImageStyled = styled.img`
   box-shadow: rgb(0 0 0 / 69%) 0px 26px 30px -10px, rgb(0 0 0 / 73%) 0px 16px 10px;
   border-radius: 0.5rem;
   object-fit: cover;
+  user-select: none;
+  pointer-events: none;
   background-color: #171822;
 `;
 
@@ -26,6 +28,7 @@ const DivStyled = styled.div`
   padding: 0.25rem;
   flex: 0 0 calc(100% / var(--items-per-screen));
   max-width: max-content;
+  user-select: none;
   
   &:first-of-type{
     padding-left: 0;
