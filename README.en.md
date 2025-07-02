@@ -60,7 +60,7 @@ This project consists of creating a clone of the Disney Plus website where you c
 
 ![My List Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/myListPage.png)
 
-![Series Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/seriesPage.png)
+![Movies Page Screenshot](https://github.com/MartinWebDev95/DisneyPlusClone/blob/master/Frontend/public/assets/img/screenshots/moviesPage.png)
 
 ## 🗃️ Project Structure
 ---
@@ -102,6 +102,8 @@ This is the structure that I have used in this project
 ## 👀 Where you can find me?
 ---
 
-[Button Portfolio]: https://img.shields.io/badge/Visit%20My%20Portfolio-000000?style=for-the-badge
+[Button Portfolio]: https://img.shields.io/badge/Visita%20mi%20Portfolio-000000?style=for-the-badge
+[Button Linkedin]: https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge
 
-[![Button Portfolio]](https://portfolio-martinwebdev95.vercel.app/)
+[![Button Portfolio]](https://portfolio-martinwebdev95.vercel.app/en)
+[![Button Linkedin]](https://www.linkedin.com/in/jamartindev/)
